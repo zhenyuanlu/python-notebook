@@ -23,11 +23,11 @@ Throughout this comprehensive guide, we'll cover a wide range of topics, includi
 
 | Section | Topics | 
 | ----- | ----- | 
-| 01 - Get Started | Dive into the basics of Python, setting up your development environment, and writing your first lines of Python code.| 
-| 02 - Data Types | Explore the fundamental data types in Python, such as integers, strings, lists, and dictionaries, and learn how to use them. | 
-| 03 - Control and Functions | Understand how to control the flow of your Python programs using conditional statements and loops, and encapsulate code logic within functions. | 
-| 04 - Advanced Formatting | Learn about advanced ways to format and manipulate strings and other data types in Python. |
-| 05 - Loops and Comprehensions | Delve deeper into Python's iteration tools, including for and while loops, to repeat actions over a series of data. | 
+| 01 - [Get Started](https://zhenyuanlu.com/python-notebook/01_get_started/) | Dive into the basics of Python, setting up your development environment, and writing your first lines of Python code.| 
+| 02 - [Data Types](https://zhenyuanlu.com/python-notebook/02_data_types/) | Explore the fundamental data types in Python, such as integers, strings, lists, and dictionaries, and learn how to use them. | 
+| 03 - [Control and Functions](https://zhenyuanlu.com/python-notebook/03_control_functions/) | Understand how to control the flow of your Python programs using conditional statements and loops, and encapsulate code logic within functions. | 
+| 04 - [Advanced Formatting](https://zhenyuanlu.com/python-notebook/04_advanced_formatting/) | Learn about advanced ways to format and manipulate strings and other data types in Python. |
+| 05 - [Loops and Comprehensions](https://zhenyuanlu.com/python-notebook/05_loops_comprehensions/) | Delve deeper into Python's iteration tools, including for and while loops, to repeat actions over a series of data. | 
 | 06 - Iterators and Generators | Discover powerful Python constructs that allow for efficient data processing and manipulation, including iterators, and generators. | 
 | 07 - Modules, Packages, and File I/O | Learn about modularizing your Python code with packages and modules, and how to interact with the filesystem for input and output operations. | 
 | 08 - Error Handling and Exceptions | Grasp how to handle and recover from errors in your Python code using exceptions, and understand best practices for error handling. | 
