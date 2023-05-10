@@ -1,0 +1,91 @@
+site_name: Python Notebook from Zero to Advanced
+site_url:
+site_description:
+edit_uri: ''
+
+repo_url: https://github.com/zhenyuanlu/python-notebook
+repo_name: zhenyuanlu/python-notebook
+
+
+nav:
+  - Home: 'index.md'
+  - Disclaimer: '00_disclaimer.md'
+  - 01. Get Started: '01_get_started.md'
+  - 02. Data Types: '02_data_types.md'
+  - 03. Control and Functions: '03_control_functions.md'
+  - 04. Advanced Formatting: '04_advanced_formatting.md'
+  - (WIP) Loops and Iterations: '05_loops_comprehensions.md'
+  - (WIP) Iterators, Generators, and Comprehensions: ''
+  - (WIP) Modules, Packages, and File I/O: ''
+  - (WIP) Error Handling and Exceptions: ''
+  - (WIP) Object-Oriented Programming: ''
+  - (WIP) Functional Programming and Standard Library: ''
+  - (WIP) Testing and Regular Expressions: ''
+  - (WIP) Metaclasses and Other Python Features: ''
+
+
+theme:
+  name: material
+  # custom_dir: material
+  logo: assets/z1.png
+  favicon: assets/z1.png
+  features:
+    - content.code.copy
+    - navigation.instant
+    - navigation.top
+    - content.tabs.link
+  palette:
+  - media: '(prefers-color-scheme: light)'
+    scheme: default
+    primary: black
+    accent: orange
+    toggle:
+      icon: material/brightness-7
+      name: Switch to light mode
+  - media: '(prefers-color-scheme: dark)'
+    scheme: slate
+    primary: black
+    accent: orange
+    toggle:
+      icon: material/brightness-4
+      name: Switch to dark mode
+
+markdown_extensions:
+  - meta
+  - admonition
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tabbed:
+      alternate_style: true 
+
+plugins:
+  - search:
+        separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+  - social
+  # - with-pdf:
+  #       author: Zhenyuan Lu
+  #       output_path: E:/mdbook_mkDoc/pyNote/document.pdf
+  # - mkpdfs
+
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/zhenyuanlu/
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/zhenyuanlu/
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/zyl_zhen/
+
+# Copyright
+# Copyright &copy; 2023 
+copyright: 'Python Notebook by <a href="" target="_blank">Zhenyuan Lu</a>. This work is under <a href="" target="_blank">MIT License</a>.'
