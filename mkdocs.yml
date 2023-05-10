@@ -1,7 +1,9 @@
 site_name: Python Notebook from Zero to Advanced
 site_url:
-site_description:
-edit_uri: ''
+site_description: A simplistic place to learn Python
+edit_url: ''
+
+
 
 repo_url: https://github.com/zhenyuanlu/python-notebook
 repo_name: zhenyuanlu/python-notebook

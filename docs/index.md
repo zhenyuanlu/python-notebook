@@ -7,7 +7,7 @@ Version: 0.9.0
 Created: 12/05/2022, *last modified on 5/10/2023*
 
 
-Welcome to the [Python Notebook from Zero to Advanced](), an enjoyable place on the internet to learn Python (besides the best place [official Python documentation](https://docs.python.org/3/tutorial/), of course :wink: )
+Welcome to the [Python Notebook from Zero to Advanced](), an simplistic place on the internet to learn Python (besides the best place [official Python documentation](https://docs.python.org/3/tutorial/), of course :wink: )
 
 <!-- <div align="center">
     <a href="">
