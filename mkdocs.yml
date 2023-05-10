@@ -15,7 +15,7 @@ nav:
   - 02. Data Types: '02_data_types.md'
   - 03. Control and Functions: '03_control_functions.md'
   - 04. Advanced Formatting: '04_advanced_formatting.md'
-  - (WIP) Loops and Comprehensions: '05_loops_comprehensions.md'
+  - (WIP) Loops, Comprehensions: '05_loops_comprehensions.md'
   - (WIP) Iterators, Generators, and Comprehensions: ''
   - (WIP) Modules, Packages, and File I/O: ''
   - (WIP) Error Handling and Exceptions: ''
