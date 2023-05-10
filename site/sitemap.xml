@@ -1,47 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>None</loc>
+         <loc>https://zhenyuanlu.com/python-notebook/</loc>
          <lastmod>2023-05-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
+         <loc>https://zhenyuanlu.com/python-notebook/00_disclaimer/</loc>
          <lastmod>2023-05-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
+         <loc>https://zhenyuanlu.com/python-notebook/01_get_started/</loc>
          <lastmod>2023-05-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
+         <loc>https://zhenyuanlu.com/python-notebook/02_data_types/</loc>
          <lastmod>2023-05-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
+         <loc>https://zhenyuanlu.com/python-notebook/03_control_functions/</loc>
          <lastmod>2023-05-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
+         <loc>https://zhenyuanlu.com/python-notebook/04_advanced_formatting/</loc>
          <lastmod>2023-05-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
+         <loc>https://zhenyuanlu.com/python-notebook/05_loops_comprehensions/</loc>
          <lastmod>2023-05-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
+         <loc>https://zhenyuanlu.com/python-notebook/07_errors/</loc>
          <lastmod>2023-05-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
+         <loc>https://zhenyuanlu.com/python-notebook/08_oop/</loc>
          <lastmod>2023-05-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
