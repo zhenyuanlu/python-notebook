@@ -55,7 +55,9 @@ print('Address of substring is:{}'.format(id(substring)))
 
 
 
-# List is mutable, and tuple is immutable.
+# Strings, numbers, and tuple are immutable.
+# Dictionary, list, and set are mutable.
+# fronzen set is immutable.
 
 pet_1 = ['Tub', 'Furrytail', 'Cat', 'Barkalot']
 pet_2 = pet_1

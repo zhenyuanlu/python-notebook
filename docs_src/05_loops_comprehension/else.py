@@ -80,7 +80,23 @@ else: # More like a `no break` statement
 # Output: 6
 
 
-# Practical Samples
+
+
+# Exercise 1
+# Find a number in a list
+numbers = [1, 3, 5, 7, 9, 11]
+search_number = 7
+
+for num in numbers:
+    if num == search_number:
+        print(f'Number {search_number} found in the list!')
+        break
+else:
+    print(f'Number {search_number} not found in the list.')
+
+
+
+# Exercise 2
 # Find the first even number in a list
 nums = [1, 3, 8, 7, 3, 2, 3]
 def find_first_even(nums)->str:
@@ -100,3 +116,5 @@ nums = [1, 3, 1, 7, 3, 9, 3]
 first_even = find_first_even(nums)
 print('First even number is: {}'.format(first_even))
 # Output: First even number is: None
+
+

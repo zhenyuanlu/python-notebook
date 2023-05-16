@@ -1319,6 +1319,18 @@ print(pet_tup_1)
 ## 2.5. Immutable vs. Mutable
 Immutable means that we cannot change the contents of the object. Mutable means that we can change the contents of the object. 
 
+**Pros and Cons of Immutable**
+=== "Immutable Data Types"
+    - Numbers
+    - Strings
+    - Tuples
+    - Frozen sets
+
+=== "Mutable Data Types"
+    - Lists
+    - Dictionaries
+    - Sets
+
 Here's a general overview of the advantages and disadvantages of mutable and immutable objects:
 
 **Pros and Cons of Immutable**
