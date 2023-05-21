@@ -5,13 +5,15 @@ This chapter provides an overview of loops and iterations in Python, specificall
 
 ### 5.1.1. For Loops
 
+In this section, we will cover the following statements and functions:
+
 - Basic Usage: The for loop iterates over a list of pets and prints each pet's name. This is the simplest usage of a for loop.
-- `break` Statement: The for loop is used in combination with a conditional statement and break, which terminates the loop once a specific condition is met. In this case, the loop is terminated when the pet name is `Barkalot`.
-- `continue` Statement: The continue statement is used to skip the rest of the current loop iteration and immediately start the next one. Here, when the pet name is `Barkalot`, the loop prints a special message and then immediately starts the next iteration, skipping the usual print statement.
-- Nested for Loops: This demonstrates the concept of nested loops, where a for loop is contained within another for loop. The outer loop iterates over the pet names, and the inner loop iterates over the letters `a` and `b` or the numbers `0` and `1`.
+- `break` Statement: The for loop is used in combination with a conditional statement and break, which terminates the loop once a specific condition is met. 
+- `continue` Statement: The continue statement is used to skip the rest of the current loop iteration and immediately start the next one. 
+- Nested for Loops: This demonstrates the concept of nested loops, where a for loop is contained within another for loop. 
 - `range()` Function: The `range()` function generates a sequence of numbers over which the for loop iterates. The function can be called with different numbers of arguments to change the start, end, and step size of the sequence.
 
-This chapter provides an excellent foundation for understanding loops in Python. The various concepts and techniques it introduces are fundamental to many kinds of programming tasks.
+This chapter provides an excellent foundation for understanding loops in Python.
 
 
 **Basic Usage**
