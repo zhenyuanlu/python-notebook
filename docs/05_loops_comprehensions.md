@@ -353,7 +353,7 @@ To understand this, let's have a more concrete example:
 
 In this exercise, you'll create a function that searches for a specific number in a list using a for `loop` and an `else` clause. The function should print a message indicating whether or not the number was found in the list.
 
-!!! tip "Exercise 1: Search Number in List"
+!!! note "Exercise 1: Search Number in List"
 
 
     Tasks:
@@ -409,7 +409,7 @@ In this exercise, you'll create a function that searches for a specific number i
 
 In this exercise, you'll modify the function `find_first_even` to return the index of the first even number found in the list. If no even number is found, the function should return `None`.
 
-!!! tip "Exercise 2: Find First Even Number Function"
+!!! note "Exercise 2: Find First Even Number Function"
 
     Tasks:
 
@@ -519,7 +519,7 @@ In the above code, we use `enumerate` to get the index of each pet. When we find
 
 Now it's time to try using `enumerate` in your own code! Try to think of situations where you need both the item and its index within a loop. 
 
-!!! tip "Exercise: Find First Even Number and Its Index"
+!!! note "Exercise: Find First Even Number and Its Index"
 
     Tasks:
 

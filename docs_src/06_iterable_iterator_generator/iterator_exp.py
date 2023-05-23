@@ -32,6 +32,8 @@ for num in nums:
 print(next(nums))
 print(next(nums))
 print(next(nums))
+print(next(nums))
+print(next(nums))
 # Output: 1
 # Output: 2
 # Output: 3

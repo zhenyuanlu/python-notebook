@@ -4,7 +4,7 @@ Author: [Zhenyuan Lu](https://zhenyuanlu.com/)
 
 Version: 0.9.0
 
-Created: 12/05/2022, *last modified on 5/16/2023*
+Created: 12/05/2022, *last modified on 5/23/2023*
 
 
 Welcome to the [Python Notebook from Zero to Advanced](), an simplistic place on the internet to learn Python (besides the best place [official Python documentation](https://docs.python.org/3/tutorial/), of course :wink: )

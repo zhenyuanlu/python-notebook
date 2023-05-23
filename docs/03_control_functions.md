@@ -476,7 +476,7 @@ Hi, Tub
 
 
 Below let's go through a real example how to find the number of days in a month
-!!! note "Example - Find the number of days in a month"
+!!! example "Example - Find the number of days in a month"
     Credits: [Python Standard Library](https://docs.python.org/3/library/index.html), and Corey Schafer.
 
     Number of days per month. First value placeholder for indexing purposes.

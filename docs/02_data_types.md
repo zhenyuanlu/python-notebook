@@ -914,7 +914,7 @@ IndexError: list index out of range
 
 Slicing is a way to access a subset of a list. We can use the colon `:` to specify the start and end index of the slice. The slice will include the start index, but not the end index.
 
-!!! note "Basic Indexing for List Slicing"
+!!! info "Basic Indexing for List Slicing"
     ```python title="Basic Indexing"
     # Index: 0  1  2  3
     # Reverse index : -4 -3 -2 -1
@@ -1335,7 +1335,7 @@ Here's a general overview of the advantages and disadvantages of mutable and imm
 
 **Pros and Cons of Immutable**
 === "Pros of Immutable"
-    !!! note
+    !!! info "Note"
         **Simplicity**: Immutability makes the code easier to reason about, as you don't have to worry about unintentional changes to the object.
 
         **Hashable**: Immutable objects can be used as keys in dictionaries, as their content remains constant and their hash values do not change over time.
@@ -1347,7 +1347,7 @@ Here's a general overview of the advantages and disadvantages of mutable and imm
         **Predictability**: When you pass an immutable object to a function, you can be sure that the function will not modify the object, which ensures that the behavior of the program remains predictable.
 
 === "Cons of Immutable"
-    !!! note
+    !!! info "Note"
         **Memory overhead**: Since each operation on an immutable object creates a new object, it can lead to increased memory usage, especially when manipulating large objects or performing many operations.
 
         **Performance**: Creating new objects for each operation can be slower than modifying objects in-place, particularly in cases where the program performs many operations on objects. In such situations, using mutable data structures may be more efficient.
@@ -1355,13 +1355,13 @@ Here's a general overview of the advantages and disadvantages of mutable and imm
 
 **Pros and Cons of Mutable**
 === "Pros of Mutable"
-    !!! note
+    !!! info "Note"
         **In-place modification**: Mutable objects can be modified in-place, which can lead to better performance and lower memory usage, especially when working with large objects or performing many operations on objects.
 
         **Flexibility**: Mutable objects offer more flexibility in how you can manipulate and change data, which can be helpful in certain scenarios.
 
 === "Cons of Mutable"
-    !!! note
+    !!! info "Note"
         **Complexity**: Mutable objects can make code harder to reason about, as you need to consider the possibility of unintentional changes to the object.
 
         **Thread-safety**: Mutable objects are not inherently thread-safe, and using them in multi-threaded environments can lead to race conditions and other concurrency-related issues if proper locking mechanisms are not in place.
@@ -1480,7 +1480,7 @@ The address of `pet_1` and `pet_2` are the same, which means they are both refer
 
 
 
-!!! tip "Python vs. R in Variable Assignment"
+!!! info "Python vs. R in Variable Assignment"
     Python and R handle variable assignment differently, particularly when it comes to mutable objects like lists in Python.
 
     In R, when you assign one variable to another, it creates a copy of the original variable's data. This means that if you change one variable's contents, the other variable's contents remain unchanged. This behavior is known as "copy-on-write" and allows R to save memory by not duplicating data until it is necessary.
@@ -1720,7 +1720,7 @@ print(pet)
 {'Tub', 'Cat', 'Barkalot', 'Furrytail'}
 ```
 
-!!! tip "`set` Doesn't Care About Order"
+!!! info "`set` Doesn't Care About Order"
     Notice that the order of the elements in the set is different from the order of the elements in the list `pet`. This is because sets are unordered collections of unique elements. If you run it multiple times, the order will be different as sets don't care about the order of the elements.
 
 ### 2.7.2. Set Methods
