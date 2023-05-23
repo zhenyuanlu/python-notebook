@@ -28,10 +28,10 @@ Throughout this comprehensive guide, we'll cover a wide range of topics, includi
 | 03 - [Control and Functions](https://zhenyuanlu.com/python-notebook/03_control_functions/) | Understand how to control the flow of your Python programs using conditional statements and loops, and encapsulate code logic within functions. | 
 | 04 - [Advanced Formatting](https://zhenyuanlu.com/python-notebook/04_advanced_formatting/) | Learn about advanced ways to format and manipulate strings and other data types in Python. |
 | 05 - [Loops and Comprehensions](https://zhenyuanlu.com/python-notebook/05_loops_comprehensions/) | Delve deeper into Python's iteration tools, including for and while loops, to repeat actions over a series of data. | 
-| 06 - [Iterable, Iterators and Generators](https://zhenyuanlu.com/python-notebook/06_iterable_iterator_generator/) | Discover powerful Python constructs that allow for efficient data processing and manipulation, including iterators, and generators. | 
-| 07 - Modules, Packages, and File I/O | Learn about modularizing your Python code with packages and modules, and how to interact with the filesystem for input and output operations. | 
+| 06 - [Iterable, Iterators, Generators](https://zhenyuanlu.com/python-notebook/06_iterable_iterator_generator/) | Discover powerful Python constructs that allow for efficient data processing and manipulation, including iterators, and generators. | 
+| 07 - Object-Oriented Programming | Explore the principles of object-oriented programming as they apply to Python, including classes, objects, inheritance, and encapsulation. | 
 | 08 - Error Handling and Exceptions | Grasp how to handle and recover from errors in your Python code using exceptions, and understand best practices for error handling. | 
-| 09 - Object-Oriented Programming | Explore the principles of object-oriented programming as they apply to Python, including classes, objects, inheritance, and encapsulation. | 
+| 09 - Modules, Packages, and File I/O | Learn about modularizing your Python code with packages and modules, and how to interact with the filesystem for input and output operations. | 
 | 10 - Functional Programming and Standard Library | Get introduced to functional programming concepts in Python and delve into Python's extensive standard library. | 
 | 11 - Testing and Regular Expressions | Learn about writing tests for your Python code and manipulating text using regular expressions. | 
 | 12 - Metaclasses and Other Python Features | Dive into advanced Python features, including metaclasses and decorators, to harness the full power of the language. | 

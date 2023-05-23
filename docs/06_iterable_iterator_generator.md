@@ -491,6 +491,9 @@ conda install -c conda-forge psutil
     As you can see, the memory usage increased by only `0.0078125Mb` after generating the generator object. This is because the generator doesn't store the data in memory. Instead, it yields each person one by one. This is why the memory usage of the generator is much lower than that of the list.
 
 
+<!-- ## 6.4. Itertools -->
+
+
 
 
 
