@@ -1,4 +1,4 @@
-# 6. Iterable, Iterator and Generator
+# 6. Iterable, Iterator, Generator
 
 In Python, Iterables and Iterators might seem similar, but they serve distinct purposes and have unique characteristics.
 
