@@ -17,13 +17,13 @@ barkalot.name = "Barkalot"
 barkalot.age = 3
 barkalot.species = "Dog"
 barkalot.email = 'barkalot.dog@gmail.com'
-barkalot.pay = 5
+barkalot.level = 5
 
 furrytail.name = "Furrytail"
 furrytail.age = 2
 furrytail.species = "Cat"
 furrytail.email = 'furrytail.cat@gmail.com'
-furrytail.pay = 11
+furrytail.level = 11
 
 print(barkalot.name)
 print(furrytail.name)
@@ -33,12 +33,12 @@ print(furrytail.name)
 # __init__ method
 class PetEmployee:
     # Of course, you can use other names instead of self. But it is a convention to use self.
-    def __init__(self, name, age, species, pay):
+    def __init__(self, name, age, species, level):
         self.name = name
         self.age = age
         self.species = species
         self.email = name + '.' + species + '@gmail.com'
-        self.pay = pay
+        self.level = level
 
 
 barkalot = PetEmployee('Barkalot', 3, 'Dog', 5)
@@ -54,12 +54,12 @@ print('{} {}'.format(barkalot.name, barkalot.species))
 
 class PetEmployee:
     # Of course, you can use other names instead of self. But it is a convention to use self.
-    def __init__(self, name, age, species, pay):
+    def __init__(self, name, age, species, level):
         self.name = name
         self.age = age
         self.species = species
         self.email = name + '.' + species + '@gmail.com'
-        self.pay = pay
+        self.level = level
 
     def fullname(self):
         return '{} {}'.format(self.name, self.species)
@@ -77,12 +77,12 @@ print(PetEmployee.fullname(barkalot))
 # If we don't put self in the method, we will get an error.
 class PetEmployee:
     # Of course, you can use other names instead of self. But it is a convention to use self.
-    def __init__(self, name, age, species, pay):
+    def __init__(self, name, age, species, level):
         self.name = name
         self.age = age
         self.species = species
         self.email = name + '.' + species + '@gmail.com'
-        self.pay = pay
+        self.level = level
 
     def fullname():
         return '{} {}'.format(self.name, self.species)
