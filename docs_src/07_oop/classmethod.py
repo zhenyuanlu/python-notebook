@@ -92,7 +92,3 @@ furrytail = PetEmployee.from_string(furrytail_str)
 
 print(barkalot.fullname())
 # Output: Barkalot Dog
-
-
-
-

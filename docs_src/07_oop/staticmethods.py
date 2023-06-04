@@ -36,6 +36,7 @@ class PetEmployee:
 barkalot = PetEmployee('Barkalot', 3, 'Dog', 3)
 furrytail = PetEmployee('Furrytail', 2, 'Cat', 5)
 
+
 # Note: if we don't use any of the class attributes, we can use staticmethod
 
 import datetime

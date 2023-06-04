@@ -508,6 +508,189 @@ Let's go one step further and imagine a scenario where HR wants to know which sp
 
 ## 7.3. Classmethods and Staticmethods
 
+Alright, let's dive into the magical world of Python's `classmethods` and `staticmethods`!
+
+In addition to instance methods, which operate on individual objects (or "instances"), Python classes can also have `classmethods` and `staticmethods`. 
+
+We'll kick things off by looking at `classmethods`.
+
+### 7.3.1. Classmethods 
+
+To create a class method in Python, we use the `@classmethod` decorator and the special `cls` parameter, which points to the class, not the instance of the object.
+
+In our example code, we have a class `PetEmployee` with a class variable `promotion_rate`. Let's dive into the details:
+
+```python title="Input"
+class PetEmployee:
+    # Class variable
+    promotion_rate = 1
+
+    def __init__(self, name, age, species, level):
+        self.name = name
+        self.age = age
+        self.species = species
+        self.email = name + '.' + species + '@gmail.com'
+        self.level = level
+
+    def fullname(self):
+        return '{} {}'.format(self.name, self.species)
+
+    def apply_promotion(self):
+        # We need to use the class name to access the class variable
+        # This can be either self or PetEmployee
+        self.level = self.level + self.promotion_rate
+
+    @classmethod
+    def set_promotion_rate(cls, rate):
+        cls.promotion_rate = rate
+```
+
+Here, we have the `set_promotion_rate` class method. This method changes the `promotion_rate` for all instances of the class, not just for one instance. 
+
+So, if we have two pet employees, Barkalot and Furrytail:
+
+```python title="Input"
+barkalot = PetEmployee('Barkalot', 3, 'Dog', 3)
+furrytail = PetEmployee('Furrytail', 2, 'Cat', 5)
+```
+
+And we print their `promotion_rate`, we get `1` for both as the class variable `promotion_rate` is set to `1`:
+
+```python title="Input"
+print(PetEmployee.promotion_rate)
+print(barkalot.promotion_rate)
+print(furrytail.promotion_rate)
+```
+```python title="Output"
+1
+1
+1
+```
+
+But what happens if we change the `promotion_rate` using the `set_promotion_rate` class method? 
+
+```python title="Input"
+PetEmployee.set_promotion_rate(2)
+```
+
+Boom! The promotion rate changes for both Barkalot and Furrytail. That's the power of class methods:
+
+```python title="Input"
+print(PetEmployee.promotion_rate)
+print(barkalot.promotion_rate)
+print(furrytail.promotion_rate)
+```
+```python title="Output"
+2
+2
+2
+```
+
+**Classmethods as Alternative Constructors**
+
+Classmethods are also commonly used as alternative constructors. This means they can provide additional ways to create objects.
+
+For instance, suppose we have pet employee data as a hyphen-separated string. We can use a class method to parse this string and create a new `PetEmployee` object. 
+
+```python title="Input"
+@classmethod
+def from_string(cls, emp_str):
+    name, age, species, level = emp_str.split('-')
+    return cls(name, age, species, level)
+```
+
+And we can easily create a new `PetEmployee` using this new class method:
+
+```python title="Input"
+barkalot_str = 'Barkalot-3-Dog-3'
+furrytail_str = 'Furry
+
+barkalot = PetEmployee.from_string(barkalot_str)
+furrytail = PetEmployee.from_string(furrytail_str)
+
+print(barkalot.fullname())
+```
+```python title="Output"
+Barkalot Dog
+```
+
+With one line of code, we've turned a string into a full-fledged `PetEmployee` object! Who's a good boy? `classmethod`, you're a good boy!
+
+Now, we've tackled class methods like pros. Let's tease apart static methods, shall we?
+
+### 7.3.2. Staticmethods
+
+Static methods don't access or modify any instance or class data. They're more like handy utility functions we bundle with the class. They're defined using the `@staticmethod` decorator.
+
+```python title="Input"
+class PetEmployee:
+    # Class variable
+    promotion_rate = 1
+
+    def __init__(self, name, age, species, level):
+        self.name = name
+        self.age = age
+        self.species = species
+        self.email = name + '.' + species + '@gmail.com'
+        self.level = level
+
+    def fullname(self):
+        return '{} {}'.format(self.name, self.species)
+
+    def apply_promotion(self):
+        # We need to use the class name to access the class variable
+        # This can be either self or PetEmployee
+        self.level = self.level + self.promotion_rate
+
+    @classmethod
+    def set_promotion_rate(cls, rate):
+        cls.promotion_rate = rate
+
+    @classmethod
+    def from_string(cls, emp_str):
+        name, age, species, level = emp_str.split('-')
+        return cls(name, age, species, level)
+
+    @staticmethod
+    def is_walking_pet_today(day):
+        if day.weekday() == 6:
+            return 'Yaay! It\'s time to walk the pets!'
+        return 'Sorry, you have to get back to work!'
+```
+
+Let's update our `PetEmployee` class with a static method that checks if `is_walking_pet_today`:
+
+```python title="Input"
+@staticmethod
+def is_walking_pet_today(day):
+    if day.weekday() == 6:
+        return 'Yaay! It\'s time to walk the pets!'
+    return 'Sorry, you have to get back to work!'
+```
+
+```python title="Input"
+barkalot = PetEmployee('Barkalot', 3, 'Dog', 3)
+furrytail = PetEmployee('Furrytail', 2, 'Cat', 5)
+```
+
+This method doesn't rely on any specific instance or class variable, making it a perfect candidate for a static method. It takes in a date and checks if it's a Sunday (weekday `6`). If so, it returns a cheerful message encouraging pet walks. Otherwise, it sadly informs you to get back to work. No fun!
+
+We can call this static method without any instance, just by using the class name:
+```python title="Input"
+import datetime
+today_date = datetime.date.today()
+print(PetEmployee.is_walking_pet_today(today_date))
+```
+```python title="Output"
+Yaay! It's time to walk the pets!
+```
+
+This block of code imports the `datetime` module, gets today's date, and then checks if it's a pet walking day according to our `PetEmployee` guidelines. 
+
+One minor correction I'd like to point out is that the output wouldn't be `False`, but rather one of the two strings our method returns: `'Yaay! It's time to walk the pets!'` or `'Sorry, you have to get back to work!'`, depending on the day of the week.
+
+
+
 ## 7.4. Inheritance
 
 ## 7.5. Special Methods
