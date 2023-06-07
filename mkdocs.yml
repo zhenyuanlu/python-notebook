@@ -75,6 +75,9 @@ plugins:
   - search:
         separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
   - social
+  - git-revision-date-localized:
+        type: custom
+        custom_format: "%m/%d/%Y"
   # - with-pdf:
   #       author: Zhenyuan Lu
   #       output_path: E:/mdbook_mkDoc/pyNote/document.pdf
