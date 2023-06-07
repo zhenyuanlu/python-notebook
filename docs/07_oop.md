@@ -1073,8 +1073,482 @@ The `daily_duty()` method has different implementations in the `PetEmployee`, `P
     The difference between `NotImplementedError` and other types of exceptions is really just about semantics and when they're used. We raise a `NotImplementedError` when we're creating a method that is supposed to be overridden by a subclass.
 
 
-## 7.6. Special Methods
+## 7.6. Magic Methods
 
-## 7.7. Decorators
+### 7.6.1. `__repr__` and `__str__`
 
-## 7.8. Getters, Setters, and Deleters
+We are about to plunge into the wacky world of Magic (or Dunder) Methods in Python. These methods are special functions with double underscores at the start and end of their names (e.g., `__init__`, `__repr__`, `__str__`), hence the nickname "Dunder" (from Double UNDERscore).
+
+Now, let's dissect our code here, which depicts a class `PetEmployee` we created in the previous sections:
+
+```python title="Input"
+class PetEmployee:
+    promotion_rate = 1
+
+    def __init__(self, name, age, species, level):
+        self.name = name
+        self.age = age
+        self.species = species
+        self.email = name + '.' + species + '@gmail.com'
+        self.level = level
+
+    def fullname(self):
+        return '{} {}'.format(self.name, self.species)
+
+    def apply_promotion(self):
+        self.level = self.level + self.promotion_rate
+
+    def __repr__(self):
+        return "PetEmployee('{}', {}, '{}', {})".format(self.name, self.age, self.species, self.level)
+
+    def __str__(self):
+        return '{}, {}'.format(self.fullname(), self.species)
+```
+
+In this class, we've implemented two magic methods, `__repr__` and `__str__`. They are used to represent our objects in different ways.
+
+The `__repr__` method returns a string that represents the exact state of the object. This is super useful for debugging and logging, as it provides a complete representation of the object, which we could use to recreate it. 
+
+The `__str__` method, on the other hand, is more user-friendly. It returns a string that represents the object in a way that is easy to read. This is what is displayed to the end user.
+
+Let's say we create two `PetEmployee` instances:
+
+```python
+barkalot = PetEmployee('Barkalot', 3, 'Dog', 3)
+furrytail = PetEmployee('Furrytail', 2, 'Cat', 5)
+```
+
+Before defining `__repr__` and `__str__`, printing `barkalot` would give something like `<__main__.PetEmployee object at 0x0000020E0F6F6F98>`. Not so informative, right? It's just telling us that `barkalot` is an object of `PetEmployee` class at a specific memory address.
+
+However, after defining these methods:
+
+```python title="Input"
+print(repr(barkalot))
+print(str(barkalot))
+```
+
+The output now becomes much more informative:
+
+```python title="Output"
+"PetEmployee('Barkalot', 3, 'Dog', 3)"
+"Barkalot Dog"
+```
+
+The first one is the `__repr__` output, which provides a complete representation of the `barkalot` object. The second one is the `__str__` output, which is more human-readable and pleasant to the eye. Now we're talking!
+
+Remember, folks, the magic of Dunder methods lies in their ability to let us customize Python class behavior in powerful ways. These methods open the door to a whole new world of possibilities! So go ahead and try using them in your own classes. You'll be amazed at what you can achieve! 
+
+### 7.6.2. `__add__` and `__len__`
+
+Let's go over the code snippet provided:
+
+```python title="Input"
+class PetEmployee:
+    promotion_rate = 1
+
+    def __init__(self, name, age, species, level):
+        self.name = name
+        self.age = age
+        self.species = species
+        self.email = name + '.' + species + '@gmail.com'
+        self.level = level
+
+    def fullname(self):
+        return '{} {}'.format(self.name, self.species)
+
+    def apply_promotion(self):
+        self.level = self.level + self.promotion_rate
+
+    def __repr__(self):
+        return "PetEmployee('{}', {}, '{}', {})".format(self.name, self.age, self.species, self.level)
+
+    def __str__(self):
+        return '{}, {}'.format(self.fullname(), self.species)
+
+    def __add__(self, other):
+        return self.level + other.level
+
+    def __len__(self):
+        return len(self.species)
+```
+
+```python title="Input"
+barkalot = PetEmployee('Barkalot', 3, 'Dog', 3)
+furrytail = PetEmployee('Furrytail', 2, 'Cat', 5)
+
+print(barkalot + furrytail)
+print(len(barkalot))
+```
+```python title="Output"
+8
+3
+```
+
+Now, let's untangle this. We've got two new magic methods on our hands: `__add__` and `__len__`.
+
+The `__add__` method allows us to define the behavior for the addition operator `+`. Here, we've chosen to add the levels of two `PetEmployee` instances together. It's like saying, "Hey, Python! When I add two pet employees together, what I really want is to add their levels."
+
+So, if we were to add `barkalot` and `furrytail`:
+
+```python
+print(barkalot + furrytail)
+# Or print(barkalot.__add__(furrytail))
+```
+
+We'd get `8`, because `barkalot`'s level is `3` and `furrytail`'s level is `5`. Quick math, folks!
+
+Similarly, the `__len__` method allows us to define behavior for the `len()` function applied to an instance of our class. Here, it's been defined to return the length of the species name.
+
+So, printing `len(barkalot)`:
+
+```python
+print(len(barkalot))
+# Or print(barkalot.__len__())
+```
+
+Would yield `3`, because the species name 'Dog' has three characters.
+
+
+## 7.7. Getters, Setters, and Deleters
+
+We're about to delve into the land of Getters, Setters, and Deleters in Python. Picture this, your pet has attributes, like its name, species, and level. These attributes are like the pet's toys. Your pet can fetch these toys, place them somewhere else, or even destroy them (hopefully, they don't do this often). In the coding world, these actions translate to getting, setting, and deleting attributes!
+
+Let's take a peek at the magic Python has tucked up its sleeve:
+
+=== "Getters"
+
+    Getters are like a fetching command for your pet. They fetch the value of a private attribute. Python, being the friendly language that it is, makes getters easy to use with the `@property` decorator. This allows us to access a method as if it were a simple attribute. Here's how it looks:
+
+    ```python
+    class Pet:
+        def __init__(self, name=None):
+            self._name = name
+
+        @property
+        def name(self):
+            return self._name
+    ```
+
+    In this example, `name` is a getter for the private attribute `_name`.
+
+=== "Setters"
+
+    Setters are like telling your pet to place its toy somewhere else. They allow us to set the value of private attributes. We use the `@<attribute>.setter` decorator to create a setter in Python:
+
+    ```python
+    class Pet:
+        def __init__(self, name=None):
+            self._name = name
+
+        @property
+        def name(self):
+            return self._name
+
+        @name.setter
+        def name(self, name):
+            self._name = name
+    ```
+
+    Here, `@name.setter` allows us to set the value of `_name`.
+
+=== "Deleters"
+
+    Deleters are like your pet destroying its toy. They allow us to delete attributes. We use the `@<attribute>.deleter` decorator to create a deleter in Python:
+
+    ```python
+    class Pet:
+        def __init__(self, name=None):
+            self._name = name
+
+        @property
+        def name(self):
+            return self._name
+
+        @name.setter
+        def name(self, name):
+            self._name = name
+
+        @name.deleter
+        def name(self):
+            del self._name
+    ```
+
+    The `@name.deleter` allows us to delete `_name` from our instance.
+
+____________________________________________________________
+
+With these magic methods, we can have full control over our class attributes, just like training your pets to handle their toys responsibly. Don't forget to treat your pets, and your code, with care!
+
+Next up, we'll see how these getters, setters, and deleters play together in a single class. Keep your coding boots on; it's going to be a thrilling ride!
+
+### 7.7.1. Motivation
+It's time to introduce getters, setters, and deleters - Python's very own magic carpet ride for navigating the world of object attributes. 
+
+First, let's revisit our initial code:
+
+```python
+class PetEmployee:
+
+    def __init__(self, name, species, level):
+        self.name = name
+        self.species = species
+        self.email = name + '.' + species + '@gmail.com'
+
+    def fullname(self):
+        return '{} {}'.format(self.name, self.species)
+
+
+barkalot = PetEmployee('Barkalot', 'Dog', 3)
+
+barkalot.name = 'Furrytail'
+print(barkalot.name)
+print(barkalot.fullname())
+print(barkalot.email)
+```
+
+Now, upon looking at the output, we can see a big woof-woof. We changed `barkalot`'s name to 'Furrytail', and the full name changes as expected. But the email stays the same! It's like calling a cat a dog and expecting it to bark. Now, we could manually update the email every time we change the name, but who wants to do all that extra work? Certainly not us!
+
+### 7.7.2. Getter
+
+Now we have two ways to fix the above issue:
+
+=== "Define a new instance method"
+    ```python title="New instance method"
+    class PetEmployee:
+
+        def __init__(self, name, species, level):
+            self.name = name
+            self.species = species
+
+        def email(self):
+            return "{}.{}@gmail.com".format(self.name, self.species)
+
+        def fullname(self):
+            return '{} {}'.format(self.name, self.species)
+    ```
+
+    ```python title="Input"
+    barkalot = PetEmployee('Barkalot', 'Dog', 3)
+    barkalot.name = 'Furrytail'
+
+    print(barkalot.name)
+    print(barkalot.fullname())
+    print(barkalot.email()) # We have to change all instances of email to email()
+    ```
+    ```python title="Output"
+    Furrytail
+    Furrytail Dog
+    Furrytail.Dog@gmail.com
+    ```
+    The issue we faced was that every time we changed the name of our `PetEmployee`, we had to manually update the `email`. So, we turned our email attribute into a method that dynamically generates the email based on the current `name` and `species`. Problem solved, right? Well, not exactly. **Our solution created a new problem: we have to change every instance of `email` to `email()`.** Let's check our the other solution.
+
+=== "Use a getter @property"
+    ```python title="Getter @property"
+    class PetEmployee:
+
+        def __init__(self, name, species, level):
+            self.name = name
+            self.species = species
+
+        @property
+        def email(self):
+            return "{}.{}@gmail.com".format(self.name, self.species)
+
+        def fullname(self):
+            return '{} {}'.format(self.name, self.species)
+    ```
+
+    ```python title="Input"
+    barkalot = PetEmployee('Barkalot', 'Dog', 3)
+    barkalot.name = 'Furrytail'
+
+    print(barkalot.name)
+    print(barkalot.fullname())
+    print(barkalot.email) # You don't have to change anything!
+    ```
+    ```python title="Output"
+    Furrytail
+    Furrytail Dog
+    Furrytail.Dog@gmail.com
+    ```
+    In this code, we introduced the `@property` decorator before our `email` method. Now we can access it as if it were a simple attribute, no need to write those pesky parentheses. It's just like a self-walking pet; no extra effort required!
+
+    We've not only kept the functionality of our first solution (dynamically updating the email), but also made it much more user-friendly. This is what we call a win-win situation in the coding world!
+
+
+### 7.7.3. Setter
+
+We're about to dive into the realm of setters. Setters are kind of like giving your pet a new name. You're setting a new value to an attribute. 
+
+In Python, we can disguise methods as attributes using the `@property` decorator. But when we want to set a new value to this "attribute", we need a `setter`. A `setter` allows us to define custom behavior for setting values. You might think of it as a strict pet owner who insists on a specific way to feed their pet. 
+
+Here's the code for our `PetEmployee` class with a `setter`:
+
+```python title="Setter"
+class PetEmployee:
+    def __init__(self, name, species, level):
+        self.name = name
+        self.species = species
+
+    @property
+    def email(self):
+        return "{}.{}@gmail.com".format(self.name, self.species)
+
+    @property
+    def fullname(self):
+        return '{} {}'.format(self.name, self.species)
+
+    @fullname.setter
+    def fullname(self, name):
+        first, last = name.split(' ')
+        self.name = first
+        self.species = last
+```
+
+Let's dissect this piece of beauty:
+
+1. We start by initializing our `PetEmployee` with a `name`, `species`, and `level`.
+2. We then create a `@property` for `email`, which takes the `name` and `species` and creates an email-like string. With this, when we call `barkalot.email`, Python calls the `email` method behind the scenes.
+3. We do the same for `fullname`, which gives us a concatenated string of `name` and `species`.
+4. Then comes the star of our show, the `@fullname.setter` decorator. This turns our `fullname` method into a setter, allowing us to assign a new value to `fullname`. It splits the assigned value into two parts - `first` and `last` - and sets `name` and `species` respectively.
+
+Finally, we test our code:
+
+```python title="Input"
+barkalot = PetEmployee('Barkalot', 'Dog', 3)
+barkalot.fullname = 'Furrytail Cat'
+
+print(barkalot.name)  
+print(barkalot.fullname)  
+print(barkalot.email)  
+```
+```python title="Output"
+Furrytail
+Furrytail Cat
+Furrytail.Cat@gmail.com
+```
+
+Our pet Barkalot has now been successfully renamed to Furrytail, a cat, and his email has changed too. 
+
+
+### 7.7.4. Deleter
+
+The following code is the class `PetEmployee` with a deleter:
+
+```python title="Deleter"
+class PetEmployee:
+    def __init__(self, name, species, level):
+        self.name = name
+        self.species = species
+
+    @property
+    def email(self):
+        return "{}.{}@gmail.com".format(self.name, self.species)
+
+    @property
+    def fullname(self):
+        return '{} {}'.format(self.name, self.species)
+
+    @fullname.setter
+    def fullname(self, name):
+        first, last = name.split(' ')
+        self.name = first
+        self.species = last
+
+    @fullname.deleter
+    def fullname(self):
+        print('Delete Pet Name!')
+        self.name = None
+        self.species = None
+```
+
+So, what's going on in here?
+
+1. As before, we initialize our `PetEmployee` with a `name`, `species`, and `level`.
+2. Then, we define the `@property` for `email` and `fullname` which return a string representation of email and the full name of the pet respectively.
+3. We also have our `@fullname.setter` from earlier which allows us to set a new `name` and `species` for our pet.
+4. But here comes the new kid on the block, the `@fullname.deleter`. This piece of magic deletes the `name` and `species` of our pet, effectively sending them into oblivion, and prints a message saying, "Delete Pet Name!".
+
+Let's test it:
+
+```python title="Input"
+barkalot = PetEmployee('Barkalot', 'Dog', 3)
+del barkalot.fullname
+
+print(barkalot.name) 
+print(barkalot.fullname) 
+print(barkalot.email)  
+```
+```python title="Output"
+Delete Pet Name!
+None
+None None
+None.None@gmail.com
+```
+
+
+With a wave of our wand (well, the `del` command), we've gone ahead and removed our pet's name. Now, that's a power you'd want to handle carefully!
+
+And just like that, we've completed our trilogy of Python's getters, setters, and deleters! It's like we've just stepped out of a rollercoaster ride of Python object-oriented programming. But worry not, there are plenty more exciting rides in this amusement park. 
+
+In our next adventure, how about we look at Python's built-in `property` function and how it can be used instead of the `@property` decorator? Or perhaps, we could delve into how Python's `getattr`, `setattr`, and `delattr` functions work. They provide another way to get, set, or delete attributes of an object. 
+
+### 7.7.5. Built-in property function
+
+You've seen the `@property` decorator in action, now let's see how its sibling `property()` works its magic. Ready? Let's get coding!
+
+In Python, `property()` is a built-in function that creates and returns a property object. A property object has three methods, getter(), setter(), and deleter() that we can use instead of @property and its associated decorators. 
+
+Let's put this into context with our beloved `PetEmployee` class. Instead of using `@property`, `@fullname.setter`, and `@fullname.deleter` decorators, we'll use the `property()` function:
+
+```python title="Built-in property function"
+class PetEmployee:
+
+    def __init__(self, name, species, level):
+        self._name = name
+        self._species = species
+
+    def get_fullname(self):
+        return '{} {}'.format(self._name, self._species)
+
+    def set_fullname(self, name):
+        first, last = name.split(' ')
+        self._name = first
+        self._species = last
+
+    def del_fullname(self):
+        print('Delete Pet Name!')
+        self._name = None
+        self._species = None
+
+    fullname = property(get_fullname, set_fullname, del_fullname, "I'm the 'fullname' property.")
+```
+
+What just happened? Let's dissect this piece by piece:
+
+1. We're defining our `get_fullname`, `set_fullname`, and `del_fullname` methods as usual. But notice that we're now working with `_name` and `_species`. These are called 'private' attributes, and it's a convention in Python to indicate that these attributes should not be accessed directly. They're meant to be manipulated through methods instead.
+   
+2. Finally, the line `fullname = property(get_fullname, set_fullname, del_fullname, "I'm the 'fullname' property.")` creates the `fullname` property. The `property()` function takes four arguments: fget (getter function), fset (setter function), fdel (deleter function), and doc (docstring). We've set all of these for our `fullname` property.
+
+Now let's test our new and shiny `PetEmployee`:
+
+```python title="Input"
+barkalot = PetEmployee('Barkalot', 'Dog', 3)
+
+print(barkalot.fullname)  # Output: Barkalot Dog
+
+barkalot.fullname = 'Furrytail Cat'
+print(barkalot.fullname)  # Output: Furrytail Cat
+
+del barkalot.fullname  # Output: Delete Pet Name!
+```
+```python title="Output"
+Barkalot Dog
+Furrytail Cat
+Delete Pet Name!
+```
+
+
+With `property()`, we've gained another tool to effectively encapsulate data in our Python classes.
+
+In our next thrilling episode, we'll be exploring Python's `getattr()`, `setattr()`, and `delattr()` functions. These handy functions allow us to interact with an object's attributes using their string names! 
