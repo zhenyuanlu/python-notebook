@@ -434,7 +434,7 @@ This example showcases how a class variable can be used as a handy counter for a
 
 Let's go one step further and imagine a scenario where HR wants to know which species they've employed most. Here's a little exercise for you: Can you modify our `PetEmployee` class to keep track of how many Dogs and Cats they've hired? (Hint: You might want to use a dictionary as a class variable!) 
 
-!!! note "Which Pet Employee Species Do We Have the Most Of?"
+!!! tip "Which Pet Employee Species Do We Have the Most Of?"
 
     === "Skeleton"
         ```python title="Input"
@@ -1056,7 +1056,7 @@ Lead team and setting goals
 
 The `daily_duty()` method has different implementations in the `PetEmployee`, `PetDataScientist`, and `PetLeader` classes. When we call `daily_duty()` on an object, the appropriate method is selected based on the object's class, not the type of the variable that is used to call the method. This is a classic example of polymorphism.
 
-!!! note "`raise` keyword"
+!!! tip "`raise` keyword"
     In Python, `raise` is a keyword that's used to generate exceptions. By invoking `raise`, you're signaling to Python that an error has occurred, and you're asking Python to stop the normal execution of your program and instead, to "throw" an error that needs to be caught and handled.
 
     Now, let's talk about `NotImplementedError`. This is a special type of exception that we raise when we have a method or function that is supposed to be implemented by a subclass. It's effectively a way of saying, "Hey, if you're seeing this error, it means you've forgotten to implement this method in your subclass."
@@ -1521,7 +1521,8 @@ class PetEmployee:
         self._name = None
         self._species = None
 
-    fullname = property(get_fullname, set_fullname, del_fullname, "I'm the 'fullname' property.")
+    fullname = property(get_fullname, set_fullname, del_fullname, 
+                        "I'm the 'fullname' property.")
 ```
 
 What just happened? Let's dissect this piece by piece:
@@ -1552,3 +1553,66 @@ Delete Pet Name!
 With `property()`, we've gained another tool to effectively encapsulate data in our Python classes.
 
 In our next thrilling episode, we'll be exploring Python's `getattr()`, `setattr()`, and `delattr()` functions. These handy functions allow us to interact with an object's attributes using their string names! 
+
+### 7.7.6. getattr(), setattr(), and delattr()
+
+The `getattr()` function is used to retrieve the value of a named attribute of an object. If not found, it returns the default value provided to the function.
+
+```python title="Input"
+class PetEmployee:
+    def __init__(self, name, species, level):
+        self.name = name
+        self.species = species
+        self.level = level
+
+barkalot = PetEmployee('Barkalot', 'Dog', 3)
+
+# Using getattr()
+print(getattr(barkalot, 'name'))  # Output: Barkalot
+```
+```python title="Output"
+Barkalot
+```
+
+
+The `setattr()` function is used to set the value of a named attribute of an object. If the attribute does not exist, this function creates a new attribute by the given name.
+
+```python title="Input"
+# Using setattr()
+setattr(barkalot, 'name', 'Furrytail')
+print(barkalot.name)  # Output: Furrytail
+```
+```python title="Output"
+Furrytail
+```
+
+
+The `delattr()` function is used to delete an attribute. If the attribute does not exist, this raises an `AttributeError`.
+
+```python title="Input"
+# Using delattr()
+delattr(barkalot, 'name')
+
+# Now trying to access the name attribute will raise an AttributeError
+print(barkalot.name)  # Output: AttributeError: 'PetEmployee' object has no attribute 'name'
+```
+```python title="Output"
+AttributeError: 'PetEmployee' object has no attribute 'name'
+```
+
+!!! tip "Error Handling"
+    Instead of raising an error, we can also use a `try`/`except` block to handle the error gracefully:
+    ```python title="Input"
+    try:
+        print(barkalot.name)
+    except AttributeError:
+        print("'PetEmployee' object has no attribute 'name'")
+    ```
+    ```python title="Output"
+    'PetEmployee' object has no attribute 'name'
+    ```
+    
+Seeing "object has no attribute 'name'" is Python's way of telling you that you've crossed a boundary and attempted to access something that just doesn't exist. It's like trying to walk through a door that isn't there. You're just going to run into a wall (or in our case, an error).
+
+These methods can be particularly useful in situations where you want to manipulate attributes dynamically, like in large projects or when working with user-defined inputs.
+
