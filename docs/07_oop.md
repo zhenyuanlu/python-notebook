@@ -1041,12 +1041,13 @@ def pet_daily_duty(pet):
 ```python title="Input"
 emp_barkalot = PetEmployee('Barkalot', 3, 'Dog', 3)
 ds_furrytail = PetDataScientist('Furrytail', 2, 'Cat', 5, 'Python')
-manager_barkalot = PetLeader('Whiskers', 5, 'Cat', 5)
+manager_whiskers = PetLeader('Whiskers', 5, 'Cat', 5)
 
 pets = [emp_barkalot, ds_furrytail, manager_whiskers]
 
 for pet in pets:
     pet_daily_duty(pet)
+```
 
 ```python title="Output"
 Work! Work! Work!
@@ -1286,7 +1287,7 @@ It's time to introduce getters, setters, and deleters - Python's very own magic 
 
 First, let's revisit our initial code:
 
-```python
+```python title="Input"
 class PetEmployee:
 
     def __init__(self, name, species, level):
@@ -1304,6 +1305,12 @@ barkalot.name = 'Furrytail'
 print(barkalot.name)
 print(barkalot.fullname())
 print(barkalot.email)
+```
+
+```python title="Output"
+Furrytail
+Furrytail Dog
+Barkalot.Dog@gmail.com
 ```
 
 Now, upon looking at the output, we can see a big woof-woof. We changed `barkalot`'s name to 'Furrytail', and the full name changes as expected. But the email stays the same! It's like calling a cat a dog and expecting it to bark. Now, we could manually update the email every time we change the name, but who wants to do all that extra work? Certainly not us!
@@ -1594,7 +1601,7 @@ The `delattr()` function is used to delete an attribute. If the attribute does n
 delattr(barkalot, 'name')
 
 # Now trying to access the name attribute will raise an AttributeError
-print(barkalot.name)  # Output: AttributeError: 'PetEmployee' object has no attribute 'name'
+print(barkalot.name) 
 ```
 ```python title="Output"
 AttributeError: 'PetEmployee' object has no attribute 'name'
@@ -1616,3 +1623,97 @@ Seeing "object has no attribute 'name'" is Python's way of telling you that you'
 
 These methods can be particularly useful in situations where you want to manipulate attributes dynamically, like in large projects or when working with user-defined inputs.
 
+
+!!! note "Exercise"
+    **Objective**: 
+    
+    Your task is to further enhance the Circle class in Python, making it aware of the unit system used (Metric or Imperial).
+
+    **Requirements**:
+
+    The Circle class currently supports a radius in centimeters (cm). However, we also want to accommodate input in inches for our friends who use the Imperial system. Enhance the Circle class to support initializing the radius in either cm or inches.
+
+    Extend the radius setter method to convert an input radius in inches to cm before storing it in the _radius attribute. The unit attribute should control whether conversion takes place. If unit is 'inch', convert the input to cm (remember that 1 inch equals 2.54 cm). If unit is 'cm', store the input as is.
+
+    Add a new property method, radius_inch, that returns the current radius converted to inches as a sanity check.
+
+    Ensure that the area and circumference properties continue to work as expected, returning the area and circumference of the circle in cm² and cm, respectively.
+
+    === "Code Skeleton"
+        ```python title="Input"
+        import math
+
+        class Circle:
+            def __init__(self, radius, unit='cm'):
+                self.unit = unit
+                self.radius = radius
+
+            @property
+            def area(self):
+                pass
+
+            @property
+            def circumference(self):
+                pass
+
+            @property
+            def radius(self):
+                pass
+
+            @radius.setter
+            def radius(self, radius):
+                pass
+
+            @property
+            def radius_inch(self):
+                pass
+
+        circle_1 = Circle(3)
+        print(circle_1.radius) 
+        print(circle_1.radius_inch)
+
+        circle_2 = Circle(4, 'inch') 
+        print(circle_2.radius)
+        print(circle_2.radius_inch)
+        ```
+
+    === "Solution"
+        ```python title="Input"
+        import math
+
+        class Circle:
+            def __init__(self, radius, unit='cm'):
+                self.unit = unit
+                self.radius = radius  # Radius in specified unit
+
+            @property
+            def area(self):
+                return math.pi * self._radius**2
+
+            @property
+            def circumference(self):
+                return 2 * math.pi * self._radius
+
+            @property
+            def radius(self):
+                return self._radius
+
+            @radius.setter
+            def radius(self, radius):
+                if self.unit == 'inch':
+                    self._radius = radius * 2.54  # Convert from inch to cm
+                else:
+                    self._radius = radius
+
+            @property
+            def radius_inch(self):
+                return self._radius / 2.54  # Convert from cm to inch
+
+        circle_1 = Circle(3)  # Radius in cm
+        print(circle_1.radius)  # Output: 3
+        print(circle_1.radius_inch)  # Output: 1.1811 (3 cm in inches)
+
+        circle_2 = Circle(4, 'inch')  # Radius in inches
+        print(circle_2.radius)  # Output: 10.16 (4 inches in cm)
+        print(circle_2.radius_inch)  # Output: 4
+        ```
