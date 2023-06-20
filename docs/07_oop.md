@@ -1717,3 +1717,11 @@ These methods can be particularly useful in situations where you want to manipul
         print(circle_2.radius)  # Output: 10.16 (4 inches in cm)
         print(circle_2.radius_inch)  # Output: 4
         ```
+
+In Python, we use the `@property` decorator to define `getter` methods. A `getter` method lets us access the value of a private attribute. Here, `radius` is a property of the class `Circle`, and the `radius` method gets the value of `_radius`.
+
+The `@radius.setter` decorator defines the setter method for the `radius` property. A setter method allows us to set or modify the value of a private attribute. In our case, the `radius` setter converts the given `radius` to centimeters if the provided unit is in inches.
+
+The `radius_inch` property allows us to convert and get the `radius` from centimeters to inches.
+
+In the code snippet above, we create two instances of the class `Circle`. For `circle_1`, we define the `radius` in centimeters, and for `circle_2`, we define the `radius` in inches. The code then demonstrates how these concepts can be applied to convert and print the `radius` in different units.

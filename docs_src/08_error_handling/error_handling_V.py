@@ -1,6 +1,6 @@
 
 try:
-    f = open('corrupt_.txt')
+    f = open('corrupt.txt')
     if f.name == 'corrupt.txt':
         raise Exception
 except FileNotFoundError as e:
@@ -12,5 +12,5 @@ else:
     f.close()
 finally:
     print('Executing Finally...')
-# Output: test!
-# Output: Executing Finally...
+# [Errno 2] No such file or directory: 'corrupt_.txt'
+# Executing Finally...

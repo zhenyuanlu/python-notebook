@@ -18,7 +18,7 @@ nav:
   - 05. Loops, Comprehensions: '05_loops_comprehensions.md'
   - 06. Iterable, Iterator, Generator: '06_iterable_iterator_generator.md'
   - 07. Object-Oriented Programming: '07_oop.md'
-  - (WIP) Error Handling and Exceptions: '08_errors.md'
+  - 08. Error Handling and Exceptions: '08_errors.md'
   - (WIP) Modules, Packages, and File I/O: ''
   - (WIP) Functional Programming and Standard Library: ''
   - (WIP) Testing and Regular Expressions: ''
