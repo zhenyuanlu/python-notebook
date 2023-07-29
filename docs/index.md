@@ -4,7 +4,7 @@ Author: [Zhenyuan Lu](https://zhenyuanlu.com/)
 
 Version: 0.9.0
 
-Created: 12/05/2022, *last modified on 06/20/2023*
+Created: 12/05/2022, *last modified on 07/29/2023*
 
 PDF version: [Python Notebook from Zero to Advanced](https://github.com/zhenyuanlu/python-notebook/blob/main/python_from_zero_to_advance_ZL.pdf)
 
