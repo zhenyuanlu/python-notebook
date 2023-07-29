@@ -10,6 +10,8 @@ Welcome to the [Python Notebook from Zero to Advanced](https://zhenyuanlu.com/py
 
 ## About This Book
 
+PDF version: [Python Notebook from Zero to Advanced](https://github.com/zhenyuanlu/python-notebook/blob/main/python_from_zero_to_advance_ZL.pdf)
+
 This book is designed for those with little or no Python programming experience, and it is filled with concise, easy-to-understand examples that will help you learn quickly and effectively.
 
 Throughout this comprehensive guide, we'll cover a wide range of topics, including data types, control structures, functions, and more. 
