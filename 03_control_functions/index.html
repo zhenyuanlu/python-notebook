@@ -1,0 +1,1363 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A simplistic place to learn Python">
+      
+      
+      
+        <link rel="canonical" href="https://zhenyuanlu.com/python-notebook/03_control_functions/">
+      
+      
+        <link rel="prev" href="../02_data_types/">
+      
+      
+        <link rel="next" href="../04_advanced_formatting/">
+      
+      <link rel="icon" href="../assets/z1.png">
+      <meta name="generator" content="mkdocs-1.5.1, mkdocs-material-9.1.21">
+    
+    
+      
+        <title>03. Control and Functions - Python Notebook from Zero to Advanced</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.eebd395e.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ecc896b0.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+
+  <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-6LCB2YRQBG"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-6LCB2YRQBG",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-6LCB2YRQBG",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="03. Control and Functions - Python Notebook from Zero to Advanced" >
+      
+        <meta  property="og:description"  content="A simplistic place to learn Python" >
+      
+        <meta  property="og:image"  content="https://zhenyuanlu.com/python-notebook/assets/images/social/03_control_functions.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://zhenyuanlu.com/python-notebook/03_control_functions/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="03. Control and Functions - Python Notebook from Zero to Advanced" >
+      
+        <meta  name="twitter:description"  content="A simplistic place to learn Python" >
+      
+        <meta  name="twitter:image"  content="https://zhenyuanlu.com/python-notebook/assets/images/social/03_control_functions.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#3-control-and-functions" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Python Notebook from Zero to Advanced" class="md-header__button md-logo" aria-label="Python Notebook from Zero to Advanced" data-md-component="logo">
+      
+  <img src="../assets/z1.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Python Notebook from Zero to Advanced
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              03. Control and Functions
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+            
+              <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_2" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+              </label>
+            
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
+            
+              <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+              </label>
+            
+          
+        </form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/zhenyuanlu/python-notebook" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zhenyuanlu/python-notebook
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Python Notebook from Zero to Advanced" class="md-nav__button md-logo" aria-label="Python Notebook from Zero to Advanced" data-md-component="logo">
+      
+  <img src="../assets/z1.png" alt="logo">
+
+    </a>
+    Python Notebook from Zero to Advanced
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/zhenyuanlu/python-notebook" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zhenyuanlu/python-notebook
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00_disclaimer/" class="md-nav__link">
+        Disclaimer
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_get_started/" class="md-nav__link">
+        01. Get Started
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_data_types/" class="md-nav__link">
+        02. Data Types
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          03. Control and Functions
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        03. Control and Functions
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#31-conditionals-and-booleans" class="md-nav__link">
+    3.1. Conditionals and Booleans
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1. Conditionals and Booleans">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#311-if-and-boolean-values" class="md-nav__link">
+    3.1.1. if and Boolean Values
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#312-if-else-and-elif" class="md-nav__link">
+    3.1.2. if, else  and elif
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#313-is-vs" class="md-nav__link">
+    3.1.3. is vs. ==
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#314-and-or-and-not" class="md-nav__link">
+    3.1.4. and, or and not
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#315-in-and-not-in" class="md-nav__link">
+    3.1.5. in and not in
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#316-false-values" class="md-nav__link">
+    3.1.6. False Values
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#32-functions" class="md-nav__link">
+    3.2. Functions
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2. Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#321-functions-basics" class="md-nav__link">
+    3.2.1. Functions Basics
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#322-positional-arguments" class="md-nav__link">
+    3.2.2. Positional Arguments
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#323-args-and-kwargs" class="md-nav__link">
+    3.2.3. *args and **kwargs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#323-variable-scope-legb-rule" class="md-nav__link">
+    3.2.3. Variable Scope - LEGB rule
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_advanced_formatting/" class="md-nav__link">
+        04. Advanced Formatting
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_loops_comprehensions/" class="md-nav__link">
+        05. Loops, Comprehensions
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_iterable_iterator_generator/" class="md-nav__link">
+        06. Iterable, Iterator, Generator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07_oop/" class="md-nav__link">
+        07. Object-Oriented Programming
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08_errors/" class="md-nav__link">
+        08. Error Handling and Exceptions
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#31-conditionals-and-booleans" class="md-nav__link">
+    3.1. Conditionals and Booleans
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1. Conditionals and Booleans">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#311-if-and-boolean-values" class="md-nav__link">
+    3.1.1. if and Boolean Values
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#312-if-else-and-elif" class="md-nav__link">
+    3.1.2. if, else  and elif
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#313-is-vs" class="md-nav__link">
+    3.1.3. is vs. ==
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#314-and-or-and-not" class="md-nav__link">
+    3.1.4. and, or and not
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#315-in-and-not-in" class="md-nav__link">
+    3.1.5. in and not in
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#316-false-values" class="md-nav__link">
+    3.1.6. False Values
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#32-functions" class="md-nav__link">
+    3.2. Functions
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2. Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#321-functions-basics" class="md-nav__link">
+    3.2.1. Functions Basics
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#322-positional-arguments" class="md-nav__link">
+    3.2.2. Positional Arguments
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#323-args-and-kwargs" class="md-nav__link">
+    3.2.3. *args and **kwargs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#323-variable-scope-legb-rule" class="md-nav__link">
+    3.2.3. Variable Scope - LEGB rule
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="3-control-and-functions">3. Control and Functions</h1>
+<h2 id="31-conditionals-and-booleans">3.1. Conditionals and Booleans</h2>
+<p><code>if</code> statements are used to control the flow of the program. It allows us to execute a block of code if a certain condition is met.
+<code>else</code> statements are used to execute a block of code if the condition is not met.
+<code>elif</code> is to add more conditions to the <code>if</code> statement, which stands for <code>else if</code>.</p>
+<h3 id="311-if-and-boolean-values">3.1.1. <code>if</code> and Boolean Values</h3>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">if</span> <span class="kc">True</span><span class="p">:</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;It&#39;s true!&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>It&#39;s true!
+</span></code></pre></div></p>
+<p>What if we change the condition to <code>False</code>?
+<div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">if</span> <span class="kc">False</span><span class="p">:</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;It&#39;s true!&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a># Nothing will be printed
+</span></code></pre></div>
+This is because that the condition is <code>False</code>, so the block of code is not executed.</p>
+<p>In real practice, we don't hardcode the condition to be <code>True</code> or <code>False</code>, we basically assess the condition to be <code>True</code> or <code>False</code></p>
+<p>For example, we can use comparison operators to compare two values:
+<div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">pet</span> <span class="o">=</span> <span class="s1">&#39;Tub&#39;</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">if</span> <span class="n">pet</span> <span class="o">==</span> <span class="s1">&#39;Tub&#39;</span><span class="p">:</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;It&#39;s true!&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>It&#39;s true!
+</span></code></pre></div></p>
+<div class="admonition info">
+<p class="admonition-title">Comparison Operators</p>
+<p>Recall the operator we used in the previous chapter. This time, we use them in the condition, plus the identity operator <code>is</code>.</p>
+<ul>
+<li>Equal: <code>==</code></li>
+<li>Not Equal: <code>!=</code></li>
+<li>Greater Than: <code>&gt;</code></li>
+<li>Less Than: <code>&lt;</code></li>
+<li>Greater or Equal: <code>&gt;=</code></li>
+<li>Less or Equal: <code>&lt;=</code></li>
+<li>Identity: <code>is</code></li>
+</ul>
+</div>
+<h3 id="312-if-else-and-elif">3.1.2. <code>if</code>, <code>else</code>  and <code>elif</code></h3>
+<p>Let's continue on the previous example. We campare <code>pet</code> and <code>Tub</code> to see if the pet is <code>Tub</code></p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">pet</span> <span class="o">=</span> <span class="s1">&#39;Tub&#39;</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="k">if</span> <span class="n">pet</span> <span class="o">==</span> <span class="s1">&#39;Tub&#39;</span><span class="p">:</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pet is Tub!&quot;</span><span class="p">)</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="k">else</span><span class="p">:</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pet is not Tub!&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>Pet is Tub!
+</span></code></pre></div></p>
+<p>If we change the value of <code>pet</code> to <code>Barkalot</code>, the condition is not met, so the <code>else</code> statement is executed.
+<div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">pet</span> <span class="o">=</span> <span class="s1">&#39;Barkalot&#39;</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="k">if</span> <span class="n">pet</span> <span class="o">==</span> <span class="s1">&#39;Tub&#39;</span><span class="p">:</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pet is Tub!&quot;</span><span class="p">)</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="k">else</span><span class="p">:</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pet is not Tub!&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>Pet is not Tub!
+</span></code></pre></div></p>
+<p>We can also use <code>elif</code> to add more conditions to the <code>if</code> statement. Here we have two conditions, <code>pet == 'Tub'</code> and <code>pet == 'Barkalot'</code>. If the first condition is not met, we move on to the next condition. If the second condition is not met, we move on to the <code>else</code> statement:</p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">pet</span> <span class="o">=</span> <span class="s1">&#39;Barkalot&#39;</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="k">if</span> <span class="n">pet</span> <span class="o">==</span> <span class="s1">&#39;Tub&#39;</span><span class="p">:</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pet is Tub!&quot;</span><span class="p">)</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="k">elif</span> <span class="n">pet</span> <span class="o">==</span> <span class="s1">&#39;Barkalot&#39;</span><span class="p">:</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pet is Barkalot!&quot;</span><span class="p">)</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="k">else</span><span class="p">:</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pet is not Tub!&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>Pet is Barkalot!
+</span></code></pre></div></p>
+<h3 id="313-is-vs">3.1.3. <code>is</code> vs. <code>==</code></h3>
+<p>Now, we investigate the difference between <code>is</code> and <code>==</code>:</p>
+<ul>
+<li>
+<p><code>is</code> checks if two variables point to the <strong>same object in memory</strong>.</p>
+</li>
+<li>
+<p><code>==</code> checks if <strong>the values</strong> of two variables are equal.</p>
+</li>
+</ul>
+<p>Here, we have two list with the same values. </p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">pet_1</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tub&#39;</span><span class="p">,</span> <span class="s1">&#39;Barkalot&#39;</span><span class="p">,</span> <span class="s1">&#39;Furrytail&#39;</span><span class="p">]</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="n">pet_2</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tub&#39;</span><span class="p">,</span> <span class="s1">&#39;Barkalot&#39;</span><span class="p">,</span> <span class="s1">&#39;Furrytail&#39;</span><span class="p">]</span>
+</span></code></pre></div>
+We use <code>==</code> to compare them, and the result is <code>True</code>. 
+<div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">pet_1</span> <span class="o">==</span> <span class="n">pet_2</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>True
+</span></code></pre></div>
+This is because that the values of the two lists are the same.</p>
+<p>If we use <code>is</code> to compare them, the result is <code>False</code>.
+<div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">pet_1</span> <span class="ow">is</span> <span class="n">pet_2</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>False
+</span></code></pre></div>
+The reason is that <code>pet_1</code> and <code>pet_2</code> point to different objects in memory.</p>
+<p>We can check out the memory address of the two objects using <code>id()</code>:
+<div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">pet_1</span><span class="p">))</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">pet_2</span><span class="p">))</span>
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>2398480322752
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>2398482691520
+</span></code></pre></div>
+You can see that the memory addresses are different.</p>
+<p>But if we assign <code>pet_2</code> to <code>pet_1</code>, they will point to the same object in memory, and of course have the same values.
+<div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="n">pet_2</span> <span class="o">=</span> <span class="n">pet_1</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">pet_1</span> <span class="o">==</span> <span class="n">pet_2</span><span class="p">)</span>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">pet_1</span> <span class="ow">is</span> <span class="n">pet_2</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>True
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>True
+</span></code></pre></div>
+Now, the memory addresses are the same:</p>
+<h3 id="314-and-or-and-not">3.1.4. <code>and</code>, <code>or</code> and <code>not</code></h3>
+<p>We can use <code>and</code> and <code>or</code> to combine conditions. </p>
+<ul>
+<li>
+<p><code>and</code> means both conditions must be met</p>
+</li>
+<li>
+<p><code>or</code> means at least one condition must be met</p>
+</li>
+</ul>
+<p>For example, we want to check if <strong>both</strong> the account name is <code>Tub</code> and the passcode is correct by using <code>and</code>:
+<div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="n">account_name</span> <span class="o">=</span> <span class="s1">&#39;Tub&#39;</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="n">account_passcode</span> <span class="o">=</span> <span class="kc">True</span>
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="k">if</span> <span class="n">account_name</span> <span class="o">==</span> <span class="s1">&#39;Tub&#39;</span> <span class="ow">and</span> <span class="n">account_passcode</span><span class="p">:</span>
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Login successful!&quot;</span><span class="p">)</span>
+</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="k">else</span><span class="p">:</span>
+</span><span id="__span-21-7"><a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Login failed!&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>Login successful!
+</span></code></pre></div></p>
+<p>If we want to know if at least one of the account name or account passcode is correct, we use <code>or</code>:
+<div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="n">account_name</span> <span class="o">=</span> <span class="s1">&#39;Tub&#39;</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="n">account_passcode</span> <span class="o">=</span> <span class="kc">True</span>
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="k">if</span> <span class="n">account_name</span> <span class="o">==</span> <span class="s1">&#39;Tub&#39;</span> <span class="ow">or</span> <span class="n">account_passcode</span><span class="p">:</span>
+</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Name or passcode is correct!&quot;</span><span class="p">)</span>
+</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="k">else</span><span class="p">:</span>
+</span><span id="__span-23-7"><a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Name and passcode are incorrect!&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>Name or passcode is correct!
+</span></code></pre></div></p>
+<p>If we want to negate a condition, we use <code>not</code>. </p>
+<ul>
+<li><code>not</code> means the condition must not be met
+<div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="n">account_passcode</span> <span class="o">=</span> <span class="kc">True</span>
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="k">if</span> <span class="ow">not</span> <span class="n">account_passcode</span><span class="p">:</span>
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Please enter your passcode!&quot;</span><span class="p">)</span>
+</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="k">else</span><span class="p">:</span>
+</span><span id="__span-25-5"><a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Login successful!&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>Login successful!
+</span></code></pre></div>
+Here, we use <code>not</code> to negate the condition <code>account_passcode == True</code> to <code>account_passcode == False</code>. 
+Therefore, the condition must not be met, and the <code>else</code> statement is not executed. </li>
+</ul>
+<p>If we remove <code>not</code>, the condition must be met, which is <code>account_passcode == True</code>, and the <code>if</code> statement is executed. 
+<div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="n">account_passcode</span> <span class="o">=</span> <span class="kc">True</span>
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="k">if</span> <span class="n">account_passcode</span><span class="p">:</span>
+</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Please enter your passcode!&quot;</span><span class="p">)</span>
+</span><span id="__span-27-4"><a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="k">else</span><span class="p">:</span>
+</span><span id="__span-27-5"><a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Login successful!&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>Please enter your passcode!
+</span></code></pre></div></p>
+<h3 id="315-in-and-not-in">3.1.5. <code>in</code> and <code>not in</code></h3>
+<p>We can use <code>in</code> to check if a value is in a list. </p>
+<ul>
+<li>
+<p><code>in</code> means the value must be in the list</p>
+</li>
+<li>
+<p><code>not in</code> means the value must not be in the list</p>
+</li>
+</ul>
+<p>Here is the example of <code>in</code>:
+<div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="n">pets</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tub&#39;</span><span class="p">,</span> <span class="s1">&#39;Barkalot&#39;</span><span class="p">,</span> <span class="s1">&#39;Furrytail&#39;</span><span class="p">]</span>
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="k">if</span> <span class="s1">&#39;Tub&#39;</span> <span class="ow">in</span> <span class="n">pets</span><span class="p">:</span>
+</span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tub is in the list!&quot;</span><span class="p">)</span>
+</span><span id="__span-29-4"><a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="k">else</span><span class="p">:</span>
+</span><span id="__span-29-5"><a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tub is not in the list!&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>Tub is in the list!
+</span></code></pre></div></p>
+<p>If we use <code>not in</code>, the condition is negated, and the <code>else</code> statement is executed:
+<div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="n">pets</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tub&#39;</span><span class="p">,</span> <span class="s1">&#39;Barkalot&#39;</span><span class="p">,</span> <span class="s1">&#39;Furrytail&#39;</span><span class="p">]</span>
+</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="k">if</span> <span class="s1">&#39;Tub&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">pets</span><span class="p">:</span>
+</span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tub is not in the list!&quot;</span><span class="p">)</span>
+</span><span id="__span-31-4"><a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="k">else</span><span class="p">:</span>
+</span><span id="__span-31-5"><a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tub is in the list!&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>Tub is in the list!
+</span></code></pre></div></p>
+<h3 id="316-false-values">3.1.6. False Values</h3>
+<div class="admonition info">
+<p class="admonition-title">False Values</p>
+<p>In Python, the following values are considered as <code>False</code>:</p>
+<ul>
+<li><code>False</code></li>
+<li><code>None</code></li>
+<li><code>0</code> (any zero numeric types)</li>
+<li>Empty sequence. e.g., <code>''</code>, <code>()</code>, <code>[]</code>.</li>
+<li>Empty mapping. e.g., <code>{}</code>.</li>
+</ul>
+</div>
+<p><code>False</code> is considered as False:
+<div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="n">account_name</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a><span class="k">if</span> <span class="n">account_name</span><span class="p">:</span>
+</span><span id="__span-33-3"><a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Login successful!&quot;</span><span class="p">)</span>
+</span><span id="__span-33-4"><a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a><span class="k">else</span><span class="p">:</span>
+</span><span id="__span-33-5"><a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Please enter your account name!&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>Please enter your account name!
+</span></code></pre></div></p>
+<p><code>None</code> is considered as False:
+<div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="n">account_name</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span id="__span-35-2"><a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a><span class="k">if</span> <span class="n">account_name</span><span class="p">:</span>
+</span><span id="__span-35-3"><a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Login successful!&quot;</span><span class="p">)</span>
+</span><span id="__span-35-4"><a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a><span class="k">else</span><span class="p">:</span>
+</span><span id="__span-35-5"><a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Please enter your account name!&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>Please enter your account name!
+</span></code></pre></div></p>
+<p>Only number <code>0</code> is considered as False:
+<div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="n">account_name</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="__span-37-2"><a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a><span class="k">if</span> <span class="n">account_name</span><span class="p">:</span>
+</span><span id="__span-37-3"><a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Login successful!&quot;</span><span class="p">)</span>
+</span><span id="__span-37-4"><a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a><span class="k">else</span><span class="p">:</span>
+</span><span id="__span-37-5"><a id="__codelineno-37-5" name="__codelineno-37-5" href="#__codelineno-37-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Please enter your account name!&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>Please enter your account name!
+</span></code></pre></div></p>
+<p>Empty sequences, e.g. <code>''</code>, <code>()</code>, <code>[]</code>, are considered as False:
+<div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="n">account_name</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+</span><span id="__span-39-2"><a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a><span class="k">if</span> <span class="n">account_name</span><span class="p">:</span>
+</span><span id="__span-39-3"><a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Login successful!&quot;</span><span class="p">)</span>
+</span><span id="__span-39-4"><a id="__codelineno-39-4" name="__codelineno-39-4" href="#__codelineno-39-4"></a><span class="k">else</span><span class="p">:</span>
+</span><span id="__span-39-5"><a id="__codelineno-39-5" name="__codelineno-39-5" href="#__codelineno-39-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Please enter your account name!&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>Please enter your account name!
+</span></code></pre></div></p>
+<p>Empty dictionary is considered as False
+<div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-41-1"><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="n">account_name</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span id="__span-41-2"><a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a><span class="k">if</span> <span class="n">account_name</span><span class="p">:</span>
+</span><span id="__span-41-3"><a id="__codelineno-41-3" name="__codelineno-41-3" href="#__codelineno-41-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Login successful!&quot;</span><span class="p">)</span>
+</span><span id="__span-41-4"><a id="__codelineno-41-4" name="__codelineno-41-4" href="#__codelineno-41-4"></a><span class="k">else</span><span class="p">:</span>
+</span><span id="__span-41-5"><a id="__codelineno-41-5" name="__codelineno-41-5" href="#__codelineno-41-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Please enter your account name!&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>Please enter your account name!
+</span></code></pre></div></p>
+<h2 id="32-functions">3.2. Functions</h2>
+<p>In this section, we will walk you through various examples related to functions in Python, exploring different concepts such as defining and calling functions, arguments, default values, and more.</p>
+<h3 id="321-functions-basics">3.2.1. Functions Basics</h3>
+<p>First, let's define a simple function called hello_tub:
+<div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-43-1"><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="k">def</span> <span class="nf">hello_tub</span><span class="p">():</span>
+</span><span id="__span-43-2"><a id="__codelineno-43-2" name="__codelineno-43-2" href="#__codelineno-43-2"></a>    <span class="k">pass</span>
+</span><span id="__span-43-3"><a id="__codelineno-43-3" name="__codelineno-43-3" href="#__codelineno-43-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">hello_tub</span><span class="p">)</span>
+</span></code></pre></div></p>
+<p><div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-44-1"><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>&lt;function hello_world at 0x000001E5F1F9B790&gt;
+</span></code></pre></div>
+This function does nothing, as it contains a pass statement. When you print the function, you will get the memory address of the function object:</p>
+<div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">hello_tub</span><span class="p">())</span>
+</span></code></pre></div>
+<p><div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a>None
+</span></code></pre></div>
+Calling the function with <code>hello_tub()</code> returns None, as the function has no return statement.</p>
+<p>Now, let's modify the hello_tub function to print a greeting:
+<div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="k">def</span> <span class="nf">hello_tub</span><span class="p">():</span>
+</span><span id="__span-47-2"><a id="__codelineno-47-2" name="__codelineno-47-2" href="#__codelineno-47-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hello Tub&#39;</span><span class="p">)</span>
+</span><span id="__span-47-3"><a id="__codelineno-47-3" name="__codelineno-47-3" href="#__codelineno-47-3"></a><span class="n">hello_tub</span><span class="p">()</span>
+</span></code></pre></div></p>
+<div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-48-1"><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a>Hello Tub
+</span></code></pre></div>
+<p>Using functions is advantageous when you want to reuse code. For instance, if you want to change the greeting from <code>Tub</code> to <code>Barkalot</code>, you only need to modify the function's implementation, and all the calls to the function will use the updated greeting.</p>
+<p>For example, if we want to call <code>Hello Tub</code> twice, we can do the following:
+<div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-49-1"><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hello Tub&#39;</span><span class="p">)</span>
+</span><span id="__span-49-2"><a id="__codelineno-49-2" name="__codelineno-49-2" href="#__codelineno-49-2"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hello Tub&#39;</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-50-1"><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a>Hello Tub
+</span><span id="__span-50-2"><a id="__codelineno-50-2" name="__codelineno-50-2" href="#__codelineno-50-2"></a>Hello Tub
+</span></code></pre></div>
+But this is not convenient, as we have to repeat the same code twice. Instead, we can define a function and call it twice, and even if we want to change both <code>Tub</code>:</p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-51-1"><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a><span class="k">def</span> <span class="nf">hello_tub</span><span class="p">():</span>
+</span><span id="__span-51-2"><a id="__codelineno-51-2" name="__codelineno-51-2" href="#__codelineno-51-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hello Barkalot&#39;</span><span class="p">)</span>
+</span><span id="__span-51-3"><a id="__codelineno-51-3" name="__codelineno-51-3" href="#__codelineno-51-3"></a><span class="n">hello_tub</span><span class="p">()</span>
+</span><span id="__span-51-4"><a id="__codelineno-51-4" name="__codelineno-51-4" href="#__codelineno-51-4"></a><span class="n">hello_tub</span><span class="p">()</span>
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-52-1"><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a>Hello Barkalot
+</span><span id="__span-52-2"><a id="__codelineno-52-2" name="__codelineno-52-2" href="#__codelineno-52-2"></a>Hello Barkalot
+</span></code></pre></div></p>
+<p>Functions can also return values, take parameters, and have default values for parameters. Here are some examples:</p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-53-1"><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a><span class="k">def</span> <span class="nf">hello_tub</span><span class="p">():</span>
+</span><span id="__span-53-2"><a id="__codelineno-53-2" name="__codelineno-53-2" href="#__codelineno-53-2"></a>    <span class="k">return</span> <span class="s1">&#39;Hello Tub&#39;</span>
+</span><span id="__span-53-3"><a id="__codelineno-53-3" name="__codelineno-53-3" href="#__codelineno-53-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">hello_tub</span><span class="p">())</span>
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-54-1"><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a>Hello Tub
+</span></code></pre></div></p>
+<p>We can also call the function with a method, e.g. <code>lower()</code>, to convert the returned value to lowercase:</p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-55-1"><a id="__codelineno-55-1" name="__codelineno-55-1" href="#__codelineno-55-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">hello_tub</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-56-1"><a id="__codelineno-56-1" name="__codelineno-56-1" href="#__codelineno-56-1"></a>hello tub
+</span></code></pre></div></p>
+<p>Functions can also return values, take parameters, and have default values for parameters. Here are some examples:</p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-57-1"><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a><span class="k">def</span> <span class="nf">hello_tub</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+</span><span id="__span-57-2"><a id="__codelineno-57-2" name="__codelineno-57-2" href="#__codelineno-57-2"></a>    <span class="k">return</span> <span class="s1">&#39;Hello &#39;</span> <span class="o">+</span> <span class="n">name</span>
+</span><span id="__span-57-3"><a id="__codelineno-57-3" name="__codelineno-57-3" href="#__codelineno-57-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">hello_tub</span><span class="p">(</span><span class="s1">&#39;Tub&#39;</span><span class="p">))</span>
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-58-1"><a id="__codelineno-58-1" name="__codelineno-58-1" href="#__codelineno-58-1"></a>Hello Tub
+</span></code></pre></div></p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-59-1"><a id="__codelineno-59-1" name="__codelineno-59-1" href="#__codelineno-59-1"></a><span class="k">def</span> <span class="nf">hello_tub</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+</span><span id="__span-59-2"><a id="__codelineno-59-2" name="__codelineno-59-2" href="#__codelineno-59-2"></a>    <span class="k">return</span> <span class="s1">&#39;Hello </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</span><span id="__span-59-3"><a id="__codelineno-59-3" name="__codelineno-59-3" href="#__codelineno-59-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">hello_tub</span><span class="p">(</span><span class="s1">&#39;Tub&#39;</span><span class="p">))</span>
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-60-1"><a id="__codelineno-60-1" name="__codelineno-60-1" href="#__codelineno-60-1"></a>Hello Tub
+</span></code></pre></div></p>
+<p>We set up a default value for the name parameter, so that if we don't pass a value for name, the function will use the default value:
+<div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-61-1"><a id="__codelineno-61-1" name="__codelineno-61-1" href="#__codelineno-61-1"></a><span class="k">def</span> <span class="nf">hello_tub</span><span class="p">(</span><span class="n">greeting</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Tub&#39;</span><span class="p">):</span>
+</span><span id="__span-61-2"><a id="__codelineno-61-2" name="__codelineno-61-2" href="#__codelineno-61-2"></a>    <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">, </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">greeting</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+</span><span id="__span-61-3"><a id="__codelineno-61-3" name="__codelineno-61-3" href="#__codelineno-61-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">hello_tub</span><span class="p">(</span><span class="s1">&#39;Hello&#39;</span><span class="p">))</span>
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-62-1"><a id="__codelineno-62-1" name="__codelineno-62-1" href="#__codelineno-62-1"></a>Hello, Tub
+</span></code></pre></div></p>
+<p>When we pass a value for name, the default value is ignored:
+<div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-63-1"><a id="__codelineno-63-1" name="__codelineno-63-1" href="#__codelineno-63-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">hello_tub</span><span class="p">(</span><span class="s1">&#39;Hello&#39;</span><span class="p">,</span> <span class="s1">&#39;Barkalot&#39;</span><span class="p">))</span>
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-64-1"><a id="__codelineno-64-1" name="__codelineno-64-1" href="#__codelineno-64-1"></a>Hello, Barkalot
+</span></code></pre></div></p>
+<h3 id="322-positional-arguments">3.2.2. Positional Arguments</h3>
+<p>In Python, non-default arguments (those without default values) must be defined before default arguments (those with default values). In the given code, the greeting parameter has a default value, while name does not. This causes a SyntaxError.</p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-65-1"><a id="__codelineno-65-1" name="__codelineno-65-1" href="#__codelineno-65-1"></a><span class="k">def</span> <span class="nf">hello_tub</span><span class="p">(</span><span class="n">greeting</span> <span class="o">=</span> <span class="s1">&#39;Hello&#39;</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+</span><span id="__span-65-2"><a id="__codelineno-65-2" name="__codelineno-65-2" href="#__codelineno-65-2"></a>    <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">, </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">greeting</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-66-1"><a id="__codelineno-66-1" name="__codelineno-66-1" href="#__codelineno-66-1"></a>SyntaxError: non-default argument follows default argument
+</span></code></pre></div></p>
+<p>To fix this issue, you should move the non-default argument before the default argument:</p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-67-1"><a id="__codelineno-67-1" name="__codelineno-67-1" href="#__codelineno-67-1"></a><span class="k">def</span> <span class="nf">hello_tub</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">greeting</span><span class="o">=</span><span class="s1">&#39;Hello&#39;</span><span class="p">):</span>
+</span><span id="__span-67-2"><a id="__codelineno-67-2" name="__codelineno-67-2" href="#__codelineno-67-2"></a>    <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">, </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">greeting</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+</span></code></pre></div>
+Now, the function works as expected, and you can call it with or without providing a greeting argument:</p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-68-1"><a id="__codelineno-68-1" name="__codelineno-68-1" href="#__codelineno-68-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">hello_tub</span><span class="p">(</span><span class="s1">&#39;Tub&#39;</span><span class="p">))</span>
+</span><span id="__span-68-2"><a id="__codelineno-68-2" name="__codelineno-68-2" href="#__codelineno-68-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">hello_tub</span><span class="p">(</span><span class="s1">&#39;Tub&#39;</span><span class="p">,</span> <span class="s1">&#39;Hi&#39;</span><span class="p">))</span>
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-69-1"><a id="__codelineno-69-1" name="__codelineno-69-1" href="#__codelineno-69-1"></a>Hello, Tub
+</span><span id="__span-69-2"><a id="__codelineno-69-2" name="__codelineno-69-2" href="#__codelineno-69-2"></a>Hi, Tub
+</span></code></pre></div></p>
+<p>Below let's go through a real example how to find the number of days in a month</p>
+<div class="admonition example">
+<p class="admonition-title">Example - Find the number of days in a month</p>
+<p>Credits: <a href="https://docs.python.org/3/library/index.html">Python Standard Library</a>, and Corey Schafer.</p>
+<p>Number of days per month. First value placeholder for indexing purposes.</p>
+<p><div class="language-python highlight"><span class="filename">month_days</span><pre><span></span><code><span id="__span-70-1"><a id="__codelineno-70-1" name="__codelineno-70-1" href="#__codelineno-70-1"></a><span class="n">month_days</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">]</span>
+</span></code></pre></div>
+The <code>is_leap()</code> function takes a year as input and returns True if it's a leap year, and False otherwise. Leap years are those divisible by 4, but not divisible by 100, unless they are also divisible by 400.</p>
+<p><div class="language-python highlight"><span class="filename">is_leap()</span><pre><span></span><code><span id="__span-71-1"><a id="__codelineno-71-1" name="__codelineno-71-1" href="#__codelineno-71-1"></a><span class="k">def</span> <span class="nf">is_leap</span><span class="p">(</span><span class="n">year</span><span class="p">):</span>
+</span><span id="__span-71-2"><a id="__codelineno-71-2" name="__codelineno-71-2" href="#__codelineno-71-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="__span-71-3"><a id="__codelineno-71-3" name="__codelineno-71-3" href="#__codelineno-71-3"></a><span class="sd">    Return True for leap years, False for non-leap years.</span>
+</span><span id="__span-71-4"><a id="__codelineno-71-4" name="__codelineno-71-4" href="#__codelineno-71-4"></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="__span-71-5"><a id="__codelineno-71-5" name="__codelineno-71-5" href="#__codelineno-71-5"></a>    <span class="k">return</span> <span class="n">year</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="p">(</span><span class="n">year</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">!=</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">year</span> <span class="o">%</span> <span class="mi">400</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+</span></code></pre></div>
+The <code>days_in_month()</code> function takes a year and a month as input and returns the number of days in that month for that year. It checks if the input year is a leap year and adjusts the number of days in February accordingly. If an invalid month is provided, it returns <code>Invalid Month</code>.</p>
+<p><div class="language-python highlight"><span class="filename">days_in_month()</span><pre><span></span><code><span id="__span-72-1"><a id="__codelineno-72-1" name="__codelineno-72-1" href="#__codelineno-72-1"></a><span class="k">def</span> <span class="nf">days_in_month</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">):</span>
+</span><span id="__span-72-2"><a id="__codelineno-72-2" name="__codelineno-72-2" href="#__codelineno-72-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="__span-72-3"><a id="__codelineno-72-3" name="__codelineno-72-3" href="#__codelineno-72-3"></a><span class="sd">    Return number of days in that month in that year.</span>
+</span><span id="__span-72-4"><a id="__codelineno-72-4" name="__codelineno-72-4" href="#__codelineno-72-4"></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="__span-72-5"><a id="__codelineno-72-5" name="__codelineno-72-5" href="#__codelineno-72-5"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">month</span> <span class="o">&lt;=</span> <span class="mi">12</span><span class="p">:</span>
+</span><span id="__span-72-6"><a id="__codelineno-72-6" name="__codelineno-72-6" href="#__codelineno-72-6"></a>        <span class="k">return</span> <span class="s1">&#39;Invalid Month&#39;</span>
+</span><span id="__span-72-7"><a id="__codelineno-72-7" name="__codelineno-72-7" href="#__codelineno-72-7"></a>
+</span><span id="__span-72-8"><a id="__codelineno-72-8" name="__codelineno-72-8" href="#__codelineno-72-8"></a>    <span class="k">if</span> <span class="n">month</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">is_leap</span><span class="p">(</span><span class="n">year</span><span class="p">):</span>
+</span><span id="__span-72-9"><a id="__codelineno-72-9" name="__codelineno-72-9" href="#__codelineno-72-9"></a>        <span class="k">return</span> <span class="mi">29</span>
+</span><span id="__span-72-10"><a id="__codelineno-72-10" name="__codelineno-72-10" href="#__codelineno-72-10"></a>
+</span><span id="__span-72-11"><a id="__codelineno-72-11" name="__codelineno-72-11" href="#__codelineno-72-11"></a>    <span class="k">return</span> <span class="n">month_days</span><span class="p">[</span><span class="n">month</span><span class="p">]</span>
+</span></code></pre></div>
+Finally, the code demonstrates calling the <code>is_leap()</code> and <code>days_in_month()</code> functions with specific inputs:</p>
+<p><div class="language-python highlight"><span class="filename">Print</span><pre><span></span><code><span id="__span-73-1"><a id="__codelineno-73-1" name="__codelineno-73-1" href="#__codelineno-73-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">is_leap</span><span class="p">(</span><span class="mi">2023</span><span class="p">))</span>
+</span><span id="__span-73-2"><a id="__codelineno-73-2" name="__codelineno-73-2" href="#__codelineno-73-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">days_in_month</span><span class="p">(</span><span class="mi">2023</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-74-1"><a id="__codelineno-74-1" name="__codelineno-74-1" href="#__codelineno-74-1"></a>False
+</span><span id="__span-74-2"><a id="__codelineno-74-2" name="__codelineno-74-2" href="#__codelineno-74-2"></a>30
+</span></code></pre></div></p>
+</div>
+<h3 id="323-args-and-kwargs">3.2.3. <code>*args</code> and <code>**kwargs</code></h3>
+<p>In the following code, there are several concepts being illustrated: <code>*args</code>, <code>**kwargs</code>, and two custom functions <code>is_leap()</code> and <code>days_in_month()</code>.</p>
+<p><code>*args</code> and <code>**kwargs</code> are used in function definitions to allow passing a variable number of arguments. <code>*args</code> is used for passing a variable number of non-keyword (positional) arguments, while <code>**kwargs</code> is used for passing a variable number of keyword arguments.</p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-75-1"><a id="__codelineno-75-1" name="__codelineno-75-1" href="#__codelineno-75-1"></a><span class="k">def</span> <span class="nf">pet_info</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span><span id="__span-75-2"><a id="__codelineno-75-2" name="__codelineno-75-2" href="#__codelineno-75-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+</span><span id="__span-75-3"><a id="__codelineno-75-3" name="__codelineno-75-3" href="#__codelineno-75-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+</span><span id="__span-75-4"><a id="__codelineno-75-4" name="__codelineno-75-4" href="#__codelineno-75-4"></a><span class="n">pet_info</span><span class="p">(</span><span class="s1">&#39;Tub&#39;</span><span class="p">,</span> <span class="s1">&#39;Barkalot&#39;</span><span class="p">,</span> <span class="s1">&#39;Furrytail&#39;</span><span class="p">,</span> <span class="n">pet1</span> <span class="o">=</span> <span class="s1">&#39;Tub&#39;</span><span class="p">,</span> <span class="n">pet2</span> <span class="o">=</span> <span class="s1">&#39;Barkalot&#39;</span><span class="p">,</span> <span class="n">pet3</span> <span class="o">=</span> <span class="s1">&#39;Furrytail&#39;</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-76-1"><a id="__codelineno-76-1" name="__codelineno-76-1" href="#__codelineno-76-1"></a>(&#39;Tub&#39;, &#39;Barkalot&#39;, &#39;Furrytail&#39;)
+</span><span id="__span-76-2"><a id="__codelineno-76-2" name="__codelineno-76-2" href="#__codelineno-76-2"></a>{&#39;pet1&#39;: &#39;Tub&#39;, &#39;pet2&#39;: &#39;Barkalot&#39;, &#39;pet3&#39;: &#39;Furrytail&#39;}
+</span></code></pre></div>
+In the <code>pet_info()</code> function, both <code>*args</code> and <code>**kwargs</code> are used. When you call the function with different types of arguments, you can see how they are grouped and printed:</p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-77-1"><a id="__codelineno-77-1" name="__codelineno-77-1" href="#__codelineno-77-1"></a><span class="k">def</span> <span class="nf">pet_info</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span><span id="__span-77-2"><a id="__codelineno-77-2" name="__codelineno-77-2" href="#__codelineno-77-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+</span><span id="__span-77-3"><a id="__codelineno-77-3" name="__codelineno-77-3" href="#__codelineno-77-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+</span><span id="__span-77-4"><a id="__codelineno-77-4" name="__codelineno-77-4" href="#__codelineno-77-4"></a>
+</span><span id="__span-77-5"><a id="__codelineno-77-5" name="__codelineno-77-5" href="#__codelineno-77-5"></a><span class="n">favorite_food</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Carrot&#39;</span><span class="p">,</span> <span class="s1">&#39;Brocolli&#39;</span><span class="p">,</span> <span class="s1">&#39;Ice Cream&#39;</span><span class="p">]</span>
+</span><span id="__span-77-6"><a id="__codelineno-77-6" name="__codelineno-77-6" href="#__codelineno-77-6"></a><span class="n">info</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Tub&#39;</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">:</span> <span class="mi">25</span><span class="p">}</span>
+</span><span id="__span-77-7"><a id="__codelineno-77-7" name="__codelineno-77-7" href="#__codelineno-77-7"></a><span class="n">pet_info</span><span class="p">(</span><span class="n">favorite_food</span><span class="p">,</span> <span class="n">info</span><span class="p">)</span>
+</span></code></pre></div>
+In the first call to pet_info, we pass a list <code>favorite_food</code> and a dictionary info as arguments without using the <code>*</code> or <code>**</code> unpacking operators. This means the entire list and dictionary are treated as single positional arguments. The output shows that args contains a tuple with two elements: the list <code>favorite_food</code> and the dictionary info. Since we didn't provide any keyword arguments, kwargs is an empty dictionary.</p>
+<div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-78-1"><a id="__codelineno-78-1" name="__codelineno-78-1" href="#__codelineno-78-1"></a>([&#39;Carrot&#39;, &#39;Brocolli&#39;, &#39;Ice Cream&#39;], {&#39;name&#39;: &#39;Tub&#39;, &#39;age&#39;: 25})
+</span><span id="__span-78-2"><a id="__codelineno-78-2" name="__codelineno-78-2" href="#__codelineno-78-2"></a>{}
+</span></code></pre></div>
+<p>In the second call to pet_info, we use the <code>*</code> and <code>**</code> unpacking operators to pass the list favorite_food and the dictionary info as individual elements. The <code>*</code> operator unpacks the list elements as positional arguments, and the <code>**</code> operator unpacks the dictionary items as keyword arguments. In this case, the output shows that args contains a tuple with three elements ('<code>Carrot</code>', '<code>Brocolli</code>', '<code>Ice Cream</code>') and kwargs contains a dictionary with the keys and values from the info dictionary.</p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-79-1"><a id="__codelineno-79-1" name="__codelineno-79-1" href="#__codelineno-79-1"></a><span class="n">pet_info</span><span class="p">(</span><span class="o">*</span><span class="n">favorite_food</span><span class="p">,</span> <span class="o">**</span><span class="n">info</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-80-1"><a id="__codelineno-80-1" name="__codelineno-80-1" href="#__codelineno-80-1"></a>(&#39;Carrot&#39;, &#39;Brocolli&#39;, &#39;Ice Cream&#39;)
+</span><span id="__span-80-2"><a id="__codelineno-80-2" name="__codelineno-80-2" href="#__codelineno-80-2"></a>{&#39;name&#39;: &#39;Tub&#39;, &#39;age&#39;: 25}
+</span></code></pre></div></p>
+<h3 id="323-variable-scope-legb-rule">3.2.3. Variable Scope - LEGB rule</h3>
+<p>In this section, we are discussing variable scope in Python, which determines where a variable can be accessed or modified. Python searches for a variable following the LEBG rule and order: Local, Enclosing, Global, and Built-in.</p>
+<p><strong>Local</strong>
+A variable defined within a function has local scope. It can only be accessed inside that function.</p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-81-1"><a id="__codelineno-81-1" name="__codelineno-81-1" href="#__codelineno-81-1"></a><span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
+</span><span id="__span-81-2"><a id="__codelineno-81-2" name="__codelineno-81-2" href="#__codelineno-81-2"></a>    <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;local variable y&#39;</span>
+</span><span id="__span-81-3"><a id="__codelineno-81-3" name="__codelineno-81-3" href="#__codelineno-81-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</span><span id="__span-81-4"><a id="__codelineno-81-4" name="__codelineno-81-4" href="#__codelineno-81-4"></a>
+</span><span id="__span-81-5"><a id="__codelineno-81-5" name="__codelineno-81-5" href="#__codelineno-81-5"></a><span class="n">test</span><span class="p">()</span>
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-82-1"><a id="__codelineno-82-1" name="__codelineno-82-1" href="#__codelineno-82-1"></a>local variable y
+</span></code></pre></div></p>
+<p><strong>Global</strong></p>
+<p>A variable defined outside any function has global scope. It can be accessed both inside and outside of functions.</p>
+<p>In the following example, we define a variable <code>x</code> outside of the <code>test()</code> function. We can access and modify this variable inside the function. </p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-83-1"><a id="__codelineno-83-1" name="__codelineno-83-1" href="#__codelineno-83-1"></a><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;global variable x&#39;</span>
+</span><span id="__span-83-2"><a id="__codelineno-83-2" name="__codelineno-83-2" href="#__codelineno-83-2"></a>
+</span><span id="__span-83-3"><a id="__codelineno-83-3" name="__codelineno-83-3" href="#__codelineno-83-3"></a><span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
+</span><span id="__span-83-4"><a id="__codelineno-83-4" name="__codelineno-83-4" href="#__codelineno-83-4"></a>    <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;local variable y&#39;</span>
+</span><span id="__span-83-5"><a id="__codelineno-83-5" name="__codelineno-83-5" href="#__codelineno-83-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span id="__span-83-6"><a id="__codelineno-83-6" name="__codelineno-83-6" href="#__codelineno-83-6"></a>
+</span><span id="__span-83-7"><a id="__codelineno-83-7" name="__codelineno-83-7" href="#__codelineno-83-7"></a><span class="n">test</span><span class="p">()</span>
+</span><span id="__span-83-8"><a id="__codelineno-83-8" name="__codelineno-83-8" href="#__codelineno-83-8"></a><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-84-1"><a id="__codelineno-84-1" name="__codelineno-84-1" href="#__codelineno-84-1"></a>global variable x
+</span><span id="__span-84-2"><a id="__codelineno-84-2" name="__codelineno-84-2" href="#__codelineno-84-2"></a>global variable x
+</span></code></pre></div>
+Here the results are the same because we are accessing the global variable <code>x</code> inside the function. However, if we try to access the local variable <code>y</code> outside of the function, we get an error.</p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-85-1"><a id="__codelineno-85-1" name="__codelineno-85-1" href="#__codelineno-85-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-86-1"><a id="__codelineno-86-1" name="__codelineno-86-1" href="#__codelineno-86-1"></a>NameError: name &#39;y&#39; is not defined
+</span></code></pre></div></p>
+<p>What if we have a variable with the same name inside and outside of a function? In this case, the local variable takes precedence over the global variable. The following example demonstrates this:</p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-87-1"><a id="__codelineno-87-1" name="__codelineno-87-1" href="#__codelineno-87-1"></a><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;global variable x&#39;</span>
+</span><span id="__span-87-2"><a id="__codelineno-87-2" name="__codelineno-87-2" href="#__codelineno-87-2"></a><span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
+</span><span id="__span-87-3"><a id="__codelineno-87-3" name="__codelineno-87-3" href="#__codelineno-87-3"></a>    <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;local variable x&#39;</span>
+</span><span id="__span-87-4"><a id="__codelineno-87-4" name="__codelineno-87-4" href="#__codelineno-87-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span id="__span-87-5"><a id="__codelineno-87-5" name="__codelineno-87-5" href="#__codelineno-87-5"></a>
+</span><span id="__span-87-6"><a id="__codelineno-87-6" name="__codelineno-87-6" href="#__codelineno-87-6"></a><span class="n">test</span><span class="p">()</span>
+</span><span id="__span-87-7"><a id="__codelineno-87-7" name="__codelineno-87-7" href="#__codelineno-87-7"></a><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-88-1"><a id="__codelineno-88-1" name="__codelineno-88-1" href="#__codelineno-88-1"></a>local variable x
+</span><span id="__span-88-2"><a id="__codelineno-88-2" name="__codelineno-88-2" href="#__codelineno-88-2"></a>global variable x
+</span></code></pre></div>
+This example shows that the python searches for a variable in the local scope first. If it doesn't find it, it searches the global scope. This is the reason that we get the local variable <code>x</code> inside the function first and the global variable <code>x</code> next</p>
+<p>If it doesn't find it there, it will throw an error. </p>
+<p>In the next example, we demonstrate how to use the global keyword to change the value of a global variable within a function. </p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-89-1"><a id="__codelineno-89-1" name="__codelineno-89-1" href="#__codelineno-89-1"></a><span class="c1"># What if we want to set a new global x</span>
+</span><span id="__span-89-2"><a id="__codelineno-89-2" name="__codelineno-89-2" href="#__codelineno-89-2"></a><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;global variable x&#39;</span>
+</span><span id="__span-89-3"><a id="__codelineno-89-3" name="__codelineno-89-3" href="#__codelineno-89-3"></a><span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
+</span><span id="__span-89-4"><a id="__codelineno-89-4" name="__codelineno-89-4" href="#__codelineno-89-4"></a>    <span class="k">global</span> <span class="n">x</span>
+</span><span id="__span-89-5"><a id="__codelineno-89-5" name="__codelineno-89-5" href="#__codelineno-89-5"></a>    <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;local variable x&#39;</span>
+</span><span id="__span-89-6"><a id="__codelineno-89-6" name="__codelineno-89-6" href="#__codelineno-89-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span id="__span-89-7"><a id="__codelineno-89-7" name="__codelineno-89-7" href="#__codelineno-89-7"></a>
+</span><span id="__span-89-8"><a id="__codelineno-89-8" name="__codelineno-89-8" href="#__codelineno-89-8"></a><span class="n">test</span><span class="p">()</span>
+</span><span id="__span-89-9"><a id="__codelineno-89-9" name="__codelineno-89-9" href="#__codelineno-89-9"></a><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-90-1"><a id="__codelineno-90-1" name="__codelineno-90-1" href="#__codelineno-90-1"></a>local variable x
+</span><span id="__span-90-2"><a id="__codelineno-90-2" name="__codelineno-90-2" href="#__codelineno-90-2"></a>local variable x
+</span></code></pre></div></p>
+<p>In this example, we use the <code>global</code> keyword to change the value of the global variable <code>x</code> inside the function, although this is not recommended in the practice because it can lead to unexpected behavior and make the code difficult to debug and review. </p>
+<p>You can also do the following:</p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-91-1"><a id="__codelineno-91-1" name="__codelineno-91-1" href="#__codelineno-91-1"></a><span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
+</span><span id="__span-91-2"><a id="__codelineno-91-2" name="__codelineno-91-2" href="#__codelineno-91-2"></a>    <span class="k">global</span> <span class="n">x</span>
+</span><span id="__span-91-3"><a id="__codelineno-91-3" name="__codelineno-91-3" href="#__codelineno-91-3"></a>    <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;local variable x&#39;</span>
+</span><span id="__span-91-4"><a id="__codelineno-91-4" name="__codelineno-91-4" href="#__codelineno-91-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span id="__span-91-5"><a id="__codelineno-91-5" name="__codelineno-91-5" href="#__codelineno-91-5"></a>
+</span><span id="__span-91-6"><a id="__codelineno-91-6" name="__codelineno-91-6" href="#__codelineno-91-6"></a><span class="n">test</span><span class="p">()</span>
+</span><span id="__span-91-7"><a id="__codelineno-91-7" name="__codelineno-91-7" href="#__codelineno-91-7"></a><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-92-1"><a id="__codelineno-92-1" name="__codelineno-92-1" href="#__codelineno-92-1"></a>local variable x
+</span><span id="__span-92-2"><a id="__codelineno-92-2" name="__codelineno-92-2" href="#__codelineno-92-2"></a>local variable x
+</span></code></pre></div></p>
+<p>However, it is not recommended to use global often.</p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-93-1"><a id="__codelineno-93-1" name="__codelineno-93-1" href="#__codelineno-93-1"></a><span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
+</span><span id="__span-93-2"><a id="__codelineno-93-2" name="__codelineno-93-2" href="#__codelineno-93-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</span><span id="__span-93-3"><a id="__codelineno-93-3" name="__codelineno-93-3" href="#__codelineno-93-3"></a>
+</span><span id="__span-93-4"><a id="__codelineno-93-4" name="__codelineno-93-4" href="#__codelineno-93-4"></a><span class="n">test</span><span class="p">(</span><span class="s1">&#39;local variable z&#39;</span><span class="p">)</span>
+</span><span id="__span-93-5"><a id="__codelineno-93-5" name="__codelineno-93-5" href="#__codelineno-93-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-94-1"><a id="__codelineno-94-1" name="__codelineno-94-1" href="#__codelineno-94-1"></a>local variable z
+</span><span id="__span-94-2"><a id="__codelineno-94-2" name="__codelineno-94-2" href="#__codelineno-94-2"></a>NameError: name &#39;z&#39; is not defined
+</span></code></pre></div></p>
+<p><strong>Built-in</strong></p>
+<p>In this example, we are discussing the built-in scope in Python. Built-in scope refers to the predefined functions and variables available in Python, which are part of the standard library.</p>
+<p>Python has a set of built-in functions, like min(), max(), print(), etc., which are readily available for use.</p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-95-1"><a id="__codelineno-95-1" name="__codelineno-95-1" href="#__codelineno-95-1"></a><span class="c1"># Built-in</span>
+</span><span id="__span-95-2"><a id="__codelineno-95-2" name="__codelineno-95-2" href="#__codelineno-95-2"></a><span class="kn">import</span> <span class="nn">builtins</span>
+</span><span id="__span-95-3"><a id="__codelineno-95-3" name="__codelineno-95-3" href="#__codelineno-95-3"></a><span class="c1"># print(dir(builtins))</span>
+</span><span id="__span-95-4"><a id="__codelineno-95-4" name="__codelineno-95-4" href="#__codelineno-95-4"></a>
+</span><span id="__span-95-5"><a id="__codelineno-95-5" name="__codelineno-95-5" href="#__codelineno-95-5"></a><span class="n">minimum</span> <span class="o">=</span> <span class="nb">min</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+</span><span id="__span-95-6"><a id="__codelineno-95-6" name="__codelineno-95-6" href="#__codelineno-95-6"></a><span class="nb">print</span><span class="p">(</span><span class="n">minimum</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-96-1"><a id="__codelineno-96-1" name="__codelineno-96-1" href="#__codelineno-96-1"></a>1
+</span></code></pre></div></p>
+<p>However, you should avoid overwriting built-in functions with your own functions or variables. Doing so can lead to errors or unintended behavior.</p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-97-1"><a id="__codelineno-97-1" name="__codelineno-97-1" href="#__codelineno-97-1"></a><span class="c1"># If we overwrite the built-in function min()</span>
+</span><span id="__span-97-2"><a id="__codelineno-97-2" name="__codelineno-97-2" href="#__codelineno-97-2"></a><span class="k">def</span> <span class="nf">min</span><span class="p">():</span>
+</span><span id="__span-97-3"><a id="__codelineno-97-3" name="__codelineno-97-3" href="#__codelineno-97-3"></a>    <span class="k">pass</span>
+</span><span id="__span-97-4"><a id="__codelineno-97-4" name="__codelineno-97-4" href="#__codelineno-97-4"></a>
+</span><span id="__span-97-5"><a id="__codelineno-97-5" name="__codelineno-97-5" href="#__codelineno-97-5"></a><span class="n">m</span> <span class="o">=</span> <span class="nb">min</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+</span><span id="__span-97-6"><a id="__codelineno-97-6" name="__codelineno-97-6" href="#__codelineno-97-6"></a><span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-98-1"><a id="__codelineno-98-1" name="__codelineno-98-1" href="#__codelineno-98-1"></a>TypeError: min() takes 0 positional arguments but 1 was given
+</span></code></pre></div></p>
+<p>To avoid conflicts with built-in functions, it's a good practice to use different names for your own functions. </p>
+<p>So the best way to do this is to use a different name instead of the default name <code>min()</code>.</p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-99-1"><a id="__codelineno-99-1" name="__codelineno-99-1" href="#__codelineno-99-1"></a><span class="k">def</span> <span class="nf">find_min</span><span class="p">():</span>
+</span><span id="__span-99-2"><a id="__codelineno-99-2" name="__codelineno-99-2" href="#__codelineno-99-2"></a>    <span class="k">pass</span>
+</span><span id="__span-99-3"><a id="__codelineno-99-3" name="__codelineno-99-3" href="#__codelineno-99-3"></a>
+</span><span id="__span-99-4"><a id="__codelineno-99-4" name="__codelineno-99-4" href="#__codelineno-99-4"></a><span class="n">minimum</span> <span class="o">=</span> <span class="nb">min</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+</span><span id="__span-99-5"><a id="__codelineno-99-5" name="__codelineno-99-5" href="#__codelineno-99-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">minimum</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-100-1"><a id="__codelineno-100-1" name="__codelineno-100-1" href="#__codelineno-100-1"></a>1
+</span></code></pre></div></p>
+<p>Being mindful of built-in functions and avoiding name conflicts will help you write clean, error-free code.</p>
+<p><strong>Enclosing</strong></p>
+<p>In this example, we discuss the concept of enclosing scope in Python. Enclosing scope is the scope of variables that are defined in an outer function but not in the global scope. Enclosing scope variables are accessible from the inner function.</p>
+<p>Let's look at an example:</p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-101-1"><a id="__codelineno-101-1" name="__codelineno-101-1" href="#__codelineno-101-1"></a><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;global variable x&#39;</span>
+</span><span id="__span-101-2"><a id="__codelineno-101-2" name="__codelineno-101-2" href="#__codelineno-101-2"></a><span class="k">def</span> <span class="nf">outer</span><span class="p">():</span>
+</span><span id="__span-101-3"><a id="__codelineno-101-3" name="__codelineno-101-3" href="#__codelineno-101-3"></a>    <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;local-outer variable x&#39;</span>
+</span><span id="__span-101-4"><a id="__codelineno-101-4" name="__codelineno-101-4" href="#__codelineno-101-4"></a>
+</span><span id="__span-101-5"><a id="__codelineno-101-5" name="__codelineno-101-5" href="#__codelineno-101-5"></a>    <span class="k">def</span> <span class="nf">inner</span><span class="p">():</span>
+</span><span id="__span-101-6"><a id="__codelineno-101-6" name="__codelineno-101-6" href="#__codelineno-101-6"></a>        <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;local-inner variable x&#39;</span>
+</span><span id="__span-101-7"><a id="__codelineno-101-7" name="__codelineno-101-7" href="#__codelineno-101-7"></a>        <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># 1st print</span>
+</span><span id="__span-101-8"><a id="__codelineno-101-8" name="__codelineno-101-8" href="#__codelineno-101-8"></a>
+</span><span id="__span-101-9"><a id="__codelineno-101-9" name="__codelineno-101-9" href="#__codelineno-101-9"></a>    <span class="n">inner</span><span class="p">()</span> <span class="c1"># 1st call for 1st print</span>
+</span><span id="__span-101-10"><a id="__codelineno-101-10" name="__codelineno-101-10" href="#__codelineno-101-10"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># 2nd print</span>
+</span><span id="__span-101-11"><a id="__codelineno-101-11" name="__codelineno-101-11" href="#__codelineno-101-11"></a>
+</span><span id="__span-101-12"><a id="__codelineno-101-12" name="__codelineno-101-12" href="#__codelineno-101-12"></a>
+</span><span id="__span-101-13"><a id="__codelineno-101-13" name="__codelineno-101-13" href="#__codelineno-101-13"></a><span class="n">outer</span><span class="p">()</span> <span class="c1"># 2nd call for 1st print and 2nd print</span>
+</span><span id="__span-101-14"><a id="__codelineno-101-14" name="__codelineno-101-14" href="#__codelineno-101-14"></a><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># 3rd print</span>
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-102-1"><a id="__codelineno-102-1" name="__codelineno-102-1" href="#__codelineno-102-1"></a>local-inner variable x
+</span><span id="__span-102-2"><a id="__codelineno-102-2" name="__codelineno-102-2" href="#__codelineno-102-2"></a>local-outer variable x
+</span><span id="__span-102-3"><a id="__codelineno-102-3" name="__codelineno-102-3" href="#__codelineno-102-3"></a>global variable x
+</span></code></pre></div></p>
+<p>The <code>outer()</code> function has its own local variable <code>x</code>, and the <code>inner()</code> function also has its own local variable x. When we call the functions, the inner function prints its local variable <code>x</code>, the outer function prints its local variable <code>x</code>, and then the global variable x is printed.</p>
+<p>Now let's use the nonlocal keyword to modify the enclosing variable from the inner function:</p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-103-1"><a id="__codelineno-103-1" name="__codelineno-103-1" href="#__codelineno-103-1"></a><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;global variable x&#39;</span>
+</span><span id="__span-103-2"><a id="__codelineno-103-2" name="__codelineno-103-2" href="#__codelineno-103-2"></a><span class="k">def</span> <span class="nf">outer</span><span class="p">():</span>
+</span><span id="__span-103-3"><a id="__codelineno-103-3" name="__codelineno-103-3" href="#__codelineno-103-3"></a>    <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;local-outer variable x&#39;</span>
+</span><span id="__span-103-4"><a id="__codelineno-103-4" name="__codelineno-103-4" href="#__codelineno-103-4"></a>
+</span><span id="__span-103-5"><a id="__codelineno-103-5" name="__codelineno-103-5" href="#__codelineno-103-5"></a>    <span class="k">def</span> <span class="nf">inner</span><span class="p">():</span>
+</span><span id="__span-103-6"><a id="__codelineno-103-6" name="__codelineno-103-6" href="#__codelineno-103-6"></a>        <span class="k">nonlocal</span> <span class="n">x</span> <span class="c1"># Make our local-inner variable x to be the enclosing variable x</span>
+</span><span id="__span-103-7"><a id="__codelineno-103-7" name="__codelineno-103-7" href="#__codelineno-103-7"></a>        <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;local-inner variable x&#39;</span>
+</span><span id="__span-103-8"><a id="__codelineno-103-8" name="__codelineno-103-8" href="#__codelineno-103-8"></a>        <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span id="__span-103-9"><a id="__codelineno-103-9" name="__codelineno-103-9" href="#__codelineno-103-9"></a>
+</span><span id="__span-103-10"><a id="__codelineno-103-10" name="__codelineno-103-10" href="#__codelineno-103-10"></a>    <span class="n">inner</span><span class="p">()</span>
+</span><span id="__span-103-11"><a id="__codelineno-103-11" name="__codelineno-103-11" href="#__codelineno-103-11"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span id="__span-103-12"><a id="__codelineno-103-12" name="__codelineno-103-12" href="#__codelineno-103-12"></a>
+</span><span id="__span-103-13"><a id="__codelineno-103-13" name="__codelineno-103-13" href="#__codelineno-103-13"></a><span class="n">outer</span><span class="p">()</span>
+</span><span id="__span-103-14"><a id="__codelineno-103-14" name="__codelineno-103-14" href="#__codelineno-103-14"></a><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-104-1"><a id="__codelineno-104-1" name="__codelineno-104-1" href="#__codelineno-104-1"></a>local-inner variable x
+</span><span id="__span-104-2"><a id="__codelineno-104-2" name="__codelineno-104-2" href="#__codelineno-104-2"></a>local-inner variable x
+</span><span id="__span-104-3"><a id="__codelineno-104-3" name="__codelineno-104-3" href="#__codelineno-104-3"></a>global variable x
+</span></code></pre></div></p>
+<p>In this case, we use the nonlocal keyword inside the <code>inner()</code> function to indicate that we want to modify the enclosing variable <code>x</code> (the one defined in the <code>outer()</code> function) instead of creating a new local variable. When the functions are called, both the inner and outer functions print the modified enclosing variable <code>x</code>, and then the global variable <code>x</code> is printed.</p>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Python Notebook by <a href="https://zhenyuanlu.com/" target="_blank">Zhenyuan Lu</a>. This work is under <a href="https://github.com/zhenyuanlu/python-notebook/blob/main/LICENSE" target="_blank">MIT License</a>.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/zhenyuanlu/" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/zhenyuanlu/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/zyl_zhen/" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "navigation.instant", "navigation.top", "content.tabs.link"], "search": "../assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.220ee61c.min.js"></script>
+      
+    
+  </body>
+</html>

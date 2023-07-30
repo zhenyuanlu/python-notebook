@@ -1,0 +1,1754 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A simplistic place to learn Python">
+      
+      
+      
+        <link rel="canonical" href="https://zhenyuanlu.com/python-notebook/05_loops_comprehensions/">
+      
+      
+        <link rel="prev" href="../04_advanced_formatting/">
+      
+      
+        <link rel="next" href="../06_iterable_iterator_generator/">
+      
+      <link rel="icon" href="../assets/z1.png">
+      <meta name="generator" content="mkdocs-1.5.1, mkdocs-material-9.1.21">
+    
+    
+      
+        <title>05. Loops, Comprehensions - Python Notebook from Zero to Advanced</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.eebd395e.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ecc896b0.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+
+  <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-6LCB2YRQBG"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-6LCB2YRQBG",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-6LCB2YRQBG",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="05. Loops, Comprehensions - Python Notebook from Zero to Advanced" >
+      
+        <meta  property="og:description"  content="A simplistic place to learn Python" >
+      
+        <meta  property="og:image"  content="https://zhenyuanlu.com/python-notebook/assets/images/social/05_loops_comprehensions.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://zhenyuanlu.com/python-notebook/05_loops_comprehensions/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="05. Loops, Comprehensions - Python Notebook from Zero to Advanced" >
+      
+        <meta  name="twitter:description"  content="A simplistic place to learn Python" >
+      
+        <meta  name="twitter:image"  content="https://zhenyuanlu.com/python-notebook/assets/images/social/05_loops_comprehensions.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#5-loops-and-comprehensions" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Python Notebook from Zero to Advanced" class="md-header__button md-logo" aria-label="Python Notebook from Zero to Advanced" data-md-component="logo">
+      
+  <img src="../assets/z1.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Python Notebook from Zero to Advanced
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              05. Loops, Comprehensions
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+            
+              <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_2" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+              </label>
+            
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
+            
+              <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+              </label>
+            
+          
+        </form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/zhenyuanlu/python-notebook" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zhenyuanlu/python-notebook
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Python Notebook from Zero to Advanced" class="md-nav__button md-logo" aria-label="Python Notebook from Zero to Advanced" data-md-component="logo">
+      
+  <img src="../assets/z1.png" alt="logo">
+
+    </a>
+    Python Notebook from Zero to Advanced
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/zhenyuanlu/python-notebook" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zhenyuanlu/python-notebook
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00_disclaimer/" class="md-nav__link">
+        Disclaimer
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_get_started/" class="md-nav__link">
+        01. Get Started
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_data_types/" class="md-nav__link">
+        02. Data Types
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_control_functions/" class="md-nav__link">
+        03. Control and Functions
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_advanced_formatting/" class="md-nav__link">
+        04. Advanced Formatting
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          05. Loops, Comprehensions
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        05. Loops, Comprehensions
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#51-loops" class="md-nav__link">
+    5.1. Loops
+  </a>
+  
+    <nav class="md-nav" aria-label="5.1. Loops">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#511-for-loops" class="md-nav__link">
+    5.1.1. For Loops
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#512-while-loops" class="md-nav__link">
+    5.1.2. While Loops
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#513-else-clause-with-loops" class="md-nav__link">
+    5.1.3. Else Clause with Loops
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#52-enumerate-function" class="md-nav__link">
+    5.2. enumerate() function
+  </a>
+  
+    <nav class="md-nav" aria-label="5.2. enumerate() function">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#521-basic-usage-of-enumerate" class="md-nav__link">
+    5.2.1. Basic Usage of enumerate()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#522-using-enumerate-with-a-different-start-index" class="md-nav__link">
+    5.2.2. Using enumerate with a Different Start Index
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#523-practical-usage-of-enumerate" class="md-nav__link">
+    5.2.3. Practical Usage of enumerate
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#53-list-comprehensions" class="md-nav__link">
+    5.3. List Comprehensions
+  </a>
+  
+    <nav class="md-nav" aria-label="5.3. List Comprehensions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#531-basic-list-comprehensions" class="md-nav__link">
+    5.3.1. Basic List Comprehensions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#532-comparing-list-comprehensions-and-map" class="md-nav__link">
+    5.3.2. Comparing List Comprehensions and map
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#533-list-comprehensions-with-conditionals" class="md-nav__link">
+    5.3.3. List Comprehensions with Conditionals
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#534-real-world-example" class="md-nav__link">
+    5.3.4. Real World Example
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#535-performance-comparison-for-loop-vs-list-comprehension" class="md-nav__link">
+    5.3.5. Performance Comparison: For Loop vs List Comprehension
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#54-zip-function" class="md-nav__link">
+    5.4. zip() Function
+  </a>
+  
+    <nav class="md-nav" aria-label="5.4. zip() Function">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#541-zip-with-for-loop" class="md-nav__link">
+    5.4.1. zip() with for Loop
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#542-zip-with-list-comprehension" class="md-nav__link">
+    5.4.2. zip() with List Comprehension
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#55-dictionary-comprehensions" class="md-nav__link">
+    5.5. Dictionary Comprehensions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#56-set-comprehensions" class="md-nav__link">
+    5.6. Set Comprehensions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#56-generator-compreshensions" class="md-nav__link">
+    5.6. Generator Compreshensions
+  </a>
+  
+    <nav class="md-nav" aria-label="5.6. Generator Compreshensions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#561-traditional-generator-function" class="md-nav__link">
+    5.6.1. Traditional Generator Function
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#562-generator-comprehension" class="md-nav__link">
+    5.6.2. Generator Comprehension
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_iterable_iterator_generator/" class="md-nav__link">
+        06. Iterable, Iterator, Generator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07_oop/" class="md-nav__link">
+        07. Object-Oriented Programming
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08_errors/" class="md-nav__link">
+        08. Error Handling and Exceptions
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#51-loops" class="md-nav__link">
+    5.1. Loops
+  </a>
+  
+    <nav class="md-nav" aria-label="5.1. Loops">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#511-for-loops" class="md-nav__link">
+    5.1.1. For Loops
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#512-while-loops" class="md-nav__link">
+    5.1.2. While Loops
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#513-else-clause-with-loops" class="md-nav__link">
+    5.1.3. Else Clause with Loops
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#52-enumerate-function" class="md-nav__link">
+    5.2. enumerate() function
+  </a>
+  
+    <nav class="md-nav" aria-label="5.2. enumerate() function">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#521-basic-usage-of-enumerate" class="md-nav__link">
+    5.2.1. Basic Usage of enumerate()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#522-using-enumerate-with-a-different-start-index" class="md-nav__link">
+    5.2.2. Using enumerate with a Different Start Index
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#523-practical-usage-of-enumerate" class="md-nav__link">
+    5.2.3. Practical Usage of enumerate
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#53-list-comprehensions" class="md-nav__link">
+    5.3. List Comprehensions
+  </a>
+  
+    <nav class="md-nav" aria-label="5.3. List Comprehensions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#531-basic-list-comprehensions" class="md-nav__link">
+    5.3.1. Basic List Comprehensions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#532-comparing-list-comprehensions-and-map" class="md-nav__link">
+    5.3.2. Comparing List Comprehensions and map
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#533-list-comprehensions-with-conditionals" class="md-nav__link">
+    5.3.3. List Comprehensions with Conditionals
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#534-real-world-example" class="md-nav__link">
+    5.3.4. Real World Example
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#535-performance-comparison-for-loop-vs-list-comprehension" class="md-nav__link">
+    5.3.5. Performance Comparison: For Loop vs List Comprehension
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#54-zip-function" class="md-nav__link">
+    5.4. zip() Function
+  </a>
+  
+    <nav class="md-nav" aria-label="5.4. zip() Function">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#541-zip-with-for-loop" class="md-nav__link">
+    5.4.1. zip() with for Loop
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#542-zip-with-list-comprehension" class="md-nav__link">
+    5.4.2. zip() with List Comprehension
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#55-dictionary-comprehensions" class="md-nav__link">
+    5.5. Dictionary Comprehensions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#56-set-comprehensions" class="md-nav__link">
+    5.6. Set Comprehensions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#56-generator-compreshensions" class="md-nav__link">
+    5.6. Generator Compreshensions
+  </a>
+  
+    <nav class="md-nav" aria-label="5.6. Generator Compreshensions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#561-traditional-generator-function" class="md-nav__link">
+    5.6.1. Traditional Generator Function
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#562-generator-comprehension" class="md-nav__link">
+    5.6.2. Generator Comprehension
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="5-loops-and-comprehensions">5. Loops and Comprehensions</h1>
+<h2 id="51-loops">5.1. Loops</h2>
+<p>This chapter provides an overview of loops and iterations in Python, specifically focusing on the <code>for</code>, <code>while</code>, and <code>else</code> statements.</p>
+<h3 id="511-for-loops">5.1.1. For Loops</h3>
+<p>In this section, we will cover the following statements and functions:</p>
+<ul>
+<li>Basic Usage: The for loop iterates over a list of pets and prints each pet's name. This is the simplest usage of a for loop.</li>
+<li><code>break</code> Statement: The for loop is used in combination with a conditional statement and break, which terminates the loop once a specific condition is met. </li>
+<li><code>continue</code> Statement: The continue statement is used to skip the rest of the current loop iteration and immediately start the next one. </li>
+<li>Nested for Loops: This demonstrates the concept of nested loops, where a for loop is contained within another for loop. </li>
+<li><code>range()</code> Function: The <code>range()</code> function generates a sequence of numbers over which the for loop iterates. The function can be called with different numbers of arguments to change the start, end, and step size of the sequence.</li>
+</ul>
+<p>This chapter provides an excellent foundation for understanding loops in Python.</p>
+<p><strong>Basic Usage</strong></p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">pets</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tub&#39;</span><span class="p">,</span> <span class="s1">&#39;Barkalot&#39;</span><span class="p">,</span> <span class="s1">&#39;Furrytail&#39;</span><span class="p">]</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">for</span> <span class="n">pet</span> <span class="ow">in</span> <span class="n">pets</span><span class="p">:</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">pet</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-python highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">Tub</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">Barkalot</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">Furrytail</span>
+</span></code></pre></div>
+This code creates a list of pet names, then uses a <code>for</code> loop to iterate over each item in the list. Each time through the loop, it prints the current pet name.</p>
+<p><strong><code>break</code> Statement</strong></p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">pets</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tub&#39;</span><span class="p">,</span> <span class="s1">&#39;Barkalot&#39;</span><span class="p">,</span> <span class="s1">&#39;Furrytail&#39;</span><span class="p">]</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">for</span> <span class="n">pet</span> <span class="ow">in</span> <span class="n">pets</span><span class="p">:</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="k">if</span> <span class="n">pet</span> <span class="o">==</span> <span class="s1">&#39;Barkalot&#39;</span><span class="p">:</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;We got Barkalot!&#39;</span><span class="p">)</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>        <span class="k">break</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">pet</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-python highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">Tub</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">We</span> <span class="n">got</span> <span class="n">Barkalot</span><span class="err">!</span>
+</span></code></pre></div>
+This code is similar to the previous example, but it includes an <code>if</code> statement that checks whether the current pet name is <code>Barkalot</code>. If it is, the code prints a special message and then uses the <code>break</code> statement to immediately exit the loop.</p>
+<p><strong><code>continue</code> Statement</strong></p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># `continue` statement skip the current iteration and continue with the next.</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="c1"># Here we skip the `Barkalot` pet and print `We got Barkalot!` instead.</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">pets</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tub&#39;</span><span class="p">,</span> <span class="s1">&#39;Barkalot&#39;</span><span class="p">,</span> <span class="s1">&#39;Furrytail&#39;</span><span class="p">]</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="k">for</span> <span class="n">pet</span> <span class="ow">in</span> <span class="n">pets</span><span class="p">:</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="k">if</span> <span class="n">pet</span> <span class="o">==</span> <span class="s1">&#39;Barkalot&#39;</span><span class="p">:</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;We got Barkalot!&#39;</span><span class="p">)</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>        <span class="k">continue</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">pet</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-python highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">Tub</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">We</span> <span class="n">got</span> <span class="n">Barkalot</span><span class="err">!</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">Furrytail</span>
+</span></code></pre></div></p>
+<p>Again, this code is similar to the previous examples. The difference is that when the current pet name is <code>Barkalot</code>, it uses the <code>continue</code> statement to immediately start the next iteration of the loop, skipping the <code>print(pet)</code> statement for <code>Barkalot</code>.</p>
+<p><strong>Nested for Loops</strong></p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">for</span> <span class="n">pet</span> <span class="ow">in</span> <span class="n">pets</span><span class="p">:</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    <span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="s1">&#39;ab&#39;</span><span class="p">:</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>        <span class="nb">print</span><span class="p">(</span><span class="n">letter</span><span class="p">,</span> <span class="n">pet</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-python highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">a</span> <span class="n">Tub</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">b</span> <span class="n">Tub</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="n">a</span> <span class="n">Barkalot</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="n">b</span> <span class="n">Barkalot</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="n">a</span> <span class="n">Furrytail</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="n">b</span> <span class="n">Furrytail</span>
+</span></code></pre></div>
+Here, the outer <code>for</code> loop iterates over the list of pet names, and the inner <code>for</code> loop iterates over the string 'ab'. For each combination of pet name and letter, it prints the letter and the pet name.</p>
+<p><strong><code>range()</code> Function</strong></p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">for</span> <span class="n">pet</span> <span class="ow">in</span> <span class="n">pets</span><span class="p">:</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>    <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>        <span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">pet</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-python highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="mi">0</span> <span class="n">Tub</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="mi">1</span> <span class="n">Tub</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="mi">0</span> <span class="n">Barkalot</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="mi">1</span> <span class="n">Barkalot</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="mi">0</span> <span class="n">Furrytail</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="mi">1</span> <span class="n">Furrytail</span>
+</span></code></pre></div></p>
+<p>This code is the same as the previous example, but the inner loop iterates over the numbers produced by <code>range(2)</code>, which are 0 and 1.</p>
+<p><strong><code>range()</code> Function with Start and End</strong></p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-python highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="mi">0</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="mi">1</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="mi">2</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="mi">3</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="mi">4</span>
+</span></code></pre></div></p>
+<p>This code uses the <code>range()</code> function to generate a sequence of numbers from 0 to 4. The <code>for</code> loop iterates over these numbers, printing each one.</p>
+<p><strong><code>range()</code> Function with Start, End, and Step</strong></p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-python highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="mi">0</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="mi">2</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="mi">4</span>
+</span></code></pre></div></p>
+<p>This code is similar to the previous example, but it adds a step size of 2 to the <code>range()</code> function. This means it only generates every second number in the range from 0 to 4, so the <code>for</code> loop prints the numbers 0, 2, and 4.</p>
+<h3 id="512-while-loops">5.1.2. While Loops</h3>
+<p>In Python, a <code>while</code> loop repeatedly executes a target statement as long as a given condition is true.</p>
+<p>For example:
+<div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">num</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="k">while</span> <span class="n">num</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">:</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>    <span class="n">num</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></code></pre></div>
+<div class="language-python highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="mi">1</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="mi">2</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="mi">3</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="mi">4</span>
+</span></code></pre></div></p>
+<p>The <code>while</code> loop above continues executing until the condition <code>num &lt; 5</code> is no longer true, which occurs after the fourth iteration.</p>
+<p><strong>Using <code>break</code> with While Loop</strong></p>
+<p>The <code>break</code> statement is used to exit a <code>while</code> loop prematurely. When a <code>break</code> statement is encountered inside the loop, the loop is immediately terminated, and program control resumes at the next statement following the loop.</p>
+<p>In the following code, <code>break</code> is triggered when <code>num</code> equals 3, causing an early exit from the loop.</p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">num</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="k">while</span> <span class="n">num</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">:</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>    <span class="k">if</span> <span class="n">num</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>        <span class="k">break</span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>    <span class="n">num</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></code></pre></div>
+<div class="language-python highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="mi">1</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="mi">2</span>
+</span></code></pre></div></p>
+<p><strong><code>break</code> in an Infinite Loop</strong></p>
+<p>An infinite <code>while</code> loop can be created using <code>while True:</code>. This loop will run indefinitely unless it encounters a <code>break</code> statement.</p>
+<p><code>break</code> is used to stop an otherwise infinite loop when num equals 3:</p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="n">num</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>    <span class="k">if</span> <span class="n">num</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>        <span class="k">break</span>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>    <span class="n">num</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></code></pre></div>
+<div class="language-python highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="mi">1</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="mi">2</span>
+</span></code></pre></div></p>
+<p><strong>If Statement versus While Loop</strong></p>
+<p>An <code>if</code> statement checks a condition once, whereas a <code>while</code> loop continues to execute the block of code as long as the condition is true.</p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="n">num</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="k">if</span> <span class="n">num</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">:</span>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>    <span class="n">num</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></code></pre></div>
+<div class="language-python highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="mi">1</span>
+</span></code></pre></div></p>
+<p>In this code, the <code>if</code> statement checks the condition <code>num &lt; 5</code> once and then executes the block of code if the condition is true. After that, it doesn't check the condition again or repeat the block of code. This is the main difference between a <code>while</code> loop and an <code>if</code> statement.</p>
+<h3 id="513-else-clause-with-loops">5.1.3. Else Clause with Loops</h3>
+<p>The <code>else</code> clause in Python can also be used with loops. Unlike in an <code>if</code> statement, where <code>else</code> executes when the <code>if</code> condition is false, with loops, the else clause executes after the loop completes normally, i.e., when no <code>break</code> statement has been encountered.</p>
+<p><strong>If-Else</strong></p>
+<p>The else clause executes after the loop completes normally.</p>
+<p>Here's a simple example of an <code>if-else</code> statement:</p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="n">tub_age</span> <span class="o">=</span> <span class="mi">5</span>
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="k">if</span> <span class="n">tub_age</span> <span class="o">&gt;</span> <span class="mi">18</span><span class="p">:</span>
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Tub is an adult.&#39;</span><span class="p">)</span>
+</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="k">else</span><span class="p">:</span>
+</span><span id="__span-22-6"><a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Tub is a child.&#39;</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-python highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="n">Tub</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">child</span><span class="o">.</span>
+</span></code></pre></div></p>
+<p>The <code>else</code> clause is executed because the <code>if</code> condition is false.</p>
+<p><strong>Else with For Loop</strong></p>
+<p>In the context of a <code>loop</code>, an else statement can be thought of as a "no break" statement. It will execute once the loop has finished iterating over the items.</p>
+<p>Another example may not be so obvious. And always makes people confused:</p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="n">pets</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tub&#39;</span><span class="p">,</span> <span class="s1">&#39;Barkalot&#39;</span><span class="p">,</span> <span class="s1">&#39;Furrytail&#39;</span><span class="p">]</span>
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="k">for</span> <span class="n">pet</span> <span class="ow">in</span> <span class="n">pets</span><span class="p">:</span>
+</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">pet</span><span class="p">)</span>
+</span><span id="__span-24-5"><a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="k">else</span><span class="p">:</span> <span class="c1"># More like a `no break` statement</span>
+</span><span id="__span-24-6"><a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;No more pets.&#39;</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-python highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="n">Tub</span>
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="n">Barkalot</span>
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="n">Furrytail</span>
+</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="n">No</span> <span class="n">more</span> <span class="n">pets</span><span class="o">.</span>
+</span></code></pre></div></p>
+<p>The <code>else</code> statement associated with a loop (either a <code>for</code> or <code>while</code> loop) in Python might initially seem confusing since in many other programming languages <code>else</code> is associated only with <code>if</code> statements.</p>
+<p><strong>You may think why the <code>else</code> statement is executed?</strong></p>
+<p>In Python, the <code>else</code> clause in a loop executes when the loop has finished iterating over all items (in a <code>for</code> loop) or when the condition becomes false (in a <code>while</code> loop), but not when the loop is prematurely ended by a <code>break</code> statement.</p>
+<p>Let's break down the above example:</p>
+<ul>
+<li>
+<p>The <code>for</code> loop begins iterating over the <code>pets</code> list. For each pet in <code>pets</code>, it prints the pet's name.</p>
+</li>
+<li>
+<p>When there are no more items left in the <code>pets</code> list, the loop's condition becomes false (it has run out of items to process). At this point, instead of just ending, it checks if there is an <code>else</code> clause associated with it.</p>
+</li>
+<li>
+<p>Since there is an <code>else</code> clause, it runs the code inside the <code>else</code> block. The print statement inside the <code>else</code> block runs, outputting <code>No more pets.</code>.</p>
+</li>
+</ul>
+<p>So, the phrase <code>no break</code> used in comments beside the <code>else</code> statement means that if the loop finishes its iterations normally without encountering a <code>break</code> statement (i.e., it was not forced to stop prematurely), the code inside the else block will be executed.</p>
+<p>This behavior is particularly useful when you use a loop to search for an item in a list or another data structure. If the item is found, you can use the <code>break</code> statement to stop the loop, and the <code>else</code> block will be ignored. If the item isn't found and the loop ends normally after checking all items, the <code>else</code> block will run, allowing you to handle the case where the item isn't found.</p>
+<p>To understand this, let's have a more concrete example:</p>
+<p><strong>In <code>for</code> loops</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1"><code>else</code> terminated by <code>break</code></label><label for="__tabbed_1_2"><code>else</code> not terminated by <code>break</code> and plays as <code>no break</code></label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="k">for</span> <span class="n">pet</span> <span class="ow">in</span> <span class="n">pets</span><span class="p">:</span>
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">pet</span><span class="p">)</span>
+</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>    <span class="k">if</span> <span class="n">pet</span> <span class="o">==</span> <span class="s1">&#39;Barkalot&#39;</span><span class="p">:</span>
+</span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>        <span class="k">break</span>
+</span><span id="__span-26-5"><a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="k">else</span><span class="p">:</span>
+</span><span id="__span-26-6"><a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;No more pets.&#39;</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-python highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="n">Tub</span>
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="n">Barkalot</span>
+</span></code></pre></div>
+The <code>else</code> statement is not executed because the loop is terminated by the <code>break</code> statement.</p>
+</div>
+<div class="tabbed-block">
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="k">for</span> <span class="n">pet</span> <span class="ow">in</span> <span class="n">pets</span><span class="p">:</span>
+</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">pet</span><span class="p">)</span>
+</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>    <span class="c1"># Now the loop is not terminated by the `break` statement</span>
+</span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>    <span class="c1"># as the condition is never met  as the above example.</span>
+</span><span id="__span-28-5"><a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a>    <span class="c1"># You can remove the `if` statement, and it will still work.</span>
+</span><span id="__span-28-6"><a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a>    <span class="k">if</span> <span class="n">pet</span> <span class="o">==</span> <span class="s1">&#39;NOT EXIST&#39;</span><span class="p">:</span>
+</span><span id="__span-28-7"><a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a>        <span class="k">break</span>
+</span><span id="__span-28-8"><a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a><span class="k">else</span><span class="p">:</span> <span class="c1"># More like a `no break` statement.</span>
+</span><span id="__span-28-9"><a id="__codelineno-28-9" name="__codelineno-28-9" href="#__codelineno-28-9"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;No more pets.&#39;</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-python highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="n">Tub</span>
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="n">Barkalot</span>
+</span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="n">Furrytail</span>
+</span><span id="__span-29-4"><a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="n">No</span> <span class="n">more</span> <span class="n">pets</span><span class="o">.</span>
+</span></code></pre></div></p>
+</div>
+</div>
+</div>
+<p><strong>This is also the same as for <code>while</code> loop.</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1"><code>else</code> within <code>while</code> loop and terminated by <code>break</code></label><label for="__tabbed_2_2"><code>else</code> within <code>while</code> loop and plays as <code>no break</code></label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="n">age</span> <span class="o">=</span> <span class="mi">7</span>
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="k">while</span> <span class="n">age</span> <span class="o">&gt;=</span><span class="mi">5</span><span class="p">:</span>
+</span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">age</span><span class="p">)</span>
+</span><span id="__span-30-4"><a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a>    <span class="n">age</span> <span class="o">-=</span> <span class="mi">1</span>
+</span><span id="__span-30-5"><a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a><span class="k">else</span><span class="p">:</span> <span class="c1"># More like a `no break` statement</span>
+</span><span id="__span-30-6"><a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;End&#39;</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-python highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="mi">7</span>
+</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="mi">6</span>
+</span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="mi">5</span>
+</span><span id="__span-31-4"><a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="n">End</span>
+</span></code></pre></div>
+The <code>else</code> statement is not executed because the loop is terminated by the <code>break</code> statement.</p>
+</div>
+<div class="tabbed-block">
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="n">age</span> <span class="o">=</span> <span class="mi">7</span>
+</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a><span class="k">while</span> <span class="n">age</span> <span class="o">&gt;=</span><span class="mi">5</span><span class="p">:</span>
+</span><span id="__span-32-3"><a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">age</span><span class="p">)</span>
+</span><span id="__span-32-4"><a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>    <span class="n">age</span> <span class="o">-=</span> <span class="mi">1</span>
+</span><span id="__span-32-5"><a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>    <span class="k">if</span> <span class="n">age</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span>
+</span><span id="__span-32-6"><a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a>        <span class="k">break</span>
+</span><span id="__span-32-7"><a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a><span class="k">else</span><span class="p">:</span> <span class="c1"># More like a `no break` statement</span>
+</span><span id="__span-32-8"><a id="__codelineno-32-8" name="__codelineno-32-8" href="#__codelineno-32-8"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;End&#39;</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-python highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="mi">7</span>
+</span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a><span class="mi">6</span>
+</span></code></pre></div></p>
+</div>
+</div>
+</div>
+<p>In this exercise, you'll create a function that searches for a specific number in a list using a for <code>loop</code> and an <code>else</code> clause. The function should print a message indicating whether or not the number was found in the list.</p>
+<div class="admonition note">
+<p class="admonition-title">Exercise 1: Search Number in List</p>
+<p>Tasks:</p>
+<ol>
+<li>
+<p>Write a function <code>search_number_in_list</code> that takes two parameters: a list of numbers (<code>numbers_list</code>) and a number to search (<code>search_number</code>).</p>
+</li>
+<li>
+<p>Inside the function, start a <code>for</code> loop that iterates over each number in <code>numbers_list</code>.</p>
+</li>
+<li>
+<p>Inside the loop, use an <code>if</code> statement to check if the current number equals <code>search_number</code>. If it does, print a message like <code>Number {</code>search_number<code>} found in the list!</code>, and then use the <code>break</code> statement to immediately exit the loop.</p>
+</li>
+<li>
+<p>After the <code>for</code> loop, write an <code>else</code> clause that prints a message like <code>Number {search_number} not found in the list.</code>. This <code>else</code> clause should be executed if the <code>for</code> loop completes all its iterations without hitting the <code>break</code> statement.</p>
+</li>
+<li>
+<p>Test your function with a list of numbers and a search number of your choice.</p>
+</li>
+</ol>
+<p>Here's a skeleton of the function to get you started:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Skeleton to started</label><label for="__tabbed_3_2">Solution</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-python highlight"><span class="filename">Skeleton</span><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="k">def</span> <span class="nf">search_number_in_list</span><span class="p">(</span><span class="n">numbers_list</span><span class="p">,</span> <span class="n">search_number</span><span class="p">)</span><span class="o">--&gt;</span><span class="nb">str</span><span class="p">:</span>
+</span><span id="__span-34-2"><a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a><span class="c1"># Your code here</span>
+</span><span id="__span-34-3"><a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a><span class="k">pass</span>
+</span><span id="__span-34-4"><a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a>
+</span><span id="__span-34-5"><a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a><span class="c1"># Test the function</span>
+</span><span id="__span-34-6"><a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">11</span><span class="p">]</span>
+</span><span id="__span-34-7"><a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a><span class="n">search_number</span> <span class="o">=</span> <span class="mi">7</span>
+</span><span id="__span-34-8"><a id="__codelineno-34-8" name="__codelineno-34-8" href="#__codelineno-34-8"></a><span class="n">search_number_in_list</span><span class="p">(</span><span class="n">numbers</span><span class="p">,</span> <span class="n">search_number</span><span class="p">)</span>
+</span></code></pre></div>
+<p><div class="language-python highlight"><span class="filename">Expected Ouput</span><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="n">Number</span> <span class="mi">7</span> <span class="n">found</span> <span class="ow">in</span> <span class="n">the</span> <span class="nb">list</span><span class="err">!</span>
+</span></code></pre></div>
+Or if you search for a number not in the list:</p>
+<div class="language-python highlight"><span class="filename">Expected Ouput</span><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="n">Number</span> <span class="p">{</span><span class="n">search_number</span><span class="p">}</span> <span class="ow">not</span> <span class="n">found</span> <span class="ow">in</span> <span class="n">the</span> <span class="nb">list</span><span class="o">.</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-python highlight"><span class="filename">Solution</span><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">11</span><span class="p">]</span>
+</span><span id="__span-37-2"><a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a><span class="n">search_number</span> <span class="o">=</span> <span class="mi">7</span>
+</span><span id="__span-37-3"><a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a>
+</span><span id="__span-37-4"><a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a><span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">:</span>
+</span><span id="__span-37-5"><a id="__codelineno-37-5" name="__codelineno-37-5" href="#__codelineno-37-5"></a>    <span class="k">if</span> <span class="n">num</span> <span class="o">==</span> <span class="n">search_number</span><span class="p">:</span>
+</span><span id="__span-37-6"><a id="__codelineno-37-6" name="__codelineno-37-6" href="#__codelineno-37-6"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Number </span><span class="si">{</span><span class="n">search_number</span><span class="si">}</span><span class="s1"> found in the list!&#39;</span><span class="p">)</span>
+</span><span id="__span-37-7"><a id="__codelineno-37-7" name="__codelineno-37-7" href="#__codelineno-37-7"></a>        <span class="k">break</span>
+</span><span id="__span-37-8"><a id="__codelineno-37-8" name="__codelineno-37-8" href="#__codelineno-37-8"></a><span class="k">else</span><span class="p">:</span>
+</span><span id="__span-37-9"><a id="__codelineno-37-9" name="__codelineno-37-9" href="#__codelineno-37-9"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Number </span><span class="si">{</span><span class="n">search_number</span><span class="si">}</span><span class="s1"> not found in the list.&#39;</span><span class="p">)</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+</div>
+<p>In this exercise, you'll modify the function <code>find_first_even</code> to return the index of the first even number found in the list. If no even number is found, the function should return <code>None</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Exercise 2: Find First Even Number Function</p>
+<p>Tasks:</p>
+<ol>
+<li>
+<p>Modify the function <code>find_first_even</code> that takes a list of numbers (<code>nums</code>) as parameter.</p>
+</li>
+<li>
+<p>Inside the function, start a <code>for</code> loop that iterates over number/s in <code>nums</code>.</p>
+</li>
+<li>
+<p>Inside the loop, use an <code>if</code> statement to check if the current number is even. If it is, return the current <code>num</code> and then use the <code>break</code> statement to immediately exit the loop.</p>
+</li>
+<li>
+<p>After the <code>for</code> loop, write an <code>else</code> clause that returns <code>None</code>. This <code>else</code> clause should be executed if the <code>for</code> loop iterates over all the numbers from the list without hitting the <code>break</code> statement. In other words, we didn't find any even number in the list.</p>
+</li>
+<li>
+<p>Test your function with a list of numbers of your choice.</p>
+</li>
+</ol>
+<p>Here's a skeleton of the function to get you started:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Skeleton to started</label><label for="__tabbed_4_2">Solution</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-python highlight"><span class="filename">Skeleton</span><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="k">def</span> <span class="nf">find_first_even</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span><span class="o">--&gt;</span><span class="nb">str</span><span class="p">:</span>
+</span><span id="__span-38-2"><a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a>    <span class="c1"># Your code here</span>
+</span><span id="__span-38-3"><a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a>    <span class="k">pass</span>
+</span><span id="__span-38-4"><a id="__codelineno-38-4" name="__codelineno-38-4" href="#__codelineno-38-4"></a>
+</span><span id="__span-38-5"><a id="__codelineno-38-5" name="__codelineno-38-5" href="#__codelineno-38-5"></a><span class="c1"># Test the function</span>
+</span><span id="__span-38-6"><a id="__codelineno-38-6" name="__codelineno-38-6" href="#__codelineno-38-6"></a><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">11</span><span class="p">]</span>
+</span><span id="__span-38-7"><a id="__codelineno-38-7" name="__codelineno-38-7" href="#__codelineno-38-7"></a><span class="c1"># It should print `First even number is: 8`</span>
+</span><span id="__span-38-8"><a id="__codelineno-38-8" name="__codelineno-38-8" href="#__codelineno-38-8"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;First even number is: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">first_even</span><span class="p">))</span>  
+</span><span id="__span-38-9"><a id="__codelineno-38-9" name="__codelineno-38-9" href="#__codelineno-38-9"></a><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">11</span><span class="p">]</span>
+</span><span id="__span-38-10"><a id="__codelineno-38-10" name="__codelineno-38-10" href="#__codelineno-38-10"></a><span class="c1"># It should print `First even number is: None`</span>
+</span><span id="__span-38-11"><a id="__codelineno-38-11" name="__codelineno-38-11" href="#__codelineno-38-11"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;First even number is: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">first_even</span><span class="p">))</span>  
+</span></code></pre></div>
+<div class="language-python highlight"><span class="filename">Expected Ouput</span><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="n">First</span> <span class="n">even</span> <span class="n">number</span> <span class="ow">is</span><span class="p">:</span> <span class="mi">8</span>
+</span><span id="__span-39-2"><a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a><span class="n">First</span> <span class="n">even</span> <span class="n">number</span> <span class="ow">is</span><span class="p">:</span> <span class="kc">None</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-python highlight"><span class="filename">Solution</span><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="k">def</span> <span class="nf">find_first_even</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span><span class="o">-&gt;</span><span class="nb">str</span><span class="p">:</span>
+</span><span id="__span-40-2"><a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a>    <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">:</span>
+</span><span id="__span-40-3"><a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a>        <span class="k">if</span> <span class="n">num</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span><span id="__span-40-4"><a id="__codelineno-40-4" name="__codelineno-40-4" href="#__codelineno-40-4"></a>            <span class="k">break</span>
+</span><span id="__span-40-5"><a id="__codelineno-40-5" name="__codelineno-40-5" href="#__codelineno-40-5"></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-40-6"><a id="__codelineno-40-6" name="__codelineno-40-6" href="#__codelineno-40-6"></a>        <span class="n">num</span> <span class="o">=</span> <span class="s1">&#39;None&#39;</span>
+</span><span id="__span-40-7"><a id="__codelineno-40-7" name="__codelineno-40-7" href="#__codelineno-40-7"></a>    <span class="k">return</span> <span class="n">num</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+</div>
+<h2 id="52-enumerate-function">5.2. <code>enumerate()</code> function</h2>
+<p>The <code>enumerate</code> function is a built-in function in Python that allows you to loop over something and have an automatic counter, or index tracker. It adds a counter as the key of the enumerate object, alongside the items of the iterable, returning an enumerate object which you can convert to a list, tuple or other data structures. The function signature is as follows:</p>
+<p><code>enumerate(iterable, start=0)</code></p>
+<ul>
+<li><code>iterable</code>: any object that supports iteration</li>
+<li><code>start</code>: the index value from which the counter should start, default is 0</li>
+</ul>
+<h3 id="521-basic-usage-of-enumerate">5.2.1. Basic Usage of enumerate()</h3>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-41-1"><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="n">pets</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tub&#39;</span><span class="p">,</span> <span class="s1">&#39;Barkalot&#39;</span><span class="p">,</span> <span class="s1">&#39;Furrytail&#39;</span><span class="p">]</span>
+</span><span id="__span-41-2"><a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">pet</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">pets</span><span class="p">):</span>
+</span><span id="__span-41-3"><a id="__codelineno-41-3" name="__codelineno-41-3" href="#__codelineno-41-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">pet</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-python highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="mi">0</span> <span class="n">Tub</span>
+</span><span id="__span-42-2"><a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a><span class="mi">1</span> <span class="n">Barkalot</span>
+</span><span id="__span-42-3"><a id="__codelineno-42-3" name="__codelineno-42-3" href="#__codelineno-42-3"></a><span class="mi">2</span> <span class="n">Furrytail</span>
+</span></code></pre></div>
+Here, <code>enumerate(pets)</code> returns a sequence of tuples, and each tuple consists of two items: the index and the value of the corresponding item in the iterable. <code>i</code> and <code>pet</code> are tuple unpacking the result returned by enumerate.</p>
+<h3 id="522-using-enumerate-with-a-different-start-index">5.2.2. Using enumerate with a Different Start Index</h3>
+<p>In this example, the index starts at <code>1</code> (instead of the default 0) because we've set <code>start=1</code>.</p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-43-1"><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="n">pets</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tub&#39;</span><span class="p">,</span> <span class="s1">&#39;Barkalot&#39;</span><span class="p">,</span> <span class="s1">&#39;Furrytail&#39;</span><span class="p">]</span>
+</span><span id="__span-43-2"><a id="__codelineno-43-2" name="__codelineno-43-2" href="#__codelineno-43-2"></a><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">pet</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">pets</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+</span><span id="__span-43-3"><a id="__codelineno-43-3" name="__codelineno-43-3" href="#__codelineno-43-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">pet</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-python highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-44-1"><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="mi">1</span> <span class="n">Tub</span>
+</span><span id="__span-44-2"><a id="__codelineno-44-2" name="__codelineno-44-2" href="#__codelineno-44-2"></a><span class="mi">2</span> <span class="n">Barkalot</span>
+</span><span id="__span-44-3"><a id="__codelineno-44-3" name="__codelineno-44-3" href="#__codelineno-44-3"></a><span class="mi">3</span> <span class="n">Furrytail</span>
+</span></code></pre></div></p>
+<h3 id="523-practical-usage-of-enumerate">5.2.3. Practical Usage of enumerate</h3>
+<p><code>enumerate</code> is particularly useful when you need to track the index of items within a loop. For example, if you want to replace an item in a list:</p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="n">pets</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tub&#39;</span><span class="p">,</span> <span class="s1">&#39;Barkalot&#39;</span><span class="p">,</span> <span class="s1">&#39;Furrytail&#39;</span><span class="p">]</span>
+</span><span id="__span-45-2"><a id="__codelineno-45-2" name="__codelineno-45-2" href="#__codelineno-45-2"></a><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">pet</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">pets</span><span class="p">):</span>
+</span><span id="__span-45-3"><a id="__codelineno-45-3" name="__codelineno-45-3" href="#__codelineno-45-3"></a>    <span class="k">if</span> <span class="n">pet</span> <span class="o">==</span> <span class="s1">&#39;Tub&#39;</span><span class="p">:</span>
+</span><span id="__span-45-4"><a id="__codelineno-45-4" name="__codelineno-45-4" href="#__codelineno-45-4"></a>        <span class="n">pets</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Cat&#39;</span>
+</span><span id="__span-45-5"><a id="__codelineno-45-5" name="__codelineno-45-5" href="#__codelineno-45-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">pets</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-python highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="p">[</span><span class="s1">&#39;Cat&#39;</span><span class="p">,</span> <span class="s1">&#39;Barkalot&#39;</span><span class="p">,</span> <span class="s1">&#39;Furrytail&#39;</span><span class="p">]</span>
+</span></code></pre></div>
+In the above code, we use <code>enumerate</code> to get the index of each pet. When we find the pet <code>Tub</code>, we use the index to replace <code>Tub</code> with <code>Cat</code> in the original list.</p>
+<p>Now it's time to try using <code>enumerate</code> in your own code! Try to think of situations where you need both the item and its index within a loop. </p>
+<div class="admonition note">
+<p class="admonition-title">Exercise: Find First Even Number and Its Index</p>
+<p>Tasks:</p>
+<ol>
+<li>
+<p>Modify the function <code>find_first_even</code> that takes a list of numbers (<code>nums</code>) as parameter.</p>
+</li>
+<li>
+<p>Inside the function, start a <code>for</code> loop that iterates over each number in <code>nums</code>. You'll need to use the <code>enumerate</code> function so that you have access to the index of each number.</p>
+</li>
+<li>
+<p>Inside the loop, use an <code>if</code> statement to check if the current number is even. If it is, return the current index and number as a <code>tuple(index, number)</code>, and then use the <code>break</code> statement to immediately exit the loop.</p>
+</li>
+<li>
+<p>After the <code>for</code> loop, write an <code>else</code> clause that returns <code>(None, None)</code>. This <code>else</code> clause should be executed if the <code>for</code> loop completes all its iterations without hitting the <code>break</code> statement.</p>
+</li>
+<li>
+<p>Test your function with a list of numbers of your choice.</p>
+</li>
+</ol>
+<p>Here's a skeleton of the function to get you started:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Skeleton to started</label><label for="__tabbed_5_2">Solution</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-python highlight"><span class="filename">Skeleton</span><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="k">def</span> <span class="nf">find_first_even</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span><span class="o">-&gt;</span><span class="nb">tuple</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+</span><span id="__span-47-2"><a id="__codelineno-47-2" name="__codelineno-47-2" href="#__codelineno-47-2"></a>    <span class="c1"># Your code here</span>
+</span><span id="__span-47-3"><a id="__codelineno-47-3" name="__codelineno-47-3" href="#__codelineno-47-3"></a>    <span class="k">return</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">num</span><span class="p">)</span>
+</span><span id="__span-47-4"><a id="__codelineno-47-4" name="__codelineno-47-4" href="#__codelineno-47-4"></a>
+</span><span id="__span-47-5"><a id="__codelineno-47-5" name="__codelineno-47-5" href="#__codelineno-47-5"></a><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</span><span id="__span-47-6"><a id="__codelineno-47-6" name="__codelineno-47-6" href="#__codelineno-47-6"></a><span class="n">first_even</span> <span class="o">=</span> <span class="n">find_first_even</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+</span><span id="__span-47-7"><a id="__codelineno-47-7" name="__codelineno-47-7" href="#__codelineno-47-7"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The index and value of the first even number are: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">first_even</span><span class="p">))</span>
+</span><span id="__span-47-8"><a id="__codelineno-47-8" name="__codelineno-47-8" href="#__codelineno-47-8"></a><span class="c1"># Output: The index and value of the first even number are: (2, 8)</span>
+</span><span id="__span-47-9"><a id="__codelineno-47-9" name="__codelineno-47-9" href="#__codelineno-47-9"></a>
+</span><span id="__span-47-10"><a id="__codelineno-47-10" name="__codelineno-47-10" href="#__codelineno-47-10"></a><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</span><span id="__span-47-11"><a id="__codelineno-47-11" name="__codelineno-47-11" href="#__codelineno-47-11"></a><span class="n">first_even</span> <span class="o">=</span> <span class="n">find_first_even</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+</span><span id="__span-47-12"><a id="__codelineno-47-12" name="__codelineno-47-12" href="#__codelineno-47-12"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The index and value of the first even number are: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">first_even</span><span class="p">))</span>
+</span><span id="__span-47-13"><a id="__codelineno-47-13" name="__codelineno-47-13" href="#__codelineno-47-13"></a><span class="c1"># Output: The index and value of the first even number are: (&#39;None&#39;, &#39;None&#39;)</span>
+</span></code></pre></div>
+<div class="language-python highlight"><span class="filename">Expected Ouput</span><pre><span></span><code><span id="__span-48-1"><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a><span class="n">The</span> <span class="n">index</span> <span class="ow">and</span> <span class="n">value</span> <span class="n">of</span> <span class="n">the</span> <span class="n">first</span> <span class="n">even</span> <span class="n">number</span> <span class="n">are</span><span class="p">:</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+</span><span id="__span-48-2"><a id="__codelineno-48-2" name="__codelineno-48-2" href="#__codelineno-48-2"></a><span class="n">The</span> <span class="n">index</span> <span class="ow">and</span> <span class="n">value</span> <span class="n">of</span> <span class="n">the</span> <span class="n">first</span> <span class="n">even</span> <span class="n">number</span> <span class="n">are</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="s1">&#39;None&#39;</span><span class="p">)</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-python highlight"><span class="filename">Solution</span><pre><span></span><code><span id="__span-49-1"><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a><span class="k">def</span> <span class="nf">find_first_even</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span><span class="o">-&gt;</span><span class="nb">tuple</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+</span><span id="__span-49-2"><a id="__codelineno-49-2" name="__codelineno-49-2" href="#__codelineno-49-2"></a>    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">num</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nums</span><span class="p">):</span>
+</span><span id="__span-49-3"><a id="__codelineno-49-3" name="__codelineno-49-3" href="#__codelineno-49-3"></a>        <span class="k">if</span> <span class="n">num</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span><span id="__span-49-4"><a id="__codelineno-49-4" name="__codelineno-49-4" href="#__codelineno-49-4"></a>            <span class="k">break</span>
+</span><span id="__span-49-5"><a id="__codelineno-49-5" name="__codelineno-49-5" href="#__codelineno-49-5"></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-49-6"><a id="__codelineno-49-6" name="__codelineno-49-6" href="#__codelineno-49-6"></a>        <span class="k">return</span> <span class="p">(</span><span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="s1">&#39;None&#39;</span><span class="p">)</span>
+</span><span id="__span-49-7"><a id="__codelineno-49-7" name="__codelineno-49-7" href="#__codelineno-49-7"></a>    <span class="k">return</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">num</span><span class="p">)</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+</div>
+<h2 id="53-list-comprehensions">5.3. List Comprehensions</h2>
+<p>List comprehensions are a powerful feature in Python, allowing you to create lists from existing lists or other iterable objects. They provide a concise way to apply operations to the values in a sequence.</p>
+<h3 id="531-basic-list-comprehensions">5.3.1. Basic List Comprehensions</h3>
+<p>Consider the following example where we have a list of ages, and we want to create a new list with the same ages:</p>
+<p><strong>Using For loop</strong></p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-50-1"><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a><span class="n">ages</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">78</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">44</span><span class="p">]</span>
+</span><span id="__span-50-2"><a id="__codelineno-50-2" name="__codelineno-50-2" href="#__codelineno-50-2"></a><span class="n">age_list</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="__span-50-3"><a id="__codelineno-50-3" name="__codelineno-50-3" href="#__codelineno-50-3"></a><span class="k">for</span> <span class="n">age</span> <span class="ow">in</span> <span class="n">ages</span><span class="p">:</span>
+</span><span id="__span-50-4"><a id="__codelineno-50-4" name="__codelineno-50-4" href="#__codelineno-50-4"></a>    <span class="n">age_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">age</span><span class="p">)</span>
+</span><span id="__span-50-5"><a id="__codelineno-50-5" name="__codelineno-50-5" href="#__codelineno-50-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">age_list</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-python highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-51-1"><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">78</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">44</span><span class="p">]</span>
+</span></code></pre></div></p>
+<p>Now, we make the above for loop into a list comprehension</p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-52-1"><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a><span class="c1"># [item for item in iterable]</span>
+</span><span id="__span-52-2"><a id="__codelineno-52-2" name="__codelineno-52-2" href="#__codelineno-52-2"></a><span class="n">age_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">age</span> <span class="k">for</span> <span class="n">age</span> <span class="ow">in</span> <span class="n">ages</span><span class="p">]</span>
+</span><span id="__span-52-3"><a id="__codelineno-52-3" name="__codelineno-52-3" href="#__codelineno-52-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">age_list</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-python highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-53-1"><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">78</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">44</span><span class="p">]</span>
+</span></code></pre></div></p>
+<p>Another example, we also apply operations to the values in the sequence. For example, we can add 1 to each age:</p>
+<p><strong>Using For loop</strong></p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-54-1"><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a><span class="n">ages</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">78</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">44</span><span class="p">]</span>
+</span><span id="__span-54-2"><a id="__codelineno-54-2" name="__codelineno-54-2" href="#__codelineno-54-2"></a><span class="n">age_list</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="__span-54-3"><a id="__codelineno-54-3" name="__codelineno-54-3" href="#__codelineno-54-3"></a><span class="k">for</span> <span class="n">age</span> <span class="ow">in</span> <span class="n">ages</span><span class="p">:</span>
+</span><span id="__span-54-4"><a id="__codelineno-54-4" name="__codelineno-54-4" href="#__codelineno-54-4"></a>    <span class="n">age_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">age</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-54-5"><a id="__codelineno-54-5" name="__codelineno-54-5" href="#__codelineno-54-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">age_list</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-python highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-55-1"><a id="__codelineno-55-1" name="__codelineno-55-1" href="#__codelineno-55-1"></a><span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">57</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">79</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">45</span><span class="p">]</span>
+</span></code></pre></div></p>
+<p><strong>List comprehension</strong></p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-56-1"><a id="__codelineno-56-1" name="__codelineno-56-1" href="#__codelineno-56-1"></a><span class="c1"># [expression for item in iterable]</span>
+</span><span id="__span-56-2"><a id="__codelineno-56-2" name="__codelineno-56-2" href="#__codelineno-56-2"></a><span class="n">age_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">age</span> <span class="o">+</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">age</span> <span class="ow">in</span> <span class="n">ages</span><span class="p">]</span>
+</span><span id="__span-56-3"><a id="__codelineno-56-3" name="__codelineno-56-3" href="#__codelineno-56-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">age_list</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-python highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-57-1"><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a><span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">57</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">79</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">45</span><span class="p">]</span>
+</span></code></pre></div></p>
+<h3 id="532-comparing-list-comprehensions-and-map">5.3.2. Comparing List Comprehensions and <code>map</code></h3>
+<p><code>map()</code> is a built-in function that applies a function to each item in an iterable object. It returns a map object, which can be converted into a list or tuple. </p>
+<p>Let's see how we can use <code>map</code> to add 1 to each age as the previous example:</p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-58-1"><a id="__codelineno-58-1" name="__codelineno-58-1" href="#__codelineno-58-1"></a><span class="n">age_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">age</span><span class="p">:</span> <span class="n">age</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ages</span><span class="p">))</span>
+</span><span id="__span-58-2"><a id="__codelineno-58-2" name="__codelineno-58-2" href="#__codelineno-58-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">age_list</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-python highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-59-1"><a id="__codelineno-59-1" name="__codelineno-59-1" href="#__codelineno-59-1"></a><span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">57</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">79</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">45</span><span class="p">]</span>
+</span></code></pre></div></p>
+<p><code>map</code> is faster than list comprehension, but list comprehension is more readable.</p>
+<h3 id="533-list-comprehensions-with-conditionals">5.3.3. List Comprehensions with Conditionals</h3>
+<p>You can also include conditions in your list comprehension. For example, we can create a list that only contains even ages:</p>
+<p><strong>Using For loop</strong></p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-60-1"><a id="__codelineno-60-1" name="__codelineno-60-1" href="#__codelineno-60-1"></a><span class="n">ages</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">78</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">44</span><span class="p">]</span>
+</span><span id="__span-60-2"><a id="__codelineno-60-2" name="__codelineno-60-2" href="#__codelineno-60-2"></a><span class="n">age_list</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="__span-60-3"><a id="__codelineno-60-3" name="__codelineno-60-3" href="#__codelineno-60-3"></a><span class="k">for</span> <span class="n">age</span> <span class="ow">in</span> <span class="n">ages</span><span class="p">:</span>
+</span><span id="__span-60-4"><a id="__codelineno-60-4" name="__codelineno-60-4" href="#__codelineno-60-4"></a>    <span class="k">if</span> <span class="n">age</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span><span id="__span-60-5"><a id="__codelineno-60-5" name="__codelineno-60-5" href="#__codelineno-60-5"></a>        <span class="n">age_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">age</span><span class="p">)</span>
+</span><span id="__span-60-6"><a id="__codelineno-60-6" name="__codelineno-60-6" href="#__codelineno-60-6"></a><span class="nb">print</span><span class="p">(</span><span class="n">age_list</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-python highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-61-1"><a id="__codelineno-61-1" name="__codelineno-61-1" href="#__codelineno-61-1"></a><span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">78</span><span class="p">,</span> <span class="mi">44</span><span class="p">]</span>
+</span></code></pre></div></p>
+<p><strong>List comprehension</strong></p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-62-1"><a id="__codelineno-62-1" name="__codelineno-62-1" href="#__codelineno-62-1"></a><span class="c1"># [expression for item in iterable if condition]</span>
+</span><span id="__span-62-2"><a id="__codelineno-62-2" name="__codelineno-62-2" href="#__codelineno-62-2"></a><span class="n">age_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">age</span> <span class="k">for</span> <span class="n">age</span> <span class="ow">in</span> <span class="n">ages</span> <span class="k">if</span> <span class="n">age</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+</span><span id="__span-62-3"><a id="__codelineno-62-3" name="__codelineno-62-3" href="#__codelineno-62-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">age_list</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-python highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-63-1"><a id="__codelineno-63-1" name="__codelineno-63-1" href="#__codelineno-63-1"></a><span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">78</span><span class="p">,</span> <span class="mi">44</span><span class="p">]</span>
+</span></code></pre></div></p>
+<p><strong>Using <code>lambda</code> with <code>filter</code></strong></p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-64-1"><a id="__codelineno-64-1" name="__codelineno-64-1" href="#__codelineno-64-1"></a><span class="c1"># filter(lambda)</span>
+</span><span id="__span-64-2"><a id="__codelineno-64-2" name="__codelineno-64-2" href="#__codelineno-64-2"></a><span class="n">age_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">age</span><span class="p">:</span> <span class="n">age</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="n">ages</span><span class="p">))</span>
+</span><span id="__span-64-3"><a id="__codelineno-64-3" name="__codelineno-64-3" href="#__codelineno-64-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">age_list</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-python highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-65-1"><a id="__codelineno-65-1" name="__codelineno-65-1" href="#__codelineno-65-1"></a><span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">78</span><span class="p">,</span> <span class="mi">44</span><span class="p">]</span>
+</span></code></pre></div></p>
+<h3 id="534-real-world-example">5.3.4. Real World Example</h3>
+<p>List comprehensions can be used to solve real-world problems more concisely. For example, let's say you want to create an unordered HTML list from a list of pet names:</p>
+<p><strong>Using For loop</strong></p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-66-1"><a id="__codelineno-66-1" name="__codelineno-66-1" href="#__codelineno-66-1"></a><span class="n">pets</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tub&#39;</span><span class="p">,</span> <span class="s1">&#39;Furrytail&#39;</span><span class="p">,</span> <span class="s1">&#39;Cat&#39;</span><span class="p">,</span> <span class="s1">&#39;Barkalot&#39;</span><span class="p">,</span> <span class="s1">&#39;Bumblefluff &#39;</span><span class="p">,</span> <span class="s1">&#39;Whiskerfloof&#39;</span><span class="p">]</span>
+</span><span id="__span-66-2"><a id="__codelineno-66-2" name="__codelineno-66-2" href="#__codelineno-66-2"></a><span class="n">output</span> <span class="o">=</span> <span class="s1">&#39;&lt;ul&gt;</span><span class="se">\n</span><span class="s1">&#39;</span>
+</span><span id="__span-66-3"><a id="__codelineno-66-3" name="__codelineno-66-3" href="#__codelineno-66-3"></a><span class="k">for</span> <span class="n">pet</span> <span class="ow">in</span> <span class="n">pets</span><span class="p">:</span>
+</span><span id="__span-66-4"><a id="__codelineno-66-4" name="__codelineno-66-4" href="#__codelineno-66-4"></a>    <span class="n">output</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&lt;li&gt;</span><span class="si">{}</span><span class="s1">&lt;/li&gt;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pet</span><span class="p">)</span>
+</span><span id="__span-66-5"><a id="__codelineno-66-5" name="__codelineno-66-5" href="#__codelineno-66-5"></a>    <span class="c1"># print(&#39;Address of output is {}&#39;.format(id(output)))</span>
+</span><span id="__span-66-6"><a id="__codelineno-66-6" name="__codelineno-66-6" href="#__codelineno-66-6"></a><span class="n">output</span> <span class="o">+=</span> <span class="s1">&#39;&lt;/ul&gt;&#39;</span>
+</span><span id="__span-66-7"><a id="__codelineno-66-7" name="__codelineno-66-7" href="#__codelineno-66-7"></a><span class="nb">print</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-python highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-67-1"><a id="__codelineno-67-1" name="__codelineno-67-1" href="#__codelineno-67-1"></a><span class="o">&lt;</span><span class="n">ul</span><span class="o">&gt;</span>
+</span><span id="__span-67-2"><a id="__codelineno-67-2" name="__codelineno-67-2" href="#__codelineno-67-2"></a><span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">Tub</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+</span><span id="__span-67-3"><a id="__codelineno-67-3" name="__codelineno-67-3" href="#__codelineno-67-3"></a><span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">Furrytail</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+</span><span id="__span-67-4"><a id="__codelineno-67-4" name="__codelineno-67-4" href="#__codelineno-67-4"></a><span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">Cat</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+</span><span id="__span-67-5"><a id="__codelineno-67-5" name="__codelineno-67-5" href="#__codelineno-67-5"></a><span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">Barkalot</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+</span><span id="__span-67-6"><a id="__codelineno-67-6" name="__codelineno-67-6" href="#__codelineno-67-6"></a><span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">Bumblefluff</span> <span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+</span><span id="__span-67-7"><a id="__codelineno-67-7" name="__codelineno-67-7" href="#__codelineno-67-7"></a><span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">Whiskerfloof</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+</span><span id="__span-67-8"><a id="__codelineno-67-8" name="__codelineno-67-8" href="#__codelineno-67-8"></a><span class="o">&lt;/</span><span class="n">ul</span><span class="o">&gt;</span>
+</span></code></pre></div></p>
+<ul>
+<li>Tub</li>
+<li>Furrytail</li>
+<li>Cat</li>
+<li>Barkalot</li>
+<li>Bumblefluff</li>
+<li>Whiskerfloof</li>
+</ul>
+<p><strong>List comprehension</strong></p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-68-1"><a id="__codelineno-68-1" name="__codelineno-68-1" href="#__codelineno-68-1"></a><span class="n">pets</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tub&#39;</span><span class="p">,</span> <span class="s1">&#39;Furrytail&#39;</span><span class="p">,</span> <span class="s1">&#39;Cat&#39;</span><span class="p">,</span> <span class="s1">&#39;Barkalot&#39;</span><span class="p">,</span> <span class="s1">&#39;Bumblefluff &#39;</span><span class="p">,</span> <span class="s1">&#39;Whiskerfloof&#39;</span><span class="p">]</span>
+</span><span id="__span-68-2"><a id="__codelineno-68-2" name="__codelineno-68-2" href="#__codelineno-68-2"></a><span class="n">output</span> <span class="o">=</span> <span class="s1">&#39;&lt;ul&gt;</span><span class="se">\n</span><span class="s1">&#39;</span>
+</span><span id="__span-68-3"><a id="__codelineno-68-3" name="__codelineno-68-3" href="#__codelineno-68-3"></a><span class="c1"># List comprehension to create a list of formatted list items</span>
+</span><span id="__span-68-4"><a id="__codelineno-68-4" name="__codelineno-68-4" href="#__codelineno-68-4"></a><span class="n">formatted_pet_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&lt;li&gt;</span><span class="si">{}</span><span class="s1">&lt;/li&gt;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pet</span><span class="p">)</span> <span class="k">for</span> <span class="n">pet</span> <span class="ow">in</span> <span class="n">pets</span><span class="p">]</span>
+</span><span id="__span-68-5"><a id="__codelineno-68-5" name="__codelineno-68-5" href="#__codelineno-68-5"></a><span class="c1"># Join the list items with newline characters and add the closing &lt;/ul&gt; tag</span>
+</span><span id="__span-68-6"><a id="__codelineno-68-6" name="__codelineno-68-6" href="#__codelineno-68-6"></a><span class="n">output</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">formatted_pet_names</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&lt;/ul&gt;&#39;</span>
+</span><span id="__span-68-7"><a id="__codelineno-68-7" name="__codelineno-68-7" href="#__codelineno-68-7"></a><span class="nb">print</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-python highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-69-1"><a id="__codelineno-69-1" name="__codelineno-69-1" href="#__codelineno-69-1"></a><span class="o">&lt;</span><span class="n">ul</span><span class="o">&gt;</span>
+</span><span id="__span-69-2"><a id="__codelineno-69-2" name="__codelineno-69-2" href="#__codelineno-69-2"></a><span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">Tub</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+</span><span id="__span-69-3"><a id="__codelineno-69-3" name="__codelineno-69-3" href="#__codelineno-69-3"></a><span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">Furrytail</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+</span><span id="__span-69-4"><a id="__codelineno-69-4" name="__codelineno-69-4" href="#__codelineno-69-4"></a><span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">Cat</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+</span><span id="__span-69-5"><a id="__codelineno-69-5" name="__codelineno-69-5" href="#__codelineno-69-5"></a><span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">Barkalot</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+</span><span id="__span-69-6"><a id="__codelineno-69-6" name="__codelineno-69-6" href="#__codelineno-69-6"></a><span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">Bumblefluff</span> <span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+</span><span id="__span-69-7"><a id="__codelineno-69-7" name="__codelineno-69-7" href="#__codelineno-69-7"></a><span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">Whiskerfloof</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+</span><span id="__span-69-8"><a id="__codelineno-69-8" name="__codelineno-69-8" href="#__codelineno-69-8"></a><span class="o">&lt;/</span><span class="n">ul</span><span class="o">&gt;</span>
+</span></code></pre></div></p>
+<h3 id="535-performance-comparison-for-loop-vs-list-comprehension">5.3.5. Performance Comparison: For Loop vs List Comprehension</h3>
+<p>Let's compare the performance of using a <code>for</code> loop vs a list comprehension to generate a list of formatted numbers:</p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-70-1"><a id="__codelineno-70-1" name="__codelineno-70-1" href="#__codelineno-70-1"></a><span class="kn">import</span> <span class="nn">timeit</span>
+</span><span id="__span-70-2"><a id="__codelineno-70-2" name="__codelineno-70-2" href="#__codelineno-70-2"></a><span class="kn">import</span> <span class="nn">random</span>
+</span><span id="__span-70-3"><a id="__codelineno-70-3" name="__codelineno-70-3" href="#__codelineno-70-3"></a>
+</span><span id="__span-70-4"><a id="__codelineno-70-4" name="__codelineno-70-4" href="#__codelineno-70-4"></a><span class="c1"># Create a list of 10,000 random numbers between 0 and 100</span>
+</span><span id="__span-70-5"><a id="__codelineno-70-5" name="__codelineno-70-5" href="#__codelineno-70-5"></a><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10000</span><span class="p">)]</span>
+</span><span id="__span-70-6"><a id="__codelineno-70-6" name="__codelineno-70-6" href="#__codelineno-70-6"></a>
+</span><span id="__span-70-7"><a id="__codelineno-70-7" name="__codelineno-70-7" href="#__codelineno-70-7"></a><span class="c1"># For loop implementation</span>
+</span><span id="__span-70-8"><a id="__codelineno-70-8" name="__codelineno-70-8" href="#__codelineno-70-8"></a><span class="k">def</span> <span class="nf">for_loop</span><span class="p">():</span>
+</span><span id="__span-70-9"><a id="__codelineno-70-9" name="__codelineno-70-9" href="#__codelineno-70-9"></a>    <span class="n">output</span> <span class="o">=</span> <span class="s1">&#39;&lt;ul&gt;</span><span class="se">\n</span><span class="s1">&#39;</span>
+</span><span id="__span-70-10"><a id="__codelineno-70-10" name="__codelineno-70-10" href="#__codelineno-70-10"></a>    <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">:</span>
+</span><span id="__span-70-11"><a id="__codelineno-70-11" name="__codelineno-70-11" href="#__codelineno-70-11"></a>        <span class="n">output</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&lt;li&gt;</span><span class="si">{}</span><span class="s1">&lt;/li&gt;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+</span><span id="__span-70-12"><a id="__codelineno-70-12" name="__codelineno-70-12" href="#__codelineno-70-12"></a>    <span class="n">output</span> <span class="o">+=</span> <span class="s1">&#39;&lt;/ul&gt;&#39;</span>
+</span><span id="__span-70-13"><a id="__codelineno-70-13" name="__codelineno-70-13" href="#__codelineno-70-13"></a>    <span class="k">return</span> <span class="n">output</span>
+</span><span id="__span-70-14"><a id="__codelineno-70-14" name="__codelineno-70-14" href="#__codelineno-70-14"></a>
+</span><span id="__span-70-15"><a id="__codelineno-70-15" name="__codelineno-70-15" href="#__codelineno-70-15"></a><span class="c1"># List comprehension implementation</span>
+</span><span id="__span-70-16"><a id="__codelineno-70-16" name="__codelineno-70-16" href="#__codelineno-70-16"></a><span class="k">def</span> <span class="nf">list_comprehension</span><span class="p">():</span>
+</span><span id="__span-70-17"><a id="__codelineno-70-17" name="__codelineno-70-17" href="#__codelineno-70-17"></a>    <span class="n">output</span> <span class="o">=</span> <span class="s1">&#39;&lt;ul&gt;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&lt;li&gt;</span><span class="si">{}</span><span class="s1">&lt;/li&gt;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">num</span><span class="p">)</span> <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">])</span> <span class="o">+</span> <span class="s1">&#39;&lt;/ul&gt;&#39;</span>
+</span><span id="__span-70-18"><a id="__codelineno-70-18" name="__codelineno-70-18" href="#__codelineno-70-18"></a>    <span class="k">return</span> <span class="n">output</span>
+</span><span id="__span-70-19"><a id="__codelineno-70-19" name="__codelineno-70-19" href="#__codelineno-70-19"></a>
+</span><span id="__span-70-20"><a id="__codelineno-70-20" name="__codelineno-70-20" href="#__codelineno-70-20"></a><span class="c1"># Measure the execution time of both implementations</span>
+</span><span id="__span-70-21"><a id="__codelineno-70-21" name="__codelineno-70-21" href="#__codelineno-70-21"></a><span class="n">for_loop_time</span> <span class="o">=</span> <span class="n">timeit</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="n">for_loop</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+</span><span id="__span-70-22"><a id="__codelineno-70-22" name="__codelineno-70-22" href="#__codelineno-70-22"></a><span class="n">list_comprehension_time</span> <span class="o">=</span> <span class="n">timeit</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="n">list_comprehension</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+</span><span id="__span-70-23"><a id="__codelineno-70-23" name="__codelineno-70-23" href="#__codelineno-70-23"></a>
+</span><span id="__span-70-24"><a id="__codelineno-70-24" name="__codelineno-70-24" href="#__codelineno-70-24"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;For loop execution time: &quot;</span><span class="p">,</span> <span class="n">for_loop_time</span><span class="p">)</span>
+</span><span id="__span-70-25"><a id="__codelineno-70-25" name="__codelineno-70-25" href="#__codelineno-70-25"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;List comprehension execution time: &quot;</span><span class="p">,</span> <span class="n">list_comprehension_time</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-python highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-71-1"><a id="__codelineno-71-1" name="__codelineno-71-1" href="#__codelineno-71-1"></a><span class="n">For</span> <span class="n">loop</span> <span class="n">execution</span> <span class="n">time</span><span class="p">:</span>  <span class="mf">0.01699999999999999</span>
+</span><span id="__span-71-2"><a id="__codelineno-71-2" name="__codelineno-71-2" href="#__codelineno-71-2"></a><span class="n">List</span> <span class="n">comprehension</span> <span class="n">execution</span> <span class="n">time</span><span class="p">:</span>  <span class="mf">0.012999999999999956</span>
+</span></code></pre></div></p>
+<p>When running this code, you'll find that the list comprehension implementation is typically faster than the <code>for</code> loop implementation. This is because list comprehensions are optimized for performance in Python, and they can often perform the same task more quickly than the equivalent <code>for</code> loop. However, the difference in speed may not be significant unless you're dealing with very large data sets.</p>
+<p>It's also worth noting that while list comprehensions can be faster and more concise, they can also be harder to read if they become too complex. Therefore, it's important to strike a balance between performance and readability when writing your code.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Pros of List Comprehensions vs For Loops</label><label for="__tabbed_6_2">Cons of List Comprehensions Vs For Loops</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ul>
+<li>
+<p><strong>Succinctness</strong>: List comprehensions provide a concise way to create lists. They can often achieve the same result as a for-loop in a single, short line of code.</p>
+</li>
+<li>
+<p><strong>Speed</strong>: List comprehensions are generally faster than for-loops because they are specifically optimized for creating new lists.</p>
+</li>
+<li>
+<p><strong>Functionality</strong>: List comprehensions can incorporate conditionals and multiple for-loops, enabling quite complex list creation in a single line.</p>
+</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<ul>
+<li>
+<p><strong>Readability</strong>: List comprehensions can be harder to read than for-loops, especially if they are complex.</p>
+</li>
+<li>
+<p><strong>MemoryUsage</strong>: List comprehensions create new lists in memory, which can cause problems if you're working with very large data sets.</p>
+</li>
+<li>
+<p><strong>Debugging</strong>: List comprehensions can be harder to debug than for-loops, especially if they are complex.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<h2 id="54-zip-function">5.4. zip() Function</h2>
+<p>In Python, the <code>zip()</code> function is used to combine corresponding elements from multiple iterables (like lists or tuples) into tuples. Let's first understand it with an example:</p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-72-1"><a id="__codelineno-72-1" name="__codelineno-72-1" href="#__codelineno-72-1"></a><span class="n">ages</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">78</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">44</span><span class="p">]</span>
+</span><span id="__span-72-2"><a id="__codelineno-72-2" name="__codelineno-72-2" href="#__codelineno-72-2"></a><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tub&#39;</span><span class="p">,</span> <span class="s1">&#39;Barkalot&#39;</span><span class="p">,</span> <span class="s1">&#39;Furrytail&#39;</span><span class="p">]</span>
+</span><span id="__span-72-3"><a id="__codelineno-72-3" name="__codelineno-72-3" href="#__codelineno-72-3"></a>
+</span><span id="__span-72-4"><a id="__codelineno-72-4" name="__codelineno-72-4" href="#__codelineno-72-4"></a><span class="nb">print</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">ages</span><span class="p">,</span> <span class="n">names</span><span class="p">))</span>
+</span><span id="__span-72-5"><a id="__codelineno-72-5" name="__codelineno-72-5" href="#__codelineno-72-5"></a><span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">ages</span><span class="p">,</span> <span class="n">names</span><span class="p">)))</span>
+</span></code></pre></div>
+<div class="language-python highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-73-1"><a id="__codelineno-73-1" name="__codelineno-73-1" href="#__codelineno-73-1"></a><span class="o">&lt;</span><span class="nb">zip</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x0000020F6F6F0A48</span><span class="o">&gt;</span>
+</span><span id="__span-73-2"><a id="__codelineno-73-2" name="__codelineno-73-2" href="#__codelineno-73-2"></a><span class="p">[(</span><span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;Tub&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="s1">&#39;Barkalot&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Furrytail&#39;</span><span class="p">)]</span>
+</span></code></pre></div>
+What zip does is it takes the first item from each iterable and puts them together in a tuple then it takes the second item from each iterable and puts them together in a tuple and so on. The result is a zip object that we can convert into a list of tuples using the <code>list()</code> function.</p>
+<h3 id="541-zip-with-for-loop">5.4.1. zip() with for Loop</h3>
+<p>In the following example, the <code>zip()</code> function pairs up the elements from ages and names lists by their indices.</p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-74-1"><a id="__codelineno-74-1" name="__codelineno-74-1" href="#__codelineno-74-1"></a><span class="n">ages</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">78</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">44</span><span class="p">]</span>
+</span><span id="__span-74-2"><a id="__codelineno-74-2" name="__codelineno-74-2" href="#__codelineno-74-2"></a><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tub&#39;</span><span class="p">,</span> <span class="s1">&#39;Barkalot&#39;</span><span class="p">,</span> <span class="s1">&#39;Furrytail&#39;</span><span class="p">]</span>
+</span><span id="__span-74-3"><a id="__codelineno-74-3" name="__codelineno-74-3" href="#__codelineno-74-3"></a>
+</span><span id="__span-74-4"><a id="__codelineno-74-4" name="__codelineno-74-4" href="#__codelineno-74-4"></a><span class="n">my_list</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="__span-74-5"><a id="__codelineno-74-5" name="__codelineno-74-5" href="#__codelineno-74-5"></a><span class="k">for</span> <span class="n">age</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+</span><span id="__span-74-6"><a id="__codelineno-74-6" name="__codelineno-74-6" href="#__codelineno-74-6"></a>    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
+</span><span id="__span-74-7"><a id="__codelineno-74-7" name="__codelineno-74-7" href="#__codelineno-74-7"></a>        <span class="n">my_list</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">age</span><span class="p">,</span> <span class="n">name</span><span class="p">))</span>
+</span><span id="__span-74-8"><a id="__codelineno-74-8" name="__codelineno-74-8" href="#__codelineno-74-8"></a><span class="nb">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-python highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-75-1"><a id="__codelineno-75-1" name="__codelineno-75-1" href="#__codelineno-75-1"></a><span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Tub&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Barkalot&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Furrytail&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Tub&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Barkalot&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Furrytail&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Tub&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Barkalot&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Furrytail&#39;</span><span class="p">)]</span>
+</span></code></pre></div>
+We can utilize this function along with comprehensions for more complex operations.</p>
+<h3 id="542-zip-with-list-comprehension">5.4.2. zip() with List Comprehension</h3>
+<p>Similarly, we can use<code>zip()</code> with list comprehensions. Let's create a list of tuples where each tuple consists of a number and a pet name:</p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-76-1"><a id="__codelineno-76-1" name="__codelineno-76-1" href="#__codelineno-76-1"></a><span class="n">my_list</span> <span class="o">=</span> <span class="p">[(</span><span class="n">age</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span> <span class="k">for</span> <span class="n">age</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">]</span>
+</span><span id="__span-76-2"><a id="__codelineno-76-2" name="__codelineno-76-2" href="#__codelineno-76-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-python highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-77-1"><a id="__codelineno-77-1" name="__codelineno-77-1" href="#__codelineno-77-1"></a><span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Tub&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Barkalot&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Furrytail&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Tub&#39;</span><span class="p">),</span> 
+</span><span id="__span-77-2"><a id="__codelineno-77-2" name="__codelineno-77-2" href="#__codelineno-77-2"></a><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Barkalot&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Furrytail&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Tub&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Barkalot&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Furrytail&#39;</span><span class="p">)]</span>
+</span></code></pre></div></p>
+<p>This code creates a tuple for each combination of age and name, and adds it to the list. Here, <code>age</code> ranges from <code>0</code> to <code>2</code>, and <code>name</code> is taken from the <code>names</code> list.</p>
+<h2 id="55-dictionary-comprehensions">5.5. Dictionary Comprehensions</h2>
+<p>A dictionary comprehension is similar to a list comprehension, but it constructs a dictionary instead of a list.</p>
+<p>If we want to create a dictionary that maps each pet's name to its age, we can use a for-loop like this:</p>
+<p><strong>Regular For Loop with zip()</strong></p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-78-1"><a id="__codelineno-78-1" name="__codelineno-78-1" href="#__codelineno-78-1"></a><span class="n">my_dict</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span id="__span-78-2"><a id="__codelineno-78-2" name="__codelineno-78-2" href="#__codelineno-78-2"></a><span class="k">for</span> <span class="n">age</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">ages</span><span class="p">,</span> <span class="n">names</span><span class="p">):</span>
+</span><span id="__span-78-3"><a id="__codelineno-78-3" name="__codelineno-78-3" href="#__codelineno-78-3"></a>    <span class="n">my_dict</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">age</span>
+</span><span id="__span-78-4"><a id="__codelineno-78-4" name="__codelineno-78-4" href="#__codelineno-78-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">my_dict</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-python highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-79-1"><a id="__codelineno-79-1" name="__codelineno-79-1" href="#__codelineno-79-1"></a><span class="p">{</span><span class="s1">&#39;Tub&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;Barkalot&#39;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="s1">&#39;Furrytail&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+</span></code></pre></div></p>
+<p><strong>Dictionary comprehension with zip()</strong></p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-80-1"><a id="__codelineno-80-1" name="__codelineno-80-1" href="#__codelineno-80-1"></a><span class="c1"># {key: value for item in iterable}</span>
+</span><span id="__span-80-2"><a id="__codelineno-80-2" name="__codelineno-80-2" href="#__codelineno-80-2"></a><span class="n">my_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="n">age</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">ages</span><span class="p">)}</span>
+</span><span id="__span-80-3"><a id="__codelineno-80-3" name="__codelineno-80-3" href="#__codelineno-80-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">my_dict</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-python highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-81-1"><a id="__codelineno-81-1" name="__codelineno-81-1" href="#__codelineno-81-1"></a><span class="p">{</span><span class="s1">&#39;Tub&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;Barkalot&#39;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="s1">&#39;Furrytail&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+</span></code></pre></div>
+Here, <code>name</code>: <code>age</code> is the key-value pair for each item in the dictionary.</p>
+<p>We can also add a condition in the dictionary comprehension to filter the items:</p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-82-1"><a id="__codelineno-82-1" name="__codelineno-82-1" href="#__codelineno-82-1"></a><span class="c1"># {key: value for item in iterable if condition}</span>
+</span><span id="__span-82-2"><a id="__codelineno-82-2" name="__codelineno-82-2" href="#__codelineno-82-2"></a><span class="n">my_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="n">age</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">ages</span><span class="p">)</span> <span class="k">if</span> <span class="n">age</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">}</span>
+</span><span id="__span-82-3"><a id="__codelineno-82-3" name="__codelineno-82-3" href="#__codelineno-82-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">my_dict</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-python highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-83-1"><a id="__codelineno-83-1" name="__codelineno-83-1" href="#__codelineno-83-1"></a><span class="p">{</span><span class="s1">&#39;Barkalot&#39;</span><span class="p">:</span> <span class="mi">12</span><span class="p">}</span>
+</span></code></pre></div></p>
+<p>This will include only the pets that are older than 10 in the dictionary.</p>
+<h2 id="56-set-comprehensions">5.6. Set Comprehensions</h2>
+<p>Set comprehensions work just like list and dictionary comprehensions, but they produce a set, which is an unordered collection of unique elements.</p>
+<p>Let's start with an example where we want to create a set from the ages list:</p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-84-1"><a id="__codelineno-84-1" name="__codelineno-84-1" href="#__codelineno-84-1"></a><span class="n">ages</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">78</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">44</span><span class="p">]</span>
+</span><span id="__span-84-2"><a id="__codelineno-84-2" name="__codelineno-84-2" href="#__codelineno-84-2"></a><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tub&#39;</span><span class="p">,</span> <span class="s1">&#39;Barkalot&#39;</span><span class="p">,</span> <span class="s1">&#39;Furrytail&#39;</span><span class="p">]</span>
+</span><span id="__span-84-3"><a id="__codelineno-84-3" name="__codelineno-84-3" href="#__codelineno-84-3"></a>
+</span><span id="__span-84-4"><a id="__codelineno-84-4" name="__codelineno-84-4" href="#__codelineno-84-4"></a><span class="n">my_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+</span><span id="__span-84-5"><a id="__codelineno-84-5" name="__codelineno-84-5" href="#__codelineno-84-5"></a><span class="k">for</span> <span class="n">age</span> <span class="ow">in</span> <span class="n">ages</span><span class="p">:</span>
+</span><span id="__span-84-6"><a id="__codelineno-84-6" name="__codelineno-84-6" href="#__codelineno-84-6"></a>    <span class="n">my_set</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">age</span><span class="p">)</span>
+</span><span id="__span-84-7"><a id="__codelineno-84-7" name="__codelineno-84-7" href="#__codelineno-84-7"></a><span class="nb">print</span><span class="p">(</span><span class="n">my_set</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-python highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-85-1"><a id="__codelineno-85-1" name="__codelineno-85-1" href="#__codelineno-85-1"></a><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">78</span><span class="p">}</span>
+</span></code></pre></div></p>
+<p>We're creating a set and adding each age to it. The resulting set includes each age once, even if it appeared multiple times in the list.</p>
+<p>We can achieve the same result more succinctly with a set comprehension:</p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-86-1"><a id="__codelineno-86-1" name="__codelineno-86-1" href="#__codelineno-86-1"></a><span class="c1"># {expression for item in iterable}</span>
+</span><span id="__span-86-2"><a id="__codelineno-86-2" name="__codelineno-86-2" href="#__codelineno-86-2"></a><span class="n">my_set</span> <span class="o">=</span> <span class="p">{</span><span class="n">age</span> <span class="k">for</span> <span class="n">age</span> <span class="ow">in</span> <span class="n">ages</span><span class="p">}</span>
+</span><span id="__span-86-3"><a id="__codelineno-86-3" name="__codelineno-86-3" href="#__codelineno-86-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">my_set</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-python highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-87-1"><a id="__codelineno-87-1" name="__codelineno-87-1" href="#__codelineno-87-1"></a><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">78</span><span class="p">}</span>
+</span></code></pre></div></p>
+<p>Here, <code>age for age in ages</code> is the expression for each item in the set.</p>
+<p>Similar to list and dictionary comprehensions, we can also include a condition in the set comprehension:</p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-88-1"><a id="__codelineno-88-1" name="__codelineno-88-1" href="#__codelineno-88-1"></a><span class="c1"># {expression for item in iterable if condition}</span>
+</span><span id="__span-88-2"><a id="__codelineno-88-2" name="__codelineno-88-2" href="#__codelineno-88-2"></a><span class="n">my_set</span> <span class="o">=</span> <span class="p">{</span><span class="n">age</span> <span class="k">for</span> <span class="n">age</span> <span class="ow">in</span> <span class="n">ages</span> <span class="k">if</span> <span class="n">age</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">}</span>
+</span><span id="__span-88-3"><a id="__codelineno-88-3" name="__codelineno-88-3" href="#__codelineno-88-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">my_set</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-python highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-89-1"><a id="__codelineno-89-1" name="__codelineno-89-1" href="#__codelineno-89-1"></a><span class="p">{</span><span class="mi">12</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">78</span><span class="p">}</span>
+</span></code></pre></div></p>
+<p>This will include only the ages that are greater than <code>10</code> in the set.</p>
+<p>In summary, set comprehensions provide a concise way to create sets in Python. They can be especially useful when you need to remove duplicates from a list or other iterable, because sets automatically discard duplicate values.</p>
+<h2 id="56-generator-compreshensions">5.6. Generator Compreshensions</h2>
+<p>Generator comprehensions are an elegant way to create generators using a syntax that is similar to list comprehensions. In fact, you can convert a list comprehension into a generator comprehension just by replacing the square brackets <code>[]</code> with parentheses <code>()</code>.</p>
+<p>Generators are a powerful feature in Python for creating iterable objects. They are a key component of Python's approach to handling large data streams or sequences of data because they enable you to create an iterable object without needing to store all of the values in memory at once. This can provide substantial performance benefits when dealing with large data sets.</p>
+<p>We will cover more details in the next <a href="http://www.zhenyuanlu.com/python-notebook/06_iterable_iterator_generator/">Chapter</a>. </p>
+<h3 id="561-traditional-generator-function">5.6.1. Traditional Generator Function</h3>
+<p>The gen_func function is a generator function that takes a list of ages as an argument. Inside this function, we iterate over the ages list using a for loop. For each age in ages, we yield the value of age incremented by 1. The yield keyword is used in Python generator functions as a sort of "return" that does not end the function, but instead provides a value and pauses the function's execution until the next value is requested.</p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-90-1"><a id="__codelineno-90-1" name="__codelineno-90-1" href="#__codelineno-90-1"></a><span class="n">ages</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">78</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">44</span><span class="p">]</span>
+</span><span id="__span-90-2"><a id="__codelineno-90-2" name="__codelineno-90-2" href="#__codelineno-90-2"></a>
+</span><span id="__span-90-3"><a id="__codelineno-90-3" name="__codelineno-90-3" href="#__codelineno-90-3"></a><span class="k">def</span> <span class="nf">gen_func</span><span class="p">(</span><span class="n">ages</span><span class="p">):</span>
+</span><span id="__span-90-4"><a id="__codelineno-90-4" name="__codelineno-90-4" href="#__codelineno-90-4"></a>    <span class="k">for</span> <span class="n">age</span> <span class="ow">in</span> <span class="n">ages</span><span class="p">:</span>
+</span><span id="__span-90-5"><a id="__codelineno-90-5" name="__codelineno-90-5" href="#__codelineno-90-5"></a>        <span class="k">yield</span> <span class="n">age</span><span class="o">+</span><span class="mi">1</span>
+</span><span id="__span-90-6"><a id="__codelineno-90-6" name="__codelineno-90-6" href="#__codelineno-90-6"></a>
+</span><span id="__span-90-7"><a id="__codelineno-90-7" name="__codelineno-90-7" href="#__codelineno-90-7"></a><span class="n">my_gen</span> <span class="o">=</span> <span class="n">gen_func</span><span class="p">(</span><span class="n">ages</span><span class="p">)</span>
+</span><span id="__span-90-8"><a id="__codelineno-90-8" name="__codelineno-90-8" href="#__codelineno-90-8"></a><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">my_gen</span><span class="p">:</span>
+</span><span id="__span-90-9"><a id="__codelineno-90-9" name="__codelineno-90-9" href="#__codelineno-90-9"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-python highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-91-1"><a id="__codelineno-91-1" name="__codelineno-91-1" href="#__codelineno-91-1"></a><span class="mi">6</span>
+</span><span id="__span-91-2"><a id="__codelineno-91-2" name="__codelineno-91-2" href="#__codelineno-91-2"></a><span class="mi">13</span>
+</span><span id="__span-91-3"><a id="__codelineno-91-3" name="__codelineno-91-3" href="#__codelineno-91-3"></a><span class="mi">4</span>
+</span><span id="__span-91-4"><a id="__codelineno-91-4" name="__codelineno-91-4" href="#__codelineno-91-4"></a><span class="mi">57</span>
+</span><span id="__span-91-5"><a id="__codelineno-91-5" name="__codelineno-91-5" href="#__codelineno-91-5"></a><span class="mi">25</span>
+</span><span id="__span-91-6"><a id="__codelineno-91-6" name="__codelineno-91-6" href="#__codelineno-91-6"></a><span class="mi">79</span>
+</span><span id="__span-91-7"><a id="__codelineno-91-7" name="__codelineno-91-7" href="#__codelineno-91-7"></a><span class="mi">2</span>
+</span><span id="__span-91-8"><a id="__codelineno-91-8" name="__codelineno-91-8" href="#__codelineno-91-8"></a><span class="mi">16</span>
+</span><span id="__span-91-9"><a id="__codelineno-91-9" name="__codelineno-91-9" href="#__codelineno-91-9"></a><span class="mi">45</span>
+</span></code></pre></div></p>
+<p>The <code>gen_func</code> function is a generator function that takes a list of <code>ages</code> as an argument. Inside this function, we iterate over the <code>ages</code> list using a <code>for</code> loop. For each <code>age</code> in <code>ages</code>, we <code>yield</code> the value of <code>age</code> incremented by 1. The <code>yield</code> keyword is used in Python generator functions as a sort of "return" that does not end the function, but instead provides a value and pauses the function's execution until the next value is requested.</p>
+<p>We call our generator function <code>gen_func</code> with the <code>ages</code> list as the argument, and the result (a generator object) is assigned to <code>my_gen</code>. Then we use a <code>for</code> loop to iterate over the generator object, which causes the generator function to execute and <code>yield</code> its values one by one. Each yielded value is printed out.</p>
+<h3 id="562-generator-comprehension">5.6.2. Generator Comprehension</h3>
+<p>The second part of the code shows a generator comprehension, which is a more compact way of creating a generator. The syntax is very similar to list comprehensions, but uses parentheses <code>()</code> instead of square brackets <code>[]</code>.</p>
+<p><div class="language-python highlight"><span class="filename">Input</span><pre><span></span><code><span id="__span-92-1"><a id="__codelineno-92-1" name="__codelineno-92-1" href="#__codelineno-92-1"></a><span class="c1"># (expression for item in iterable)</span>
+</span><span id="__span-92-2"><a id="__codelineno-92-2" name="__codelineno-92-2" href="#__codelineno-92-2"></a><span class="n">my_gen</span> <span class="o">=</span> <span class="p">(</span><span class="n">age</span> <span class="k">for</span> <span class="n">age</span> <span class="ow">in</span> <span class="n">ages</span><span class="p">)</span>
+</span><span id="__span-92-3"><a id="__codelineno-92-3" name="__codelineno-92-3" href="#__codelineno-92-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">my_gen</span><span class="p">)</span>
+</span><span id="__span-92-4"><a id="__codelineno-92-4" name="__codelineno-92-4" href="#__codelineno-92-4"></a>
+</span><span id="__span-92-5"><a id="__codelineno-92-5" name="__codelineno-92-5" href="#__codelineno-92-5"></a><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">my_gen</span><span class="p">:</span>
+</span><span id="__span-92-6"><a id="__codelineno-92-6" name="__codelineno-92-6" href="#__codelineno-92-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-python highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-93-1"><a id="__codelineno-93-1" name="__codelineno-93-1" href="#__codelineno-93-1"></a><span class="o">&lt;</span><span class="n">generator</span> <span class="nb">object</span> <span class="o">&lt;</span><span class="n">genexpr</span><span class="o">&gt;</span> <span class="n">at</span> <span class="mh">0x0000020F6F6F0A48</span><span class="o">&gt;</span>
+</span><span id="__span-93-2"><a id="__codelineno-93-2" name="__codelineno-93-2" href="#__codelineno-93-2"></a><span class="mi">5</span>
+</span><span id="__span-93-3"><a id="__codelineno-93-3" name="__codelineno-93-3" href="#__codelineno-93-3"></a><span class="mi">12</span>
+</span><span id="__span-93-4"><a id="__codelineno-93-4" name="__codelineno-93-4" href="#__codelineno-93-4"></a><span class="mi">3</span>
+</span><span id="__span-93-5"><a id="__codelineno-93-5" name="__codelineno-93-5" href="#__codelineno-93-5"></a><span class="o">...</span>
+</span></code></pre></div></p>
+<p>This line creates a generator object that will generate the same values as the <code>ages</code> list, but on-demand, not storing the entire list in memory.</p>
+<p>Generators, both through traditional functions and comprehensions, are a powerful tool in Python. They provide an efficient way to work with large data sets or streams of data that would be inefficient or impractical to store in memory all at once.</p>
+<!-- ## 5.4. enumerate introduction and examples
+## 5.5. Recursive Functions -->
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Python Notebook by <a href="https://zhenyuanlu.com/" target="_blank">Zhenyuan Lu</a>. This work is under <a href="https://github.com/zhenyuanlu/python-notebook/blob/main/LICENSE" target="_blank">MIT License</a>.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/zhenyuanlu/" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/zhenyuanlu/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/zyl_zhen/" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "navigation.instant", "navigation.top", "content.tabs.link"], "search": "../assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.220ee61c.min.js"></script>
+      
+    
+  </body>
+</html>
