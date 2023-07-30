@@ -41,5 +41,5 @@ Throughout this comprehensive guide, we'll cover a wide range of topics, includi
 
 
 Author: Zhenyuan Lu\
-Version: 0.9.0
+Version: 1.0.0
 

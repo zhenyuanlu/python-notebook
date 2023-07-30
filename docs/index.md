@@ -2,7 +2,7 @@
 
 Author: [Zhenyuan Lu](https://zhenyuanlu.com/)
 
-Version: 0.9.0
+Version: 1.0.0
 
 Created: 12/05/2022, *last modified on 07/29/2023*
 
